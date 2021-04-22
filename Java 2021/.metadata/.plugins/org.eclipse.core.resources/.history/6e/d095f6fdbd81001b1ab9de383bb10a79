@@ -1,0 +1,7 @@
+//Exception Propagation
+
+public class ExecptionDemo3 {
+    void m() {
+    	int m = 5 / 0;
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Tutorails</title>
+    <style>
+        body{
+            counter-reset: om;
+        }
+        h1{
+            counter-reset: ok;
+        }
+
+        h2::before{
+            counter-increment: om;
+            content:"   "counter(om)" - ";
+        }
+
+        ol{
+            list-style-type: none;
+            counter-reset: section;
+
+        }
+
+        ol li::before{
+            counter-increment: section;
+            content: counters(section, '.')" ";
+
+        }
+        
+        h1::after{
+            counter-increment: ok;
+            content:"  " counter(ok);
+
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Counter Demo </h1>
+    <h2>Item</h2>
+    <h2>Item</h2>
+    <h2>Item</h2>
+    <h2>Item</h2>
+
+
+    <h1>Ordered list Demo</h1>
+
+    <ol>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item
+            <ol>
+                <li>Item </li>
+                <li>Item</li>
+                <li>Item
+                    <ol>
+                        <li>item</li>
+                        <li>Item</li>
+                        <li>Item</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>Item</li>
+        <li>Item</li>
+    </ol>
+    <h1>Second ordered list</h1>
+    <ol>
+        <li>item</li>
+        <li>Item</li>
+        <li>Item</li>
+    </ol>
+</body>
+</html>

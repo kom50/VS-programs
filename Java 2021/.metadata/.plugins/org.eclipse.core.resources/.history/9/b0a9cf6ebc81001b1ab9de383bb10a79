@@ -1,0 +1,14 @@
+
+public class ExceptionDemo2 {
+  static   // Use of throw key keyword
+  try {
+		
+} catch (Exception e) {
+	// TODO: handle exception
+	e.printStackTrace();
+}
+  public static void main(String []args) {
+	
+	  System.out.println("REst of code");
+  }
+}

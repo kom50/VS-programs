@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding :0;
+        }
+        svg{
+            border: 4px solid blue;
+            margin: 2%;
+            margin-left: 4%;
+            height: 500px;
+            width: 90%;
+
+            margin-bottom: 2px;
+        }
+        h4{
+            position: relative;
+            margin-bottom: 0%;
+            width: 96%;
+            height: 35px;
+            margin-top :4px;
+            line-height: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input[type='range']{
+            width: 90%;
+            position: relative;
+            margin-left:5%;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+    <center><h4>Hand Writting Application</h4></center>
+    <svg ontouchstart='ok(event)' ontouchmove='ok(event)' ontouchend='end()'     >
+        <polyline id='line'  fill='none' stroke='red' stroke-width='3'></polyline>
+    </svg >
+    <input  type="range" min='1' max="10">
+    <center><input type="color" onchange="getColor()"></center>
+     <script> 
+
+        var poly = document.querySelector('#line');
+        var box = document.getElementsByTagName('svg')[0];
+        var point = 0, color = '#000000';
+        var width = 2;
+        function ok(event){
+            point += event.touches[0].clientX;
+            point += ",";
+            point += event.touches[0].clientY;
+            point += " ";
+            poly.setAttribute('points', point);
+            poly.setAttribute('stroke', color);
+            poly.setAttribute('stroke-width', width);
+            var copy = poly.cloneNode();
+            box.appendChild(copy);
+        }
+        function end(){
+            point = 0;
+        }
+        var clr = document.querySelector('input[type="color"]');
+        function getColor(){
+            color = clr.value;
+        }
+
+        document.querySelector('input[type="range"]').oninput = function(){
+            width = this.value;
+        }
+    </script>
+</body>
+</html>

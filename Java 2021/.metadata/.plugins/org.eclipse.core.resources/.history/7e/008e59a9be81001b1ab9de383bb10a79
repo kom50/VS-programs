@@ -1,0 +1,21 @@
+//Exception Propagation
+
+public class ExceptionDemo3 {
+    void m() {
+    	throw new ArithmeticException("Hello ");
+//    	int m1 = 5 / 0;
+    }
+    
+    void n() {
+    	m();
+    }
+    
+    void p() {
+    	n();
+    }
+    public static void main(String []args) {
+    	ExceptionDemo3 e1 = new ExceptionDemo3();
+    	e1.p();
+    	System.out.println("Rest of the code");
+    }
+}

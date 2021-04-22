@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [10, 20 ,30, 40, 50, 60];
+        //array.forEach(function(currentValue, index, arr), thisValue);
+        /* This method calls a fucntion once for each elements in an array, in order.
+          This method is not executed for array elements without values.
+         */
+        arr.forEach( (a, i) =>{
+            console.log("["+i+"] : "+a);
+        });
+        //array.map(function(currentValue, index, arr), thisValue) ;
+        var newArr = arr.map( a =>{
+           return   Math.pow(a, 2);
+        });
+        console.log(newArr)
+       var persons = [
+           {firstName : 'OM', lastName :'prakash'},
+           {firstName :'Jay', lastName : 'prakash'},
+           {firstName : 'Rahul', lastName :'kumar'}
+       ];
+       for(let a in persons){
+           console.log(persons[a].firstName+" "+persons[a].lastName);
+       }
+       persons.forEach((a, i) => {
+           console.log(" > "+a.firstName+" "+a.lastName);
+       })
+       function getFullName(item){
+           var fullName = [item.firstName, item.lastName].join(" ");
+           return  fullName;
+       }
+       (function myFun(){
+           console.log(persons.map(getFullName));
+       })();
+    </script>
+</body>
+</html>

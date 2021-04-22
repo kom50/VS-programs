@@ -1,0 +1,215 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
+
+public class MainFile extends JFrame {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		MainFile frame = new MainFile();
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MainFile() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1000, 600);
+//		SplashScreen sc = new SplashScreen(this, "Hello Bro");
+		setVisible(true);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setForeground(new Color(128, 128, 128));
+		menuBar.setBackground(SystemColor.control);
+		setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmNew = new JMenuItem("New");
+		mntmNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnFile.add(mntmNew);
+		
+		JMenuItem mntmOpen = new JMenuItem("Open");
+		mntmOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openFile();
+			}
+		});
+		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		mnFile.add(mntmOpen);
+		
+		JMenuItem mntmSave = new JMenuItem("Save");
+		mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		mnFile.add(mntmSave);
+		
+		JMenuItem mntmSaveAs = new JMenuItem("Save As...");
+		mnFile.add(mntmSaveAs);
+		
+		JSeparator separator = new JSeparator();
+		mnFile.add(separator);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Page Setpup...");
+		mnFile.add(mntmNewMenuItem);
+		
+		JMenuItem mntmPrint = new JMenuItem("Print...");
+		mntmPrint.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		mnFile.add(mntmPrint);
+		
+		JSeparator separator_1 = new JSeparator();
+		mnFile.add(separator_1);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_MASK));
+		mnFile.add(mntmExit);
+		
+		JMenu mnEdit = new JMenu("Edit");
+		menuBar.add(mnEdit);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Undo");
+		mntmNewMenuItem_1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmNewMenuItem_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		mnEdit.add(separator_2);
+		
+		JMenuItem mntmCut = new JMenuItem("Cut");
+		mntmCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmCut);
+		
+		JMenuItem mntmCopy = new JMenuItem("Copy");
+		mntmCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmCopy);
+		
+		JMenuItem mntmPaste = new JMenuItem("Paste");
+		mntmPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmPaste);
+		
+		JMenuItem mntmDelete = new JMenuItem("Delete");
+		mntmDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));
+		mnEdit.add(mntmDelete);
+		
+		JSeparator separator_3 = new JSeparator();
+		mnEdit.add(separator_3);
+		
+		JMenuItem mntmFind = new JMenuItem("Find");
+		mntmFind.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmFind);
+		
+		JMenuItem mntmFindNext = new JMenuItem("Find Next");
+		mntmFindNext.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
+		mnEdit.add(mntmFindNext);
+		
+		JMenuItem mntmReplace = new JMenuItem("Replace...");
+		mntmReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmReplace);
+		
+		JMenuItem mntmGoTo = new JMenuItem("Go To...");
+		mntmGoTo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmGoTo);
+		
+		JSeparator separator_4 = new JSeparator();
+		mnEdit.add(separator_4);
+		
+		JMenuItem mntmSelectAll = new JMenuItem("Select All");
+		mntmSelectAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+		mnEdit.add(mntmSelectAll);
+		
+		JMenuItem mntmTimeDate = new JMenuItem("Time/ Date");
+		mntmTimeDate.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F15, 0));
+		mnEdit.add(mntmTimeDate);
+		
+		JMenu mnFormat = new JMenu("Format");
+		menuBar.add(mnFormat);
+		
+		JMenu mnView = new JMenu("View");
+		menuBar.add(mnView);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(10, 15));
+		getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		textArea.setSelectedTextColor(Color.white);
+		textArea.setSelectionColor(new Color(30, 144, 255));
+		textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println(e.getKeyCode());
+				/*
+				 * if(e.getKeyCode() == 17 && e.getKeyCode() == 65) { textArea.selectAll(); }
+				 * if(e.getKeyCode() == 17 && e.getKeyCode() == 68) { textArea.paste(); }
+				 * if(e.getKeyCode() == 17 && e.getKeyCode() == 86) { textArea.copy(); }
+				 */
+				/*
+				 * if(e.getKeyCode() == 17 && e.getKeyCode() == 78) { // new
+				 * MainFile().openFile(); } if(e.getKeyCode() == 17 && e.getKeyCode() == 79) {
+				 * new MainFile().openFile(); }
+				 */
+			}
+		});
+		textArea.setFocusable(true);
+		textArea.setLineWrap(true);
+		scrollPane.setViewportView(textArea);
+		
+		
+	   validate();
+	}
+
+	void openFile() {
+		JFileChooser fc = new JFileChooser();   
+		fc.setBackground(Color.WHITE);					
+	    int i = fc.showOpenDialog(MainFile.this);
+		if(i == JFileChooser.APPROVE_OPTION) {
+//			File f = fc.getSelectedFile();
+//			filePath = f.getPath();
+//			isFileSaved = true;
+		   try{
+////			BufferedReader  br = new BufferedReader(new FileReader(filePath));
+//			String s1 = "";
+//			String s2 = new String();
+//			while((s1 = br.readLine()) != null)
+//				s2 += s1 +"\n";
+//			textArea.setText(s2);
+//			br.close();
+		   }
+		   catch(Exception er){ er.printStackTrace(); }
+		}
+		System.out.println("Hello bro");
+		
+		
+	}
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Event properties Tutorials</title>
+
+    <style>
+        body{
+            background-color: ;
+        }
+    </style>
+</head>
+ 
+<body onclick="getElement(event)">
+
+    <p>In this tutorial, we are discussing about DOM event properties</p>
+
+    <input type="text" id='ok' onclick="getElement(event)">
+    <br>
+    <input type="button" value="Button" >
+    <script>
+        function fun(event){
+            if(event.altKey)
+                console.log('Alt key was pressed...', event.target.type);
+            else
+                console.log('Alt key was not pressed...',event.currentTarget);
+
+            if(event.ctrlKey)
+                console.log('ctrl key was pressed...', event.target.type);
+            else
+                console.log('ctrl key was not pressed...',event.currentTarget)
+
+        }
+
+        var btn = document.querySelector('input[type="button"]');
+        var box = document.querySelector('input[type="text"]');
+        //console.log(btn);
+
+        //button
+        btn.addEventListener('mousedown', function(){
+            console.log('Button No. :- ',event.buttons);
+        });
+        
+        box.onkeypress = function(){
+            console.log('Key Code : ', event.charCode,'Key Code : ', event.keyCode);
+            console.log(event.code)
+        }
+        
+        box.oninput = function(event){
+            console.log("event.data ",event.data)
+        }
+        
+        
+        
+        //box.onkeypress = fun;
+
+        
+        function getElement(event){
+            console.log('Current clicked element : '+event.currentTarget.nodeName);
+        }
+        //box.onclick = getElement(event);
+        </script>
+</body>
+</html>

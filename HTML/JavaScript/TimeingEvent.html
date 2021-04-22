@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      #box > ul li:last-child{
+          color: red;
+      }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>1 Item</li>
+            <li>2 Item</li>
+            <li>3 Item</li>
+            <li>4 Item</li>
+            <li>5 Item</li>
+        </ul>
+    </div>
+
+    <script>
+        var box = document.querySelectorAll('#box > ul li');
+        console.log(box);
+        var i = 1;
+        setInterval( function(){
+            // console.log("Hello");
+           // Object.assign(box[i], { color : "red", fonSize : "20px"});
+            
+           box[i].style.color = "red";
+           box[i - 1] .style.color = "black";
+           i++;
+            if(i == box.length - 1) 
+             i = 1;
+        }, 1000)
+
+    </script>
+</body>
+</html>

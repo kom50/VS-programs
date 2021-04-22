@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch Event Demo</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 10px;
+
+        }
+        #main{
+            height: 500px;
+            width: 320px;
+            border: 1px solid blue;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <p id='show'>    </p>
+
+    <script>
+        var box = document.querySelector('#main')
+        var sh = box.nextElementSibling;
+        console.log(box, sh)
+
+        // box.ontouchstart =  function(event){
+        //      sh.textContent = 'event.pageX '+event.touches[0].clientX;
+        // }
+        
+        var startIndexX, startIndexY, endIndexX, endIndexY;
+
+        box.ontouchstart = function(event){
+            console.log("start function")
+            startIndexX = event.touches[0].clientX;
+            startIndexY = event.touches[0].clientY;
+            console.log(startIndexX, startIndexY);
+            console.log(endIndexX, endIndexY);
+        }
+        box.ontouchmove = function(event){
+            console.log("move function")
+            endIndexX = event.touches[0].clientX;
+            endIndexY = event.touches[0].clientY;
+            // console.log(endIndexX, endIndexY);
+            // console.log(startIndexX, startIndexY);
+            // console.log("Hello : "+(startIndexX - endIndexX))
+
+
+        }
+
+        box.ontouchend = function(){
+            console.log("end function")
+            console.log(startIndexX, startIndexY);
+            console.log(endIndexX, endIndexY);
+
+            if(startIndexY < endIndexY && endIndexX - startIndexX < 30 || startIndexY < endIndexY && startIndexX - endIndexX < 30){
+                console.log("Swipe down")
+                sh.textContent = 'Swipe down';
+
+            }
+            if(startIndexY > endIndexY && endIndexX - startIndexX < 30 || startIndexY > endIndexY && startIndexX - endIndexX < 30){
+                console.log("Swipe up")
+                sh.textContent = 'Swipe up';
+            }
+            if(startIndexX < endIndexX && endIndexY - startIndexY < 30 || startIndexX < endIndexX && startIndexY - endIndexY < 30){
+                console.log("Swipe right");
+                sh.textContent = 'Swipe right';
+            }
+            if(startIndexX > endIndexX && endIndexY - startIndexY < 30 || startIndexX > endIndexX && startIndexY - endIndexY < 30){
+                console.log("Swipe left")
+                sh.textContent = 'Swipe left';
+            }
+           
+        }
+        // box.ontouchend = function(event){
+        //     startIndexX = event.touches[0].clientX;
+        //     startIndexY = event.touches[0].clientY;
+        //     console.log(startIndexX, startIndexY);
+        //     console.log(endIndexX, endIndexY);
+        // }
+       
+    </script>
+</body>
+</html>

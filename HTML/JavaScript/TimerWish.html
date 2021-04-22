@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Wish</title>
+</head>
+<body>
+    <h1> </h1>
+    <script>
+       var h = document.querySelector('h1');
+
+        var now = new Date();
+        // now.setMinutes(12);
+        // now.setSeconds(1);
+        var dob = new Date();
+        dob.setMinutes(42);
+        dob.setSeconds(0);
+        console.log("dob "+dob+"\nn "+now);
+        var m =  dob.getMinutes() > now.getMinutes() ? dob.getMinutes() - now.getMinutes() :now.getMinutes() - dob.getMinutes()  ;
+        var  s = dob.getSeconds() > now.getSeconds() ? dob.getSeconds() - now.getSeconds() : now.getSeconds() - dob.getSeconds();
+        console.log("M "+m+" : "+s);
+        var stop = setInterval(function(){
+               h.textContent = m +":"+s;
+               if(m == 0 && s == 0){
+                   h.textContent = "Happy BirthDay (`.`)";
+                   clearInterval(stop);
+               }
+               if(s == 0 && m != 0){
+                   s = 59;
+                   m--;
+                }
+                s--;
+               console.log(new Date().getSeconds()+" "+new Date().getMinutes());
+           }, 1000);
+           
+
+    </script>
+</body>
+</html>

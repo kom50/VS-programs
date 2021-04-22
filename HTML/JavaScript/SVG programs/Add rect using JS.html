@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <svg ontouchstart='ok(event)' ontouchmove='ok(event)' ontouchend='end()' height='300' width='300' xmlns='http://www.w3.org/2000/svg'>
+        <polyline id='line'  fill='none' stroke='red' stroke-width='2'></polyline>
+    </svg >
+     <button onclick="add()">add</button>
+     <button onclick="remove()">Remove</button>
+     <script> 
+
+
+    const svgns = "http://www.w3.org/2000/svg" ;
+    var poly = document.querySelector('#line');
+    var box = document.getElementsByTagName('svg')[0];
+
+    console.log(poly)
+    var point = 0;
+    var pline ;
+    function ok(event){
+        // pline = document.createElementNS('svgns', "polyline");
+        // console.log(pline)
+        // console.log(box)
+        point += event.touches[0].clientX;
+        point += ",";
+        point += event.touches[0].clientY;
+        point += " ";
+        poly.setAttribute('points', point);
+        var copy = poly.cloneNode();
+        console.log("copy "+copy)
+        box.appendChild(copy);
+    }
+    function end(){
+        point = 0;
+    }
+    var a = [4, 56, 56];
+      console.log(a, a.length);
+      a.length = 2;
+      console.log(a, a.length)
+     var rect = document.createElementNS(svgns,'rect');
+     function add(){
+        rect.innerHTML = 'Hello';
+     Object.assign(rect.style, { "x" : 30, "y" : 50, "height":50, "width":100, "fill" : "blue", "color" : "red" })
+    //   rect.setAttribute( 'x', "100");
+    //   rect.setAttribute('y', "100");
+    //   rect.setAttribute('height', "40");
+    //   rect.setAttribute('width', "50");
+    //   rect.setAttribute('fill', "aqua");
+    //   rect.setAttribute('stroke', "black");
+      
+      box.appendChild(rect);
+     }
+      console.log(box);
+      function remove(){
+          box.removeChild(box.children[0]);
+      }
+
+    </script>
+</body>
+</html>

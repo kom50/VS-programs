@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="ok">
+    <script>
+        var btn = document.querySelector('input[type="button"');
+        console.log(btn);
+        console.log(5.5 % 2);
+        // btn.addEventListener('click', function(){
+        //     this.style.color = "red";
+        // });
+        btn.onclick = function(){
+            // this.style.width = "50px";
+            // this.style.backgroundColor = "red";
+            //this.style.cssText = "color :red; font-size : 50px";
+            this.setAttribute("style", " color : red; background-color : orange; outline: none; border:2px solid blue; border-radius: 20px; padding : 10px; ");
+        }
+    </script>
+</body>
+</html>

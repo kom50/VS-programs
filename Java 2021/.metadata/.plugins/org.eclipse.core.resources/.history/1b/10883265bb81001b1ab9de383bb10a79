@@ -1,0 +1,16 @@
+
+public class ExceptionDemo1 {
+  public static void main(String []args) {
+	  try {
+		  int a = 5 / 0;
+	  }
+	  catch( Exception |  e) {
+		  System.out.println("Error : "+e);
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  finally {
+		  System.out.println("final block");
+	  }
+  }
+}

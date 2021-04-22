@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SVG Tutorials</title>
+    <style>
+      svg{
+          border :5px solid gray;
+          position: relative;
+      }
+      svg:hover{
+          box-shadow: 0 0 6px gray;
+      }
+
+
+
+      #lt{
+          /* margin-left: px;; */
+      }
+      #tp, #bt{
+          margin-left: 55px;
+
+      }
+
+      button{
+          height: 50px;
+          width:  50px;
+          border : 1px solid blue;
+          border-radius : 50%;
+          margin-top: 2px;
+          box-shadow: 0 0 8px black;
+      }
+
+      #buttons{
+          position: relative;
+          border:  2px solid blue;
+          border-radius:  100%;
+          height: 160px;
+          width : 160px;  
+          left: 80px;
+          padding : 10px;  
+      }
+      #buttons button{
+          color: red;
+          font-weight: bold;
+          background-color: white;
+          transition: background-color .1s ease-in;
+
+      }
+      #buttons:active{
+          box-shadow: 0 0 5px black;
+          
+      }
+      #pu:active{
+          outline: none;
+      }
+      #buttons button:active{
+           outline: none;
+           box-shadow: 0 0 0px black;
+           background-color: blue;
+      }
+      .rect{
+          rx : 10px;
+      }
+      #header{
+          height: 32px;
+          border: 0.3px solid gray;
+          margin-bottom: 7px;;
+          text-align: center;
+          color : white;
+          font-size: 22px;
+          background-color: red;
+          border-radius: 8px;
+      }
+      #header:hover{
+         box-shadow: 1px 1px 5px gray;
+      }
+      .rect:first-of-type{
+          rx : 3px;
+      }
+
+      input[type='range']{
+          width: 240px;
+      }
+
+      #magic{
+            animation:anim1 1;
+            animation-duration: 1s;
+            animation-direction:linear;
+            box-shadow: 1px 3px 10px black;
+       }
+
+       @keyframes anim1{
+           from{transform: rotateY(180deg); }
+           to{transform: rotateY(0deg);}
+       }
+    </style>
+</head>
+<body >
+    <div id='header'>Snake Game</div>
+    <svg width='330' height='400'>
+        <text y ='16' x='10'> Status : Pause</text>
+        <text y ='16' x='250'> Score : 0</text>
+        <rect class = 'rect'  width='30' height='30' x='60' y ='130' style='fill: blue; stroke-width:2px; '></rect>
+        <!-- <rect class = 'rect'  width='10' height='10' x='50' y ='130' style='fill: red; stroke-width:2px; '></rect>
+        <rect class = 'rect'  width='10' height='10' x='40' y ='130' style='fill: red; stroke-width:2px; '></rect>
+        <rect id = 'food'  width='10' rx='20' height='10' x='150' y ='230' style='fill: rgb(0, 195, 255); stroke-width:0px; stroke:blue'></rect> -->
+    </svg><br>
+    Speed : <input type='range' min='40' max="150" > <span> 50</span>
+    <br>
+    <div id='buttons' >
+        <button id="tp" onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-512.png" alt="up"/></button><br>
+        <button id="lt" onclick="buttonPress(this)" ><img width="30" height="30"  src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" alt='left' /></button>
+        <button id="pu" onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/media-pause-256.png" alt="||"/></button>
+        <button id='rt' onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png" alt="right"/></button><br>
+        <button id='bt' onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-512.png" alt="down"/></button>
+    </div>
+    <script>
+        
+        var box = document.getElementsByClassName('rect')[0];
+        var svg = document.getElementsByTagName('svg')[0];
+        
+        console.log(box)
+        var speed  = 100;
+
+        var x = 60, y = 130;
+        function print(){
+            box.setAttribute('x', x);
+            box.setAttribute('y', y);
+        }
+        function buttonPress(button){
+            console.log(button);
+            // if(button.id != "pu"){
+            //     button.disabled = true;
+            //     statusLabel.textContent = 'Status : Running';
+            // }
+            // else{
+            //     statusLabel.textContent = 'Status : Pause';
+            // }
+               
+            // if(nowButton != "")
+            //   nowButton.disabled = false;
+            // nowButton = button;
+            // if(button.id != 'lt' || button.id != 'up' || button.id != 'rt'){
+            //     setInterval(function(){
+            //         y++;
+            //         print();
+
+            //     }, 10)
+            // }
+            switch(button.id){
+                case 'rt':
+                    //    // left.disabled = false;
+                    //     // disableButton(left, false);
+                    //     right1 = true;
+                    //     if(left1 != true || up1 || down1 ){
+                    //         clearInterval(stop);
+                    //         down1 = up1 = false;
+                    //     }
+                    //     if(left1 == false){
+                    //         stop = setInterval( 
+                    //         function(){ 
+                    //             x = x + 10;
+                    //             // checkOver();
+                    //             // snakePosition1();
+                    //             snake_print();
+                    //             // isFoodEat();
+                    //         }, speed); 
+                    //     }
+                        x++;
+                        print();
+                         break;
+                case 'lt': 
+                        // disableButton(right, false);
+                        // left1 = true;
+                        // if(right1 != true || up1 || down1){
+                        //     clearInterval(stop);
+                        //     down1 = up1 = false;
+                        // }
+                        // if(right1 == false){
+                        //     stop = setInterval( 
+                        //     function(){ 
+                        //         x = x - 10;
+                        //         // checkOver();
+                        //         // snakePosition1();
+                        //         snake_print();
+                        //         // isFoodEat();
+                        //     }, speed); 
+                        // }
+                        print();
+                        x--;
+                         console.log("Left button clicked... :)");
+                         break;
+                case 'tp':
+                        // disableButton(down, false);
+                        // up1 = true;
+                        // if(down1 != true || left1 || right1){
+                        //     clearInterval(stop);
+                        //     left1  = right1 = false;
+                        // }
+                        // if(down1 == false){
+                        //     stop = setInterval( 
+                        //     function(){ 
+                        //         y = y - 10;
+                        //         checkOver();
+                        //         snakePosition1();
+                        //         snake_print();
+                        //         isFoodEat();
+                        //     }, speed); 
+                        // }
+                        print();
+                        y--;
+                         console.log("Up button clicked... :)");
+                         break;
+                case 'bt': 
+                        // disableButton(up, false);
+                        // down1 = true;
+                        // if(up1 != true || left1 ||  right1){
+                        //     clearInterval(stop);
+                        //     left1 = right1 = false;
+                        // }
+                        // if(up1 == false){
+                        //     stop = setInterval( 
+                        //     function(){ 
+                        //         y = y + 10;
+                        //         checkOver();
+                        //         snakePosition1();
+                        //         snake_print();
+                        //         isFoodEat();
+                        //     }, speed ); 
+                        // }
+                        setInterval(function(){
+                            y++;
+                            print();
+
+                        }, 10)
+                        console.log("Down button clicked... :)");
+                        break;
+                case 'pu': 
+                        //  pouse();
+                         console.log("Pause button clicked... :)");
+                         break;
+            }
+           
+           
+        }   
+    </script>
+</body>
+</html>

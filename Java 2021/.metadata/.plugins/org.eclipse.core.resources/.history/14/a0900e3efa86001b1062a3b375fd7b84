@@ -1,0 +1,26 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class MainFile extends JFrame {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		MainFile frame = new MainFile();
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MainFile() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1000, 600);
+		SplashScreen sc = new SplashScreen(this, "Hello Bro");
+	}
+
+}

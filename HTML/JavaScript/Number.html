@@ -1,0 +1,132 @@
+<script>
+  var a = 90;
+  var b = new Number(90);
+  var c = new Number(90);
+  console.log(typeof(a)+"   "+typeof(b))
+  console.log(a == b)
+  console.log(b == c)
+
+  var a = "df" / 3;
+  var b = [2, 4];
+  var x = 0.2 + 0.1;
+
+  var y = 4 / 0;
+  with(console){
+     log("4 / 0 = "+y)
+     log(`typeof Infinity is : ${typeof Infinity}`)
+     log(x)
+     log(a);
+     log(isNaN(a));
+     log(`typeof NaN is : ${typeof NaN}`)
+     log(b instanceof Array)
+     log(Array.isArray(b))
+
+  }
+
+  // toString() 
+  var o = 32;
+  with(console){
+    log("toString() method")
+    log(o.toString());
+    log(o.toString(10));
+    log(o.toString(2));
+    log(o.toString(8));
+    log(o.toString(16));
+    log((10).toString(16));
+  }
+
+  // Number()
+  var r = new Number(90);
+  var r1 = new Number(90);
+  var r2 = 90;
+  with(console){
+      log(r)
+      log(r2)
+      log(r == r2)
+      log(r === r2)
+      /* The difference b/w (r == r1) and (r === r1). Comparing two javaScript objects will always return false.*/
+      log("r == r1 = "+(r == r1))
+      log("r === r1 = "+(r === r1))
+    
+      log(r2 == 90)
+      log(r2 === 90)
+
+  }
+
+  // Method of Number
+    var x1 = 90;
+    var x2 = x1.toString();
+    with(console){
+        // toString() method is used to convert numeric velue to String value
+       log(x1);
+       log(typeof x1)
+       log(typeof x2)
+
+       // tpExponential()
+       var x3 = 9.656;
+       log("toExponential ")
+       log(x3);
+       log(x3.toExponential())
+       log(x3.toExponential(1))
+       log(typeof x3.toExponential() )
+
+       // toFixed() 
+        log(" toFixed() ")
+        log(x3.toFixed())
+        log(x3.toFixed(2))
+        log(typeof x3.toFixed())
+
+        // toPrecision()
+        // This method returns a string with a number written with a specified length;
+        log("toPrecision()")
+        log(x3.toPrecision());
+        log(x3.toPrecision(6));
+        log(typeof x3.toPrecision());
+
+        //valueOf()   
+        // => This method returns a number as number 
+        // => and string as string
+        log("x3.valueOf() ")
+        log(x3.valueOf(2))
+        log( typeof "90".valueOf())
+        log(typeof x3.valueOf())
+    }
+
+    //Convert to number
+    //   Number()
+    //   parseInt()
+    //  parseFloat() 
+    // These methods are not number methods, but global javascript methodas
+
+    with(console){
+      log("Number()")
+      log(Number(false))
+      log(Number(true))
+      log(Number(45))
+      log(Number("90"))
+      log(Number("  90   "))
+      log(Number("om"));
+      log(Number("90, 90"))
+      log(Number("90_90"))
+      // If the number can't  be converted NaN is returned
+
+      //parseInt()
+      log("parseInt()")
+      log(parseInt(90))
+      log(parseInt("90"))
+      log(parseInt(" 90  "))
+      log(parseInt("om"))
+      log(parseInt('90 90'))
+      log(parseInt("90 90"))
+      log(parseInt("9099,90"))
+      log(parseInt("999_90"))
+      log(parseInt(true))
+      log(parseInt(false))
+
+      var a2 = (90, 960, 12);
+      var v2, b2 = [10 , 920]
+      log(a2)
+    
+
+    }
+</script>

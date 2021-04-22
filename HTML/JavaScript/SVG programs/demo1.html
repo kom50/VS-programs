@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SVG Tutorials</title>
+    <style>
+      svg{
+          border : 2px solid blue;
+         // left : 100px;
+          position: relative;
+      }
+
+
+      #lt{
+          /* margin-left: px;; */
+      }
+      #tp, #bt{
+          margin-left: 45px;
+
+      }
+
+      button{
+          height: 40px;
+          width:  40px;
+          border : 1px solid blue;
+          border-radius : 50%;
+          margin-top: 2px;;
+      }
+
+      #buttons{
+          position: relative;
+          border: 1px solid blue;
+          border-radius:  100%;
+          height: 130px;
+          width : 130px;  
+          left: 95px;
+          padding : 10px;  
+      }
+    </style>
+</head>
+<body>
+    
+    <svg width='340' height='400'>
+        <!-- <circle id='cir' cx='200' cy='200' r='40' stroke='green' stroke-width='4' fill='yellow'> </circle> -->
+        <rect id= 'rect'  width='20' height='20' x='20' y ='130' style='fill: blue; stroke-width:2px; '></rect>
+        <rect id= 'rect'  width='20' height='20' x='40' y ='150' style='fill: red; stroke-width:2px; '></rect>
+    </svg>
+    <br>
+    <div id='buttons' >
+        <button id="tp">up</button><br>
+        <button id="lt">left</button>
+        <button id="pu">||</button>
+        <button id='rt'>right</button><br>
+        <button id='bt'>down</button>
+    </div>
+    <script>
+         var circle = document.getElementById('rect');
+         circle.setAttribute('y', '150');
+         console.log(circle, circle.getAttribute("y"));
+         console.log(document.getElementsByTagName('div')[0].offsetLeft);
+         var stop;
+         var left = right = up = down = false;
+         var buttons = document.querySelectorAll('button');
+         var nowButton = "";
+
+         var x, y;  
+         document.querySelector('#rt').onclick = function(){
+            this.disabled = true;
+            if(nowButton != "")
+              nowButton.disabled = false;
+            nowButton = buttons[3];
+            right = true;
+            if(left || up || down){
+               clearInterval(stop);
+                left = down = up = false;
+
+             }
+            stop = setInterval( 
+              function(){ 
+                x = circle.getAttribute('x');
+                console.log("button clicked..."+ x+"  "+typeof x);
+                x = parseInt(x) + 1;
+                circle.setAttribute('x', x.toString());
+
+                over();
+             }, 10); 
+        }
+         document.querySelector('#lt').onclick = function(){
+             //
+             this.disabled = true;
+            if(nowButton != "")
+              nowButton.disabled = false;
+             nowButton = buttons[1];
+             left =true;
+             if(right || up || down){
+                clearInterval(stop);
+                right = down = up = false;
+
+             }
+            stop = setInterval( 
+              function(){ 
+                x = circle.getAttribute('x');
+                console.log("button clicked..."+ x+"  "+typeof x);
+                x = parseInt(x) - 1;
+                circle.setAttribute('x', x.toString());
+
+                over();
+             }, 10); 
+        }
+        document.querySelector('#tp').onclick = function(){
+            this.disabled = true;
+            if(nowButton != "")
+              nowButton.disabled = false;
+            nowButton = buttons[0];
+
+             up = true;
+             if(left || right || down){
+               clearInterval(stop);
+                left = down = right = false;
+
+             }
+            stop = setInterval( 
+              function(){ 
+                y = circle.getAttribute('y');
+                console.log("button clicked..."+ y+"  "+typeof y);
+                y = parseInt(y) - 1;
+                circle.setAttribute('y', y.toString());
+
+                over();
+             }, 10); 
+        }
+        document.querySelector('#bt').onclick = function(){
+            this.disabled = true;
+            if(nowButton != "")
+              nowButton.disabled = false;
+            nowButton = buttons[4];
+
+             down = true;
+             if(left || up || right){
+               clearInterval(stop);
+                left = right = up = false;
+
+             }
+            stop = setInterval( 
+              function(){ 
+                 y = circle.getAttribute('y');
+                console.log("button clicked...x :"+x+" y "+ y+"  "+typeof y);
+                y = parseInt(y) + 1;
+                circle.setAttribute('y', y.toString());
+
+                over();
+             }, 10); 
+        }
+
+        document.querySelector('#pu').onclick = pouse;
+        function pouse(){
+             console.log("Hello pouse button clicked...");
+             clearInterval(stop);
+             down = left = right = up = false;
+             nowButton = "";
+             for(x of buttons)
+                x.disabled = false;
+        }
+
+        function over(){
+            if(x == 0 || y == 0 || x == 320 || y == 376 ){
+                console.log("Over :  ", x, y);       
+                pouse();
+            }
+        }
+    </script>
+</body>
+</html>

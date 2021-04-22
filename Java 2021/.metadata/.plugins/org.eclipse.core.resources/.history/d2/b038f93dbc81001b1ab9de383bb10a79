@@ -1,0 +1,9 @@
+
+public class ExceptionDemo2 {
+  public static void main(String []args) {
+	  // Use of throw key keyword
+	  try {
+		  
+	  }
+  }
+}

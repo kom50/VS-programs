@@ -1,0 +1,80 @@
+<script>
+    // All array iterable methods
+    /* Array.forEach() :- This method calls a function( a callback function) once for each array item.
+        
+      NOTE :- The function is not executed for aray elements without values.
+
+      Syntax :- 
+               Array.forEach(function(currentValue, index, arr), thisValue)
+    */
+     let arr = [10, 20, 30, 40, 50];
+     arr.forEach(function(value, index, arr){
+         console.log(value+"   "+arr[index]);
+     });
+
+
+    /*Array.map() :-  This method creates a new array with the results of calling a function for every array
+                     elements.
+                                This method calls the provided function once for each element in an array, in order.
+       Syntax :-
+        map(funciton(currentValue, index, arr), thisValue)  */
+    let num = [2, 3, 4, 5 ,6, 7]
+    var sqrt = num.map(function(value){
+        return value * value;
+    })
+    console.log(sqrt);
+
+    var a = num.map(Math.sqrt);
+    console.log(a);
+
+    /* filter() :- This method creates an array filled with all array elements that pass a test(provided as a function).
+
+     Syntax :-
+           filter(function(currentValue, index, arr), thisValue)
+    */
+
+    var f = num.filter(function(value){
+        return value < 5;
+    })
+    console.log(f);
+
+    /* Array.every() :- This method checks if all elements in an array pass a test(provided as a function).
+
+        NOTE :- 
+            =>  If it finds an array element where the function returns a false value, every() return
+                false(and does not check the remaining values)
+            =>  If no false occur, every() return true
+       every(function(currentValue, index, arr), thisValue)
+
+    */
+    let num1 = [02, 1, 0, 4, 5],
+        count = 0;
+    var a = num1.every(value =>{
+        count++;
+        return value != 0;
+    })
+    console.log(a+ "  "+ count);
+
+    //method
+    var a = () =>{return 20;}
+    console.log(a());
+
+   var a = [10, 30, 40]
+   console.log(Array.isArray(a));
+   console.log(a instanceof Array );
+  
+   console.log(a.toString());
+   console.log(a.join("-"));
+
+   var a = 10, b = 30;
+   console.log(a+'  '+b);
+   function swap(x, y){
+       return [y, x]
+   }
+   [a, b] = swap(a, b);
+   console.log(a+'  '+b);
+   date = [1, 'JAN', '2021']
+   console.log(date.join("-"))
+
+   
+</script>

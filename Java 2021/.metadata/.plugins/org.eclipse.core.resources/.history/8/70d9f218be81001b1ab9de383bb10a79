@@ -1,0 +1,15 @@
+//Exception Propagation
+
+public class ExecptionDemo3 {
+    void m() {
+    	int m1 = 5 / 0;
+    }
+    
+    void p() {
+    	m();
+    }
+    
+    void n() {
+    	p();
+    }
+}

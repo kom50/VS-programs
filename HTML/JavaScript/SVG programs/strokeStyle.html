@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Tutorials</title>
+</head>
+<body>
+    <svg height='300' width='300' >
+         <line id='l2' x1='10' y1='10' x2='200' y2='120' stroke='red' stroke-width='3'></line>
+
+    </svg>
+
+    <script>
+        var rect = document.getElementById("l2");
+        console.log(rect);
+        rect.style.stroke = 'blue';
+        rect.style['stroke'] = 'orange';
+        rect.style['stroke-width'] = '10px';
+    </script>
+    
+</body>
+</html>

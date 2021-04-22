@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SVG Tutorials</title>
+    <style>
+      svg{
+          border :5px solid gray;
+          position: relative;
+      }
+      svg:hover{
+          box-shadow: 0 0 6px gray;
+      }
+
+
+
+      #lt{
+          /* margin-left: px;; */
+      }
+      #tp, #bt{
+          margin-left: 55px;
+
+      }
+
+      button{
+          height: 50px;
+          width:  50px;
+          border : 1px solid blue;
+          border-radius : 50%;
+          margin-top: 2px;
+          box-shadow: 0 0 8px black;
+      }
+
+      #buttons{
+          position: relative;
+          border:  2px solid blue;
+          border-radius:  100%;
+          height: 160px;
+          width : 160px;  
+          left: 80px;
+          padding : 10px;  
+      }
+      #buttons button{
+          color: red;
+          font-weight: bold;
+          background-color: white;
+          transition: background-color .1s ease-in;
+
+      }
+      #buttons:active{
+          box-shadow: 0 0 5px black;
+          
+      }
+      #pu:active{
+          outline: none;
+      }
+      #buttons button:active{
+           outline: none;
+           box-shadow: 0 0 0px black;
+           background-color: blue;
+      }
+      .rect{
+          rx : 10px;
+      }
+      #header{
+          height: 32px;
+          border: 0.3px solid gray;
+          margin-bottom: 7px;;
+          text-align: center;
+          color : white;
+          font-size: 22px;
+          background-color: red;
+          border-radius: 8px;
+      }
+      #header:hover{
+         box-shadow: 1px 1px 5px gray;
+      }
+      .rect:first-of-type{
+          rx : 3px;
+      }
+
+      input[type='range']{
+          width: 240px;
+      }
+
+      #magic{
+            animation:anim1 1;
+            animation-duration: 1s;
+            animation-direction:linear;
+            box-shadow: 1px 3px 10px black;
+       }
+
+       @keyframes anim1{
+           from{transform: rotateY(180deg); }
+           to{transform: rotateY(0deg);}
+       }
+    </style>
+</head>
+<body onload="food_generates(),food_print()">
+    <div id='header'>Snake Game</div>
+    <svg width='330' height='400'>
+        <text y ='16' x='10'> Status : Pause</text>
+        <text y ='16' x='250'> Score : 0</text>
+        <rect class = 'rect'  width='10' height='10' x='60' y ='130' style='fill: blue; stroke-width:2px; '></rect>
+        <rect class = 'rect'  width='10' height='10' x='50' y ='130' style='fill: red; stroke-width:2px; '></rect>
+        <rect class = 'rect'  width='10' height='10' x='40' y ='130' style='fill: red; stroke-width:2px; '></rect>
+        <rect id = 'food'  width='10' rx='20' height='10' x='150' y ='230' style='fill: rgb(0, 195, 255); stroke-width:0px; stroke:blue'></rect>
+    </svg><br>
+    Speed : <input type='range' min='40' max="150" > <span> 50</span>
+    <br>
+    <div id='buttons' >
+        <button id="tp" onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-512.png" alt="up"/></button><br>
+        <button id="lt" onclick="buttonPress(this)" ><img width="30" height="30"  src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" alt='left' /></button>
+        <button id="pu" onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/media-pause-256.png" alt="||"/></button>
+        <button id='rt' onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png" alt="right"/></button><br>
+        <button id='bt' onclick="buttonPress(this)" ><img width="30" height="30" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-512.png" alt="down"/></button>
+    </div>
+    <script>
+        
+        var box = document.getElementsByClassName('rect');
+        var svg = document.getElementsByTagName('svg')[0];
+        var range = document.querySelector('input[type="range"]');
+        var span = document.querySelector('span');
+        console.log(range, span)
+
+        var speed = range.value;
+        range.addEventListener('change', function(){
+            speed = 190 - this.value;
+            span.textContent = this.value;
+        });
+        //for(c of box )
+        console.log(svg);
+        
+        var snakeX = [],
+        snakeY = [];
+        const svgns = "http://www.w3.org/2000/svg" ;
+        var rect; // = document.createElementNS(svgns,'rect');
+
+        var left1 = right1 = up1 = down1 = false;
+        var stop;
+        var food = document.getElementById('food');
+        var foodX = food.getAttribute('x'); 
+        var foodY = food.getAttribute('y');
+        
+        var buttons = document.getElementsByTagName('button');
+        var scoreLabel = document.querySelector('text:last-of-type');
+        var statusLabel = document.querySelector('text:first-of-type');
+        console.log(scoreLabel.innerHTML);
+        var x = 60, y = 130, size = 3, score = 0;
+
+        var right = document.querySelector('#rt'),
+            left = document.querySelector('#lt'),
+            up =  document.querySelector('#tp'),
+            down = document.querySelector('#bt'),
+            pouse1 = document.querySelector('#pu');
+
+        left.disabled = true;
+        var nowButton = "";   // hold address of current clicked button
+ 
+        var boxNew = "";
+        
+        for(let i = 0; i < box.length;i++) {
+            snakeX[i] = box[i].getAttribute('x');
+            snakeY[i] = box[i].getAttribute('y');
+        }
+        
+        console.log(snakeX);
+        console.log(snakeY);
+          
+
+        function  snakePosition()
+        {
+            let j;
+            for(j = size - 1; j > 0; j--){
+                snakeX[j] = snakeX[j - 1];
+                snakeY[j] = snakeY[j - 1];
+            }
+            snakeX[0] = x;
+            snakeY[0] = y;
+        }
+        function  snakePosition1()
+        {
+            let p = snakeX.pop();
+            snakeX.unshift(x);
+            p = snakeY.pop();
+            snakeY.unshift(y);
+        }
+        function snake_print()
+        {
+           let j;
+           for(j = 0; j < size; j++){
+               box[j].setAttribute('x', snakeX[j].toString());
+               box[j].setAttribute('y', snakeY[j].toString());
+            }
+        } 
+
+        function food_print(){
+             food.setAttribute('x', String(foodX));
+             food.setAttribute('y', String(foodY));
+            //  food.setLocation(foodX, foodY);
+        }
+	    function Rand(){
+		    return Math.floor( Math.random()*330 + 2);
+	    }
+        function food_generates(){
+		    do{
+		      foodX = Rand() ;
+		      if( foodX > 10 && foodX < 330 && foodX != x && foodX % 10 == 0)
+			    break;
+		    } while( true);
+		    do{
+		      foodY = Rand() ;
+		      if( foodY > 10 && foodY < 398 && foodY != y && foodY % 10 == 0)
+			     break;
+		    }
+		    while(true);
+        }
+
+        function pouse(){
+            //  console.log("Hello pouse button clicked...");
+             clearInterval(stop);
+             nowButton = "";
+        }
+
+        var addRect = [];
+        function isFoodEat(){
+            if(foodX == x && foodY == y){
+                console.log("Game over ... :)");
+                food_print();
+                food_generates();
+                score++;
+                scoreLabel.textContent = 'Score : '+score;
+                rect = document.createElementNS(svgns, 'rect');
+               // Object.assign(rect.style, { "x" : snakeX[size-1], "y" : snakeY[size-1], "height":10, "width":10, "fill" : "blue",  });
+                rect.setAttribute('class', 'rect');
+                rect.setAttribute('x', snakeX[size-1]);
+                rect.setAttribute('y', snakeY[size-1]);
+                rect.setAttribute('height', '10');
+                rect.setAttribute('width', '10');
+                rect.setAttribute('rx', '20');
+                rect.setAttribute('fill', 'red');
+                svg.append(rect);
+                
+                addRect.push(rect);
+                // for(let i = 0; i < box.length;i++) {
+                snakeX[size] = Number(box[size-1].getAttribute('x'));
+                snakeY[size] = Number(box[size-1].getAttribute('y'));
+                    // }
+                box[size - 1] = rect;
+                size++;
+
+                console.log("lenght : "+box.length);
+                console.log(box);
+                console.log(snakeY);
+                console.log(snakeX)
+                console.log(size)
+                
+                console.log('Rect ', addRect);
+            }
+            food_print();
+        }
+        
+        
+        function showOverDialog(){
+            var rect = document.createElementNS(svgns, 'rect');
+            var overText = document.createElementNS(svgns ,'text');
+            var scoreEnd = document.createElementNS(svgns ,'text');
+
+            rect.setAttribute('id', 'magic');
+            Object.assign(rect.style, {"x":90, 'y' :200, "height":40, 'width':150, "rx":20, 'ry':110, 'fill':"red"});
+            var str = "GAME OVER (^.^) ";
+            i = 0;
+            var stop = setInterval(function(){
+                  overText.textContent = overText.textContent + str[i++];
+                  if(i == str.length){
+                     clearInterval(stop);
+                     //overText.textContent = "";
+                     i = 0;
+                   }
+            }, 100);
+            overText.setAttribute('x', 100);
+            overText.setAttribute('y', 225);
+            overText.setAttribute('stroke', 'white');
+            overText.setAttribute('color', 'blue');
+            scoreEnd.textContent = "Your Score : "+score; 
+            scoreEnd.setAttribute('x', 115);
+            scoreEnd.setAttribute('y', 255);
+            svg.append(rect);
+            svg.append(overText); 
+            svg.append(scoreEnd); 
+
+            setTimeout(function(){
+                svg.removeChild(rect);
+                svg.removeChild(overText);
+                svg.removeChild(scoreEnd);
+
+            }, 4000)
+        }
+        var restartButton;
+
+        function over(){
+            
+            // if(x == -10 || y  == -10 || x == 330 || y == 400 ){
+                statusLabel.textContent = 'Status : Pause';
+                console.log("Over :  ", x, y);       
+                pouse();
+                
+                disableButton(null, true);
+                showOverDialog();
+                setTimeout(function(){
+                    restartButton = document.createElementNS(svgns ,'rect');
+                    var t = document.createElementNS(svgns ,'text');
+                    t.textContent = 'RESTART';
+                    t.setAttribute('fill', 'white')
+                    t.setAttribute('x', 135);
+                    t.setAttribute('y', 245);
+                    restartButton.setAttribute('fill', 'blue')
+                    restartButton.setAttribute('x', 120);
+                    restartButton.setAttribute('rx', 20);
+                    restartButton.setAttribute('y', 220);
+                    restartButton.setAttribute('width', 100);
+                    restartButton.setAttribute('height', 40);
+
+                    svg.append(restartButton);
+                    svg.append(t);
+                    
+                    // disableButton(null, true); // disable all buttons
+                    t.onclick = restartButton.onclick = function(){
+                        console.log("Hello restart button clicked... :)")
+                        food_generates();
+                        food_print();
+                        score = 0;
+                        size = 3;
+                        scoreLabel.textContent = "Score : 0";
+                        snakeX = [60, 50, 40];
+                        snakeY = [130, 130, 130];
+                        x = 60;
+                        y = 130;
+                        box.length = 3;
+                       
+                        for(let k = 0; k < addRect.length; k++){
+                            svg.removeChild(addRect[k]);
+                        }
+                        disableButton(left, false); // Every time start time left button is disabled
+                        up1 = down1 = right1 = left1 = false;
+                        addRect = [];
+
+                        svg.removeChild(restartButton);
+                        svg.removeChild(t);
+                        snake_print();
+                    }
+                },4000);
+            //}
+
+        }
+
+        function disableButton(btn, bool){
+            for(let i =0 ; i < buttons.length; i++){
+                    buttons[i].disabled = bool;
+            }
+            if(btn != null) // if no any button is disabled 
+                btn.disabled = true;
+        }
+
+        function checkOver(){
+            for(let i = size - 1; i > 3; i--){
+				  if(snakeX[i]  == snakeX[0] && (snakeY[i])  == snakeY[0])
+                      //overBool = true;
+                      over();
+                }
+            if(x == -10 || y  == -10 || x == 330 || y == 400 ){
+                over();
+            }
+        }
+        function buttonPress(button){
+            console.log(button);
+            if(button.id != "pu"){
+                button.disabled = true;
+                statusLabel.textContent = 'Status : Running';
+            }
+            else{
+                statusLabel.textContent = 'Status : Pause';
+            }
+               
+            if(nowButton != "")
+              nowButton.disabled = false;
+            nowButton = button;
+            switch(button.id){
+                case 'rt':
+                       // left.disabled = false;
+                        disableButton(left, false);
+                        right1 = true;
+                        if(left1 != true || up1 || down1 ){
+                            clearInterval(stop);
+                            down1 = up1 = false;
+                        }
+                        if(left1 == false){
+                            stop = setInterval( 
+                            function(){ 
+                                x = x + 10;
+                                snakePosition1();
+                                snake_print();
+                                over();
+                                isFoodEat();
+                            }, speed); 
+                        }
+                         break;
+                case 'lt': 
+                        disableButton(right, false);
+                        left1 = true;
+                        if(right1 != true || up1 || down1){
+                            clearInterval(stop);
+                            down1 = up1 = false;
+                        }
+                        if(right1 == false){
+                            stop = setInterval( 
+                            function(){ 
+                                x = x - 10;
+                                snakePosition1();
+                                snake_print();
+                                over();
+                                isFoodEat();
+                            }, speed); 
+                        }
+                         console.log("Left button clicked... :)");
+                         break;
+                case 'tp':
+                        disableButton(down, false);
+                        up1 = true;
+                        if(down1 != true || left1 || right1){
+                            clearInterval(stop);
+                            left1  = right1 = false;
+                        }
+                        if(down1 == false){
+                            stop = setInterval( 
+                            function(){ 
+                                y = y - 10;
+                                snakePosition1();
+                                snake_print();
+                                isFoodEat();
+                                over();
+                            }, speed); 
+                        }
+                         console.log("Up button clicked... :)");
+                         break;
+                case 'bt': 
+                        disableButton(up, false);
+                        down1 = true;
+                        if(up1 != true || left1 ||  right1){
+                            clearInterval(stop);
+                            left1 = right1 = false;
+                        }
+                        if(up1 == false){
+                            stop = setInterval( 
+                            function(){ 
+                                y = y + 10;
+                                snakePosition1();
+                                snake_print();
+                                isFoodEat();
+                                over();
+                            }, speed ); 
+                        }
+                        console.log("Down button clicked... :)");
+                        break;
+                case 'pu': 
+                         pouse();
+                         console.log("Pause button clicked... :)");
+                         break;
+            }
+
+            // snakePosition1();
+            // snake_print();
+            console.log(snakeX);
+            console.log(snakeY);
+            //Main programs 
+            console.log(foodX, foodY, x, y);
+            
+            if(foodX == x && foodY == y){
+                console.log("Game over ... :)");
+                food_print();
+                food_generates();
+                
+                // boxNew = document.createElement("rect");
+                // boxNew.setAttribute('height', '10');
+                // boxNew.setAttribute('width', '10');
+                // // boxNew.setAttribute('fill', 'black');
+                // boxNew.style.cssText = "x : 90; y : 190; fill: black;";
+                
+                // var b =  document.querySelector('svg');
+                // b.appendChild(boxNew);
+                // console.log(b);
+                // boxNew.setAttribute('x', snakeX[size - 1]);
+                // boxNew.setAttribute('y', snakeY[size - 1]);
+                // box[size - 1].insertAdjacentElement('afterend', boxNew);
+                // boxNew.style.cssText = 'fill:green';
+                // size++;
+                // snkL[size] = new Label();
+                //snkL[size].setSize(19,19);
+                //snkL[size].setLocation(snkX[size ], snkY[size]);
+                //snkL[size].setBackground(Color.blue);
+            }
+            
+            food_print();
+            console.log(boxNew);
+
+            //setTimeout(buttonPress, 100);
+
+        }
+
+        
+        
+
+        console.log(buttons);
+
+
+
+        //  circle.setAttribute('y', '150');
+        //  console.log(circle, circle.getAttribute("y"));
+        //  console.log(document.getElementsByTagName('div')[0].offsetLeft);
+        //  var stop;
+        //  var left = right = up = down = false;
+        //  var buttons = document.querySelectorAll('button');
+        //  var nowButton = "";
+
+        //  var x, y;  
+        //  document.querySelector('#rt').onclick = function(){
+        //     this.disabled = true;
+        //     if(nowButton != "")
+        //       nowButton.disabled = false;
+        //     nowButton = buttons[3];
+        //     right = true;
+        //     if(left || up || down){
+        //        clearInterval(stop);
+        //         left = down = up = false;
+
+        //      }
+        //     stop = setInterval( 
+        //       function(){ 
+        //         x = circle.getAttribute('x');
+        //         console.log("button clicked..."+ x+"  "+typeof x);
+        //         x = parseInt(x) + 1;
+        //         circle.setAttribute('x', x.toString());
+
+        //         over();
+        //      }, 10); 
+        // }
+        //  document.querySelector('#lt').onclick = function(){
+        //      //
+        //      this.disabled = true;
+        //     if(nowButton != "")
+        //       nowButton.disabled = false;
+        //      nowButton = buttons[1];
+        //      left =true;
+        //      if(right || up || down){
+        //         clearInterval(stop);
+        //         right = down = up = false;
+
+        //      }
+        //     stop = setInterval( 
+        //       function(){ 
+        //         x = circle.getAttribute('x');
+        //         console.log("button clicked..."+ x+"  "+typeof x);
+        //         x = parseInt(x) - 1;
+        //         circle.setAttribute('x', x.toString());
+
+        //         over();
+        //      }, 10); 
+        // }
+        // document.querySelector('#tp').onclick = function(){
+        //     this.disabled = true;
+        //     if(nowButton != "")
+        //       nowButton.disabled = false;
+        //     nowButton = buttons[0];
+
+        //      up = true;
+        //      if(left || right || down){
+        //        clearInterval(stop);
+        //         left = down = right = false;
+
+        //      }
+        //     stop = setInterval( 
+        //       function(){ 
+        //         y = circle.getAttribute('y');
+        //         console.log("button clicked..."+ y+"  "+typeof y);
+        //         y = parseInt(y) - 1;
+        //         circle.setAttribute('y', y.toString());
+
+        //         over();
+        //      }, 10); 
+        // }
+        // document.querySelector('#bt').onclick = function(){
+        //     this.disabled = true;
+        //     if(nowButton != "")
+        //       nowButton.disabled = false;
+        //     nowButton = buttons[4];
+
+        //      down = true;
+        //      if(left || up || right){
+        //        clearInterval(stop);
+        //         left = right = up = false;
+
+        //      }
+        //     stop = setInterval( 
+        //       function(){ 
+        //          y = circle.getAttribute('y');
+        //         console.log("button clicked...x :"+x+" y "+ y+"  "+typeof y);
+        //         y = parseInt(y) + 1;
+        //         circle.setAttribute('y', y.toString());
+
+        //         over();
+        //      }, 10); 
+        // }
+
+        // document.querySelector('#pu').onclick = pouse;
+        // function pouse(){
+        //      console.log("Hello pouse button clicked...");
+        //      clearInterval(stop);
+        //      down = left = right = up = false;
+        //      nowButton = "";
+        //      for(x of buttons)
+        //         x.disabled = false;
+        // }
+
+        // function over(){
+        //     if(x == 0 || y == 0 || x == 320 || y == 376 ){
+        //         console.log("Over :  ", x, y);       
+        //         pouse();
+        //     }
+        // }
+    </script>
+</body>
+</html>

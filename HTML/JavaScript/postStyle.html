@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+     #cshow,#cppshow,#classhow{
+            margin-top:6px; 
+            padding: 10px 4px;
+            width: 95%;
+            background-color:white;
+            border: 1px solid red;
+            border-radius:20px 8px;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            box-shadow: 2px 1px 5px gray;
+           cursor:pointer;
+        }
+    #cshow{
+            border: 1px solid blue;
+            color: red;
+            background-color:blue;
+            color: white;
+        }
+    #classhow{
+        
+        margin-top:6px; 
+    }
+    #clas{
+        display: none;
+    }
+        #cpp{
+            display: none;
+            margin-top: 1px;
+            padding-top: 0px;
+        }
+</style>
+</head>
+<body>
+<center>
+       <div id="cshow" onclick="cShowFun()">C program</div></center>
+        <div id="c">
+ hhthth
+      </div>
+        
+        <center>
+        <div id="cppshow"  onclick="cppShowFun()">C++ program</div>
+</center>
+      <div id="cpp">
+        hnnbnbn
+          </div>
+
+ <center>
+        <div id="classhow"  onclick="clasShowFun()">Using class</div>
+</center>
+      <div id="clas">
+        bfkjdlkd
+          </div>
+
+
+          <script>
+          //  var cShow, c, cppShow, cpp, clasShow, clas;
+              (function ok(){
+                  cShow = document.getElementById("cshow");
+                  c = document.getElementById("c");
+                  cppShow = document.getElementById("cppshow");
+                  cpp = document.getElementById("cpp");
+                  clasShow = document.getElementById("classhow");
+                  clas = document.getElementById("clas");
+              })();
+              
+             function cShowFun()
+               {
+                if(c.style.display == "none"){
+                     c.setAttribute('style', 'display : block;');
+                     cShow.setAttribute('style', 'background-olor:blue; color :white; border-color : blue;');
+                     cppShow.setAttribute('style', 'background-color : white; color : red; border-color :red');
+                     cpp.setAttribute('style', 'display: none;');
+                     clas.style.display="none";
+                     clasShow.setAttribute('style',"background-color: white; color :red; border-color : red;");
+                    }
+                   else {
+                      c.style.display="none";
+                      cShow.setAttribute('style', 'background-color : white; color : red; border-color :red');
+                     // cppShow.setAttribute('style', 'background-color : white; color : red; border-color :red');
+                    }
+            }
+           function cppShowFun()
+               {
+                var x = document.getElementById("cpp");//.style.display="block";
+                if(x.style.display==="none"){
+                   x.style.display="block";
+                   document.getElementById("cppshow").style.backgroundColor="blue";
+                   document.getElementById("cppshow").style.borderColor="blue";
+                   document.getElementById("cshow").style.borderColor="red";
+                   document.getElementById("cppshow").style.color="white";
+                    document.getElementById("cshow").style.backgroundColor="white";
+                   document.getElementById("cshow").style.color="red";
+                   document.getElementById("c").style.display="none";
+                    document.getElementById("clas").style.display="none";
+                    
+                    document.getElementById("classhow").style.backgroundColor="white";
+                     document.getElementById("classhow").style.color="red";
+                     document.getElementById("classhow").style.borderColor="red";
+                  }
+              else{ 
+                  x.style.display="none";
+                  document.getElementById("cppshow").style.backgroundColor="white";
+                  document.getElementById("cppshow").style.borderColor="red";
+                  document.getElementById("cppshow").style.color="red";
+                  // document.getElementById("c").style.display="block";
+                 }
+            }
+           
+            function clasShowFun()
+               {
+                var x = document.getElementById("clas");//.style.display="block";
+                if(x.style.display==="none"){
+                   x.style.display="block";
+                   document.getElementById("c").style.display="none";
+                   document.getElementById("cpp").style.display="none";
+                    
+                   document.getElementById("classhow").style.backgroundColor="blue";
+                     document.getElementById("classhow").style.color="white";
+                     document.getElementById("classhow").style.borderColor="blue";
+                    
+                     document.getElementById("cppshow").style.backgroundColor="white";
+                     document.getElementById("cppshow").style.color="red";  
+                    document.getElementById("cppshow").style.borderColor="red";
+                    
+                     document.getElementById("cshow").style.backgroundColor="white";
+                     document.getElementById("cshow").style.color="red";  
+                     document.getElementById("cshow").style.borderColor="red";
+                    
+                  }
+              else{ 
+                  x.style.display="none";
+                  
+                   document.getElementById("classhow").style.backgroundColor="white";
+                     document.getElementById("classhow").style.color="red";
+                     document.getElementById("classhow").style.borderColor="red";
+                  // document.getElementById("c").style.display="block";
+                 }
+            }
+       </script>
+    </body>
+</html>
+      
+      
+      
+      
+      

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Resume generator application</title>
+
+    <style>
+        body{
+           /* background-color: rgb(30, 140, 243); */
+           background-color: #43cea2;
+
+        }
+        .main{
+             /* border :2px solid; */
+            /* padding: 2%;; */
+            width: 98%;
+            margin-left: 1%;
+            /* position: relative;
+           // left: 2%; */
+            font-weight: 400;
+        }
+        h2{
+            text-align: center;
+            color: white;
+        }
+        input, select{
+            position: relative;
+            left: 1%;
+            margin-top:  4px;
+            padding: 2px;
+        }
+        input[type='radio']{
+            padding: 2px;
+            background-color: aqua;
+            outline: 10px gray;
+        }
+
+        
+
+        input[type='radio']{
+           left: 10px;
+        }
+
+        input[type='checkbox']{
+           left: 0px;
+        }
+
+        
+       .inner-container-item1, #inner-container-item1{
+           display: flex;
+
+       }
+
+       #label10 .lb, #inner-container-item1 .lb, #psnlInfo #psnliLb .lb, #part1 .lb,#part2 .lb, #part3 .lb {
+       /* .inner-container-item1 div .lb,#psnlInfo #psnliLb .lb{ */
+           display: inline-block;
+           margin-top: 8.7px;
+           font-size: 16px;;
+       }
+
+      input[type='radio']{
+           position: relative;
+           left : 1px;
+      }
+       
+        form{
+            padding-left: 5px;
+        }
+
+        #btns{
+            /* position: relative; */
+            display: flex;
+            flex-direction: row;
+            /* left: 10%; */
+            /* margin-left: 10%; */
+            /* align-self: center; */
+
+        }
+        #btns .b1{
+            padding: 8px;
+            width: 100px;
+            margin: 10px;
+            background-color: white;
+            outline-style: none;
+            border : 3px solid;
+            border-color: rgb(61, 7, 255);
+            color: blue;
+            border-radius: 40px;
+            border-style :ridge ;
+            left : 10%;
+            box-shadow:0 0  5px black;
+            align-self: center;
+        }
+        #btns input:hover{
+            background-color: blue;
+            color: white;
+            box-shadow:0 0  0px black;
+        }
+
+        #header{
+            text-decoration:underline;
+        }
+
+        /*  */
+        .container, .container1{
+            display: flex;
+            /* align-self: center; */
+            flex-direction: column;
+            
+        }
+        .container .item, .container1 .inner-container-item{
+            flex-direction: row;
+            /* padding: 10%; */
+            /* flex-basis: 300px; */
+            align-self: center;
+            background-color:  rgb(230, 230, 225);
+            /* background-color: rgb(230, 230, 225); */
+            padding: 8px;
+            /* border : 1px solid ; */
+            border-radius : 5px;
+            box-shadow: 0px 0px 3px 1px gray;
+        }
+
+        input{
+            background-color: #e5e9fd;
+            border-radius: 7px; 
+
+        }
+        .item ,#part1, #part2{
+            display: flex;
+
+        }
+        #psnliLb .item1{
+            margin-top: 63px;
+        }
+       
+       #tenth, #twelveth, #gPart1, #gPart2, #gPart3{
+           padding:     14px;
+           background-color: rgb(230, 230, 225);
+           border-radius : 5px;
+           box-shadow: 0px 0px 3px 1px gray;
+       }
+
+
+    .ok{
+        height: 400px;
+        width: 300px;
+        border : 1px solid blue;
+    }   
+    </style>
+
+</head>
+<body>
+    <div class="main" >
+        <h2 id="header">Rasume Creator App</h2>
+       <form> 
+           <div id='psnlInfo' class="container">
+               <div class="item">
+                <div id='psnliLb' class="item1">
+                    <label class="lb " for="name">Name :- </label>  <br>
+                    <label class="lb " for="fname">Father's Name :- </label>   <br>
+                    <label class="lb " for="fname">Mother's Name :-</label>   <br>
+                    <label class="lb " for="dob">Date of Birth :-</label>   <br>
+                    <label class="lb " for="sex">Gender :- </label>   <br>
+                    <label class="lb " for="mst">Marital Status :-</label>     <br>
+                    <label class="lb " for="rlgn">Religion :-</label>   <br>
+                    <label class="lb " for="vill">Village :-</label>   <br>
+                    <label class="lb " for="po">Post Office :-</label>    <br>
+                    <label class="lb " for="ps">Police Station :-</label>    <br>
+                    <label class="lb " for="ds">District :-</label>   <br> 
+                    <label class="lb " for="pin">Pin Code :-</label>   <br> 
+                    <label class="lb " for="eml"> Email:-</label>    <br> 
+                    <label class="lb " for="mo"> Mobile Number :-</label>    <br>                   
+                 </div>
+                <div id='psnliIp' class="item1">
+                    <input type="text" name="name" ><br>
+                    <input type="text" name="fname" >  <br>
+                    <input type="text" name="mname" > <br>
+                    <input type="date" name="dob" > <br>
+                    <input type="radio" name="sex" value="Male" checked/>  
+                    <label class="lb " for="sex">Male</label> 
+                    <input type="radio" name="sex" value="Female"> 
+                    <label class="lb " for="sex">Female</label>  <br>
+ <!--                   
+                    <input type="radio" name="mst" value="Unmarried" checked/> 
+                    <label class="lb " for="mst">Unmarried</label> 
+                    <input type="radio" name="mst" value="Married">  
+                    <label class="lb " for="mst">Married</label> <br> -->
+                    <select>
+                       <option value="Unmarried" > Unmarried   </option>
+                       <option value="Married"> Married   </option>
+                     </select> <br>
+ 
+                    <select>
+                        <option value="Hindu"> Hindu   </option>
+                        <option value="Muslim"> Muslim   </option>
+                        <option value="Muslim"> Christian   </option>
+                        <option value="Muslim"> Sikh   </option>
+                        <option value="Muslim"> Budhist   </option>
+                        <option value="Muslim"> Jain   </option>
+                        <option value="Muslim"> Other Religion   </option>
+
+                    </select> <br>
+                    <input type="text" name="rlgn" > <br>
+                    <input type="text" name="po" > <br>
+                    <input type="text" name="ps" > <br>
+                    <input type="text" name="ds" > <br>
+                    <input type="number" name="pin" > <br>
+                    <input type="email" name="em" > <br>
+                    <input type="number" name="mo" > <br>
+                 </div>
+               </div>
+           </div>
+           <h2>Educational Details</h2>
+            <div class="container1">
+                <div id='tenth' class="inner-container-item">
+                    <input type="checkbox" name="ten">   
+                    <b><label for="py">10th</label>  </b>  <br>
+                    <div class="inner-container-item1">
+                     <div id='label10'>
+                         <label class="lb t10" for="py"> Passing Year :- </label>   <br>
+                         <label class="lb t10" for="br"> Board :- </label>     <br>
+                         <label class="lb t10" for="fm"> Full Marks :- </label>    <br>
+                     </div>
+                     <div id='input10'>
+                         <input  type='number' name='py' value="2000"> <br>
+                         <input type='text' name='br' > <br>
+                         <input type='number' name='fm' > <br>
+                     </div>   
+                    </div>      
+                </div>
+                <br>
+                 <div id='twelveth' class="inner-container-item">
+                     <input type="checkbox" name="ten">   
+                     <b><label for="py">12th</label>  </b>  <br>
+                     <div class="inner-container-item1" id='inner-container-item1'>
+                      <div id='label12'>
+                          <label class="lb t10" for="py"> Passing Year :- </label>   <br>
+                          <label class="lb t10" for="br"> Board :-  </label>     <br>
+                          <label class="lb t10" for="fm"> Full Marks :- </label>    <br>
+                      </div>
+                      <div id='input12'>
+                          <input  type='number' name='py' value="2000"> <br>
+                          <input type='text' name='br' > <br>
+                          <input type='number' name='fm' > <br>
+                      </div>   
+                     </div>  
+                 </div>
+                 <br>
+                 <div id='gPart1' class="inner-container-item">
+                    <input type="checkbox" name="p1">   
+                    <b><label for="p1">Graduation part - I</label>  </b>  <br>
+                    <div class='inner-container-item1' id='part1'>
+                     <div id='part1L'>
+                         <label class="lb p1" for="py"> Passing Year :- </label>   <br>
+                         <label class="lb p1" for="br"> Board :-  </label>     <br>
+                         <label class="lb p1" for="fm"> Full Marks :- </label>    <br>
+                     </div>
+                     <div id='part1In'>
+                         <input  type='number' name='py' value="2000"> <br>
+                         <input type='text' name='br' > <br>
+                         <input type='number' name='fm' > <br>
+                     </div>   
+                    </div>  
+                </div>  
+                <br>  
+                <div id='gPart2' class="inner-container-item">
+                    <input type="checkbox" name="p2">   
+                    <b><label for="p1">Graduation part - II</label>  </b>  <br>
+                    <div class='inner-container-item1' id='part2'>
+                     <div id='part2L'>
+                         <label class="lb p2" for="py"> Passing Year :- </label>   <br>
+                         <label class="lb p2" for="br"> Board :-  </label>     <br>
+                         <label class="lb p2" for="fm"> Full Marks :- </label>    <br>
+                     </div>
+                     <div id='part2In'>
+                         <input  type='number' name='py' value="2000"> <br>
+                         <input type='text' name='br' > <br>
+                         <input type='number' name='fm' > <br>
+                     </div>   
+                    </div>  
+                </div>  
+                <br>  
+                <div id='gPart3' class="inner-container-item">
+                    <input type="checkbox" name="p3">   
+                    <b><label for="p3">Graduation part - III</label>  </b>  <br>
+                    <div class='inner-container-item1' id='part3'>
+                     <div id='part3L'>
+                         <label class="lb p3" for="py"> Passing Year :- </label>   <br>
+                         <label class="lb p3" for="br"> Board :-  </label>     <br>
+                         <label class="lb p3" for="fm"> Full Marks :- </label>    <br>
+                     </div>
+                     <div id='part3In'>
+                         <input  type='number' name='py' value="2000" disabled/> <br>
+                         <input type='text' name='br' > <br>
+                         <input type='number' name='fm' > <br>
+                     </div>   
+                    </div>  
+                </div> 
+            </div>
+            
+        <hr/>   
+        <div id='btns' >
+            <input class="b1" type="reset" value="Reset">
+            <input class="b1" type="button" value="Submit">
+        </div>
+       </form>
+    </div>
+    <div id='new'></div>
+
+
+    <!--  -->
+    <script>
+        //
+        var a = document.querySelector('input[type="button"');
+        console.log(a)
+        // a.onclick = function(e){
+        //     window.print();
+        // }
+
+        var b = document.getElementById('new');
+        var div1 = document.querySelector('form');
+        console.log(div1)
+
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = "<h1>hello</h1>";
+        console.log(b)    
+
+        var h = document.querySelector('.main');
+        a.addEventListener('click', function(){
+           h.remove(div1);
+           
+           
+           
+           h.insertBefore(newDiv, document.getElementById('header'));
+
+           b.style.backgroundColor = 'red';
+           b.className  = 'ok';
+           console.log(b)
+           console.log(document.body)
+       }, true);
+    </script>
+</body>
+</html>

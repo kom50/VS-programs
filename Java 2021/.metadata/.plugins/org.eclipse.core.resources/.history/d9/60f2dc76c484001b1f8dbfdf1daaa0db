@@ -1,0 +1,10 @@
+import java.util.List;
+
+public class List3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> l1 = List<Integer>.of()
+	}
+
+}

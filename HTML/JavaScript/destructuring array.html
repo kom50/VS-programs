@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <button>Hello</button>
+
+    <script>
+        var arr = [12, 20, 30, 40];
+        //array destructuring in JavaScript
+        let [a, b, c, d] = arr;
+        console.log(a+ "  "+b+"  "+c+"  "+d);
+
+
+        //Object destructuring
+        let student = {
+            name : "Prakash kumar",
+            age : "20"
+        } 
+
+        //factory function
+        let emp = function(){
+             return {
+                 eName : "Om prakash karthik",
+                 eAge : "20"
+             }
+        }
+        console.log(typeof(emp))
+        let {eName , eAge} = emp()
+        console.log(eName, eAge);
+
+
+
+
+        //
+        let prevStyle ={
+            fontSize : "43px"
+        }
+        let style ={
+            color : "red",
+            backgroundColor : "white",
+            borderRadius : "20px",
+            outline: "none",
+
+        }
+        let btn = document.querySelector("button");
+        console.log(btn);
+        
+
+        setTimeout( function(){
+            Object.assign(btn.style, style, prevStyle);
+        }, 1000);
+       // console.log(ass);    
+          
+        //array map function of array object
+        let arr1 = [4, 9, 16, 25, 36, 49, 64, 81, 100];
+        let sqrt1 = arr1.map(function(n){
+             return Math.sqrt(n);
+        });
+
+        console.log(sqrt1);
+
+        //Template literals
+        let name1="Om prakash kumar", age1 = 21;
+        console.log(`Name : ${name1}, age : ${age1}`);
+        console.log(`Om prakash kumar startsWith('O') : ` + `${name1}`.startsWith('O'));
+        console.log(`Om prakash kumar endsWith('k') : ` + `${name1}`.endsWith('k'));
+        console.log(`Om prakash kumar includes('O') : ` + `${name1}`.includes('O'));
+        var newN = document.createElement("h1");
+        newN.textContent = "(^.^)   (::)   (`.`)";
+        document.querySelector('body').append(newN);
+        console.log("(^.^)")
+        function fun(){
+            return [22, 3, 4];
+        }
+        let [a1, a2, a3] = fun()
+        console.log(a3)
+
+        //new String functions in ES6
+        /*  startsWith(String s)
+            endsWith(String s)
+            includes(String s)*/
+        let str = "prakash karthik"
+
+        console.log(str.startsWith('pro'));
+        console.log(str.endsWith('ik'));
+        console.log(str.includes('o'))
+
+        function find(arr, ch){
+            console.log(typeof arr+"   "+typeof ch)
+            for(let c in arr){
+               // console.log(typeof c+"   "+c)
+                if(arr[c] == ch){
+                    return true;
+                }
+            }
+            return false
+        }
+
+        console.log(find(str, 'a'))
+
+        //str.prototype.find = find; //error
+        //Swap two values
+        let x = 20, y = 30;
+        [x, y] = [y, x];
+        console.log(x+"   "+y)
+   </script>
+</body>
+</html>

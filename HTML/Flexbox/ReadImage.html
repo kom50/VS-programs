@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show uploaded image on web page</title>
+</head>
+<body>
+    <img height="200" width="200" >
+    <input type="file" accept="image\*" >
+
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function(e){
+            var img = document.querySelector('img');
+            console.log(img);
+            img.src = URL.createObjectURL(e.target.files[0]);
+            console.log(this.value, URL.createObjectURL(e.target.files[0]));
+        }, false)
+
+    </script>
+    
+</body>
+</html>

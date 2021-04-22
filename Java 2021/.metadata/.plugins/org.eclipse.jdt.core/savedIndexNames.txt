@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+G:\VS programs\Java 2021\.metadata\.plugins\org.eclipse.jdt.core
+782913521.index
+2506192191.index
+3171588529.index
+1375006630.index
+3803309674.index
+1690891076.index
+304597572.index
+210524568.index
+2043929198.index
+603248393.index
+526361463.index
+450982933.index
+3957093596.index
+1870255979.index
+468916598.index
+3698212347.index

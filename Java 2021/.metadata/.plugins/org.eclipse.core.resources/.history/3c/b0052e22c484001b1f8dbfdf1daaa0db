@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+import static java.lang.System.*;
+public class List1 {
+   public static void main(String []args) {
+	   List<String> l1 = new ArrayList<String>();
+	   l1.add("C");
+	   l1.add("C++");
+	   l1.add("Data Structure");
+	   l1.add("Java");
+	   
+	   l1.forEach(e -> out.printf("%4s", e));
+   }
+}

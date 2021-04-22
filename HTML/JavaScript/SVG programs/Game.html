@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game </title>
+    <style>
+
+      svg{
+          border : 6px solid gray
+      }
+    </style>
+</head>
+<body>
+    <svg height='300' width='400'>
+        <rect x='401' y='280' width='20' height='20' stroke='red' stroke-width='2' fill='none'></rect>
+        <rect x='770' y='260' width='20' height='40' stroke='red' stroke-width='2' fill='none'></rect>
+        <rect x='1140' y='265' width='20' height='35' stroke='red' stroke-width='2' fill='none'></rect>
+        <rect x='1500' y='270' width='20' height='30' stroke='red' stroke-width='2' fill='none'></rect>
+        <circle id='circle' cx='200' cy='289' r='10' width='20' height='30' stroke='red' stroke-width='2' fill='none'></circle>
+    </svg>
+    <br>
+    <button id="start"> Start</button>
+    <button id='stop'>Stop</button>
+    <script>
+        var svg = document.querySelector('svg');
+        var circle = document.getElementById('circle');
+        console.log(circle)
+        var rect = document.querySelectorAll('rect');
+        console.log(svg, rect);
+        var s;
+        var a = document.querySelector('#start');
+        console.log(a)
+        // var x = 220;
+        var posX = [];
+        var initX = [];
+        for(let i =0 ; i< rect.length; i++){
+            posX[i] = rect[i].getAttribute('x');
+            initX[i] = rect[i].getAttribute('x');
+        }
+        console.log(posX, initX )
+        var i = 0;
+        a.onclick = function(){
+            s = setInterval(function(){
+              //  for(let i = 0; i < rect.length; i++){
+                posX[i] -= 3;
+                if(posX[i] == 0){
+                    posX[i] = initX[initX.length - 1 - i];
+                }
+                rect[i].setAttribute('x', posX[i]);
+                //}
+                i++;
+                if(i == rect.length)
+                  i = 0;
+                console.log(posX)   
+            }, 1)
+        }
+
+        document.getElementById('stop').onclick = function(){
+            clearInterval(s);
+        }
+
+        var cy = 289;
+        svg.onclick = function(){
+            cy -= 70;
+            circle.setAttribute('cy', cy);
+            
+            setTimeout(function(){
+                circle.setAttribute('cy', '289');
+                cy = 289;
+
+            }, 100)
+            
+        }
+
+    </script>
+</body>
+</html>

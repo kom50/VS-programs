@@ -1,0 +1,13 @@
+
+class A{
+	static int y = 10;
+	
+}
+
+public class InheritanceDemo extends A{
+    public static void main(String []args) {
+    	
+    	InheritanceDemo i1 = new InheritanceDemo();
+    	
+    }
+}

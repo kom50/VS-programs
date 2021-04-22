@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot Box Game Demo</title>
+
+    <style>
+        svg {
+            /* border : 2px solid blue; */
+            position: relative;
+            left : 10px;
+        }
+        #header, #footer{
+            text-align: center;
+            text-transform:uppercase;
+            color: rgb(241, 56, 84);
+            text-shadow: 0 0 5px gray   ;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px gray;
+
+        }
+        p{
+            color : red;
+            font-size : 18px;
+            font-weight: bold;
+        }
+        p span{
+            /* background-color: rgb(79, 79, 247); */
+            margin-left: 30px;
+            /* background-color: rgb(243, 146, 146); */
+        }
+        p span:last-child{
+            margin-left: 90px;
+            /* background-color: rgb(146, 212, 243); */
+        }
+    </style>
+</head>
+<body>
+    <h3 id='header'>Dot Box Game</h3>
+
+    <p id="status"><span>Player 1 : 0</span><span>Player 2 : 0</span></p>
+    <svg id='svg' width='320' height='320'>    
+    </svg>
+    <h4 id="footer">Developed by : Om prakash kumar</h4>
+    <script>
+        var svg = document.getElementById('svg');
+        const svgns = "http://www.w3.org/2000/svg" ;
+
+        // var columnX = [10, 40, 70, 100, 130, 160, 190, 220, 250, 280, 310];
+        // var columnY = [10, 40, 70, 100, 130, 160, 190, 220, 250, 280, 310];
+
+        var columnX = [10, 60, 110, 160, 210, 260, 310];
+        var columnY = [10, 60, 110, 160, 210, 260, 310];
+        // var columnY = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+        // var columnY = [10, 40, 70, 100, 130];
+        // var columnY = [10, 20, 30, 40, 50];
+
+        var rect, rectArr = [], index = 0;
+        for (let i = 0; i < columnX.length - 1; i++) {
+            for (let j = 0; j < columnY.length - 1; j++) {
+                rect =  document.createElementNS(svgns, "rect");
+                rect.setAttribute('x', columnX[j]);          
+                rect.setAttribute('y', columnY[i]); 
+                rect.setAttribute('height',  50); 
+                rect.setAttribute('width', 50); 
+                rect.setAttribute('width', 50); 
+                rect.setAttribute('rx', 17); 
+                rect.setAttribute('ry', 17); 
+                rect.setAttribute('fill', 'white'); 
+                // rect.setAttribute('class', 'l1'); 
+                rectArr[ index++ ]  = rect;
+                svg.append(rect);
+
+            }
+        }
+
+        var x, y;
+        var line;
+        var k = 0;
+        for (let i = 0; i < columnX.length; i++) {
+            for (let j = 0; j < columnY.length - 1; j++) {
+                line =  document.createElementNS(svgns, "line");
+                line.setAttribute('x1', columnX[j]);          
+                line.setAttribute('y1', columnY[i]); 
+                line.setAttribute('x2', columnX[j] + 50); 
+                line.setAttribute('y2', columnY[i]); 
+                line.setAttribute('stroke', 'rgba(255, 255, 255, 0 /* 0 for transparent */)'); 
+                line.setAttribute('stroke-width', '30'); 
+                // line.setAttribute('stroke-linecap', 'round'); 
+                line.setAttribute('class', 'l1'); 
+                line.setAttribute('onclick', 'clickOnLine(this)'); 
+                line.setAttribute('id', 'r'+k); 
+                k++;
+                svg.append(line);
+
+            }
+        }
+        k  = 0;
+        for (let i = 0; i < columnX.length - 1; i++) {
+            for (let j = 0; j < columnY.length; j++) {
+                line =  document.createElementNS(svgns, "line");
+                // Object.assign(line.style, {
+                //                             x1 : columnX[j] + "px", 
+                //                             y1 : columnY[i] + "px" ,
+                //                             x2 : columnX[j] + "px" ,
+                //                             y2 : columnY[i] + 50 + "px",
+                //                             'stroke-width' : 6,
+                //                             stroke : 'rgb(195, 195, 199)',
+                //                             class : 'l1'
+                //                          }
+                // );
+                line.setAttribute('x1', columnX[j]);          
+                line.setAttribute('y1', columnY[i]); 
+                line.setAttribute('x2', columnX[j]); 
+                line.setAttribute('y2', columnY[i] + 50); 
+                line.setAttribute('stroke', 'rgba(255, 255, 255, 0)'); 
+                line.setAttribute('stroke-width', '30'); 
+                line.setAttribute('class', 'l1'); 
+                line.setAttribute('onclick', 'clickOnLine(this)'); 
+                line.setAttribute('id', 'c'+k); 
+                k++;
+                svg.append(line);
+            }
+        }
+
+        var circle;
+        for(var i = 0; i < columnX.length; i++){
+            for (let j = 0; j < columnY.length; j++) {
+                circle =  document.createElementNS(svgns, "circle");
+                Object.assign(circle.style, {
+                                        cx : columnX[j], 
+                                        cy: columnY[i],
+                                        r : 6,
+                                        // "stroke-width" : 2,
+                                        // stroke : 'yellow',
+                                        fill : 'black'
+                });
+                // circle.setAttribute('cx', columnX[j]);          
+                // circle.setAttribute('cy', columnY[i]); 
+                // circle.setAttribute('r', '6'); 
+                // circle.setAttribute('stroke-width', '2');                
+                // circle.setAttribute('stroke', 'yellow');  
+                // circle.setAttribute('fill', 'black');   
+                svg.append(circle);    
+            }
+        }
+        // console.log(svg);
+        var color = "yellow", bColor = "";
+        var x = 0;
+        var linesId = "";
+        var win = false;
+        var fstPlayer = 0, sndPlayer = 0, winFstOrSnd = true;
+        var fst = document.querySelector('p span:first-child');
+        var snd = document.querySelector('p span:last-child');
+        // var line1 = svg.getElementsByClassName('l1');
+        // for (let i = 0; i < line1.length; i++) {
+        function clickOnLine(event){
+            if(!linesId.includes(event.id+',')){
+                if(x % 2 == 0){
+                    if(win == false){    
+                        color = 'red';
+                        bColor = 'rgb(245, 137, 122)'; 
+                        winFstOrSnd = false;
+                    }
+                    event.setAttribute('stroke-width', '6');
+                    event.setAttribute('stroke', color);
+                }else{
+                    if(win == false){    
+                        color =  'blue';
+                        bColor = 'rgb(79, 79, 247)'; //rgb(183, 250, 247)';//'rgb(70, 245, 187)';
+                        winFstOrSnd = true;
+                    }
+                    event.setAttribute('stroke-width', '6');
+                    event.setAttribute('stroke', color);
+                }
+                // console.log('color '+color);
+                x++;
+                linesId += event.id+',';
+                check();
+                // console.log(" hello "+win   )
+            }
+            // console.log(linesId);
+        }   
+
+        var text = document.createAttributeNS(svgns, 'Text');
+        // text.textContent = 'f';
+        // console.log(typeof text)
+        // console.log(text instanceof Text)
+        // text.style.x = '10px';
+        // svg.append(text);
+        function check(){
+            // console.log('check function is call')
+            for (let j = 0; j < 6; j++) {
+                if (linesId.includes('c'+j) && linesId.includes('c'+(j + 1)) && linesId.includes('r'+j) && linesId.includes('r'+(j + 6)) && rectArr[j].id != 'fill') {
+                    win = true;
+                    rectArr[j].setAttribute('fill', bColor);
+                    rectArr[j].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else if (linesId.includes('c'+( j + 7)) && linesId.includes('c'+(j + 8)) && linesId.includes('r'+(j + 6)) && linesId.includes('r'+(j + 12)) && rectArr[j + 6].id != 'fill') {
+                    win = true;
+                    rectArr[j + 6].setAttribute('fill', bColor);
+                    rectArr[j + 6].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else if (linesId.includes('c'+( j + 14)) && linesId.includes('c'+(j + 15)) && linesId.includes('r'+(j + 12)) && linesId.includes('r'+(j + 18)) && rectArr[j + 12].id != 'fill') {
+                    win = true;
+                    rectArr[j + 12].setAttribute('fill', bColor);
+                    rectArr[j + 12].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else if (linesId.includes('c'+( j + 21)) && linesId.includes('c'+(j + 22)) && linesId.includes('r'+(j + 18)) && linesId.includes('r'+(j + 24)) && rectArr[j + 18].id != 'fill') {
+                    win = true;
+                    rectArr[j + 18].setAttribute('fill', bColor);
+                    rectArr[j + 18].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else if (linesId.includes('c'+( j + 28)) && linesId.includes('c'+(j + 29)) && linesId.includes('r'+(j + 24)) && linesId.includes('r'+(j + 30)) && rectArr[j + 24].id != 'fill') {
+                    win = true;
+                    rectArr[j + 24].setAttribute('fill', bColor);
+                    rectArr[j + 24].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else if (linesId.includes('c'+( j + 35)) && linesId.includes('c'+(j + 36)) && linesId.includes('r'+(j + 30)) && linesId.includes('r'+(j + 36)) && rectArr[j + 30].id != 'fill') {
+                    win = true;
+                    rectArr[j + 30].setAttribute('fill', bColor);
+                    rectArr[j + 30].setAttribute('id', 'fill');
+                    console.log("Hello if part is run")
+                }
+                else
+                    win = false;   
+                if(win == true){
+                    x--;                  
+                    if(winFstOrSnd == false){
+                        fst.textContent = 'Player 1 : '+(fstPlayer += 1);
+                        // rectArr[0].append(text);
+                    }
+                    if(winFstOrSnd == true){
+                        snd.textContent = 'Player 2 : '+(sndPlayer += 1);
+                    }
+              }
+                // console.log("winFstOrSnd =  "+winFstOrSnd);
+            }
+
+            if((fstPlayer+ sndPlayer) == 36){
+                if(fstPlayer > sndPlayer) 
+                    alert("First player is winner...") 
+                else
+                    alert("Second player is winner...") ; 
+            }
+            // if(win == true)
+            //        x--;
+        }
+                // if(linesId.includes('c0') && linesId.includes('c1') && linesId.includes('r0') && linesId.includes('r6') && rectArr[0].id != 'fill'){
+                //     win = true;
+                //     rectArr[0].setAttribute('fill', bColor);
+                //     rectArr[0].setAttribute('id', 'fill');
+                //     // color = color;
+                //     // bColor = bColor; 
+                // }
+                // else if(linesId.includes('c1') && linesId.includes('c2') && linesId.includes('r1') && linesId.includes('r7') && rectArr[1].id != 'fill'){
+                //     win = true;
+                //     rectArr[1].setAttribute('fill', bColor);
+                //     rectArr[1].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c2') && linesId.includes('c3') && linesId.includes('r2') && linesId.includes('r8') && rectArr[2].id != 'fill'){
+                //     win = true;
+                //     rectArr[2].setAttribute('fill', bColor);
+                //     rectArr[2].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c3') && linesId.includes('c4') && linesId.includes('r3') && linesId.includes('r9') && rectArr[3].id != 'fill'){
+                //     win = true;
+                //     rectArr[3].setAttribute('fill', bColor);
+                //     rectArr[3].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c4') && linesId.includes('c5') && linesId.includes('r4') && linesId.includes('r10') && rectArr[4].id != 'fill'){
+                //     win = true;
+                //     rectArr[4].setAttribute('fill', bColor);
+                //     rectArr[4].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c5') && linesId.includes('c6') && linesId.includes('r5') && linesId.includes('r11') && rectArr[5].id != 'fill'){
+                //     win = true;
+                //     rectArr[5].setAttribute('fill', bColor);
+                //     rectArr[5].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c7') && linesId.includes('c8') && linesId.includes('r6') && linesId.includes('r12') && rectArr[6].id != 'fill'){
+                //     win = true;
+                //     rectArr[6].setAttribute('fill', bColor);
+                //     rectArr[6].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c8') && linesId.includes('c9') && linesId.includes('r7') && linesId.includes('r13') && rectArr[7].id != 'fill'){
+                //     win = true;
+                //     rectArr[7].setAttribute('fill', bColor);
+                //     rectArr[7].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c9') && linesId.includes('c10') && linesId.includes('r8') && linesId.includes('r14') && rectArr[8].id != 'fill'){
+                //     win = true;
+                //     rectArr[8].setAttribute('fill', bColor);
+                //     rectArr[8].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c10') && linesId.includes('c11') && linesId.includes('r9') && linesId.includes('r15') && rectArr[9].id != 'fill'){
+                //     win = true;
+                //     rectArr[9].setAttribute('fill', bColor);
+                //     rectArr[9].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c11') && linesId.includes('c12') && linesId.includes('r10') && linesId.includes('r16') && rectArr[10].id != 'fill'){
+                //     win = true;
+                //     rectArr[10].setAttribute('fill', bColor);
+                //     rectArr[10].setAttribute('id', 'fill');
+                // }
+                // else if(linesId.includes('c12') && linesId.includes('c13') && linesId.includes('r11') && linesId.includes('r17') && rectArr[11].id != 'fill'){
+                //     win = true;
+                //     rectArr[11].setAttribute('fill', bColor);
+                //     rectArr[11].setAttribute('id', 'fill');
+                // }else{
+                //     win = false;
+                //     console.log('else part ')
+                // }
+       
+                // if(win == true)
+                //    x--;
+            //     console.log("win " +win)
+                
+            // }
+        // svg.addEventListener('click',function(event){
+        //     x = event.clientX;
+        //     y = event.clientY;
+        //     line =  document.createElementNS(svgns, "line");
+        //     if (x % 10 < 5 && y % 10 > 5) {
+        //         line.setAttribute('x1', 10);          
+        //         line.setAttribute('y1', 10); 
+        //         line.setAttribute('x2', 40); 
+        //         line.setAttribute('y2', 10); 
+        //         line.setAttribute('stroke', 'black'); 
+
+        //         console.log("y long");
+                
+        //     }else{
+        //         line.setAttribute('x1', x - x % 10);          
+        //         line.setAttribute('y1', y - y % 10); 
+        //         line.setAttribute('x2', x + (30 - x % 10)); 
+        //         line.setAttribute('y2', y - y % 10); 
+        //         line.setAttribute('stroke', 'black'); 
+        //         console.log("x long");
+        //     }
+        //     svg.append(line);
+        //     console.log("click x "+x+"  y "+y);
+        // }, false);
+        
+
+    </script>
+    
+</body>
+</html>

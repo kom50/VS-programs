@@ -1,0 +1,115 @@
+<script>
+  console.log("Hello Bro ");
+
+  var str = "Hello bro.. javaScript";
+  
+  //finding a string in a string
+  var p = str.indexOf("bro");
+  console.log("Position : "+p);
+
+  n = str.lastIndexOf('llo', 6);
+  console.log(n);
+
+  //searching for a string in a string
+  //search() method
+  var p = str.search('bro');
+  console.log(p);
+ 
+ /*Extracting string parts
+    slice(start, end)
+    substring(start, end)
+    substr(start, length)
+  */
+
+ //slice(start, end)
+ console.log("str.slice(0, 5) : "+str.slice(0, 5));
+ console.log("str.slice(-6) : "+str.slice(-6));
+
+ //substring(start, end)
+ console.log("str.substring(0, 5) : "+str.substring(0, 5));
+ //this method can not accept negative index. If we pass negative index then it return whole value
+ //console.log("str.substring(-9) : "+str.substring(-9));
+
+  //substr(start, length) this method aceept negative index
+
+  console.log("str.substr(0, 5) : "+str.substr(0, 5))
+  console.log("str.substr(22) : "+str.substr(-22))
+
+  //Replacing string content
+   var s = str.replace('bro','Jact');
+   console.log(s);
+   //using regular expression
+   s = str.replace(/JACk/i,'Jact');
+   console.log(s);
+
+   //toUpperCase()
+   // toLowerCase() method in convert lower case
+   
+  // concat() Method
+  var a = "Hello",
+      b = "Beo",
+      c = a.concat(" ",b, " Jack :)");
+    console.log(c);
+
+  //String.trim()
+  var x = "           Hello kumar  ";
+  console.log("x : "+x)
+  console.log("x.trim() : "+x.trim());
+
+  /*javascript string padding 
+       ECMAScript 2017 added two string methods padStart and padEnd to support
+       padding at the beginning and at the end of a string  */
+    
+    var      x = "5"
+    x = x.padStart(4, 0);
+    console.log(x);
+
+    x = x.padEnd(8, 0);
+    console.log(x)
+
+    /* Extracting string characters 
+        charAt(index)
+        charCodeAt(index)
+        property access []
+    */
+   var s = "Hello Jack";
+   console.log("s.charAt(6) : "+s.charAt(6))
+   console.log("s.charCodeAt(6) : "+s.charCodeAt(6))
+   console.log("s[6] : "+s[6])
+
+   s[6] = 'K'; // Gives no error but does not work
+   console.log("s[6] : "+s[6])
+
+   //Converting a string to arr Array
+   var txt = "a,b,c,d,e,f",
+   arr = txt.split(",");
+
+   console.log(arr);
+   var t = txt.split("")
+   console.log(t)
+
+   //String.fromCharCode() 
+   /* This method converts unicode values into characters. 
+   This is a static methos of the string Object*/
+
+   var ch = String.fromCharCode("72", "69", "76", "76", "79")
+   console.log(ch)
+
+   //includes() method 
+   var txt1 = "Hello world!";
+   console.log("ans. : "+txt1.includes("wos"));
+
+   //string.match() 
+   var t = "Hello";
+   console.log(t.match("ello"));
+
+   //repeat() 
+   var t1 = t.repeat(5);
+   console.log(t1)
+
+   var a = "90";
+   var y1 = parseInt(a);
+   console.log(typeof a+"  "+typeof y1)
+   console.log(y1)
+
+</script>

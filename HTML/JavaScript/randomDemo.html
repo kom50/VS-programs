@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var a = Math.random() * 10 + 1;
+        var b = Math.floor(a),
+            c = Math.round(a);
+        console.log(a+ "   "+b+ "   "+c);
+        
+        var d = Math.PI;
+        console.log("PI : "+d);
+
+        //var e = Math.trunc
+
+        function randomRange(min, max){
+            var a1 = Math.floor(Math.random() * (max - min) + min);
+            console.log("range : "+a1);
+        }
+
+        randomRange(1, 11);
+
+        // Random choice a name;
+        function randomChoice(choice ){
+            var i = Math.floor(Math.random() * choice.length);
+            console.log(i+" Name : "+choice[i]);
+        }
+
+       var o = ["Ram", "Shyam", "Krishna", "Lakshaman", "Barat", "Gopal", "Mohan"];
+       console.log(typeof o+  "  "+o);
+       randomChoice(o);
+
+        function printf(k){
+            console.log("length : "+k.length)
+            for(let i in k)
+              console.log(k[i])
+        }
+        var k = [2, 3,"om", 4, 5, 56, 125]
+        console.log(typeof k)
+       
+        printf(k)
+        randomChoice(k)
+        console.log(name)
+    </script>
+</body>
+</html>
