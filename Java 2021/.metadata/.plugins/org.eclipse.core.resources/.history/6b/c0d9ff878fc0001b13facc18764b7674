@@ -1,0 +1,61 @@
+package snakegame;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
+
+public class Snake extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Snake frame = new Snake();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Snake() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 628, 454);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.CYAN);
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblBack = new JLabel("Back");
+		
+		lblBack.setBounds(10, 380, 22, 14);
+		panel.add(lblBack);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.BLUE);
+		contentPane.add(panel_1, BorderLayout.WEST);
+	}
+
+}

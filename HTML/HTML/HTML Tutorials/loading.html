@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="variable.css" >
+    <title>Document</title>
+
+    <style>
+         *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+         }
+
+         body{
+             background-color: var(--bg);  /* css variable */
+         }
+         .box{
+             height: 8vw;
+             width : 8vw;
+             /* border : 1px solid red; */
+             margin: auto;
+             margin-top : 20vh;
+             position : relative;
+         }
+
+         .content{
+             /* height: 100%; */
+             width: 7.9vw;    
+             border-radius: 50%;
+             background-color:  rgb(27, 26, 26);
+             /* border: 1px solid gray; */
+             position : relative;
+             transform: translate(1.5%, 1.8%);
+         }
+         p{
+             color : white;
+             position : relative;
+             text-align : center;
+             font-size: 1.5vw;
+             line-height: 8vw;
+         }
+         .rot{
+             height: 8.3vw;
+             width: 8.2vw;
+             border-radius: 50%;
+             position: absolute;
+             background-color: white;
+             background:  linear-gradient(to bottom, transparent, transparent, transparent, transparent,  white);
+             animation : animate 4s infinite linear;
+         }
+
+         @keyframes animate{
+             to{
+                 transform: rotate(0deg);
+             }
+             from{
+                 transform : rotate(360deg);
+             }
+         }
+    </style>
+</head>
+<body>
+    
+
+    <div class='box'>
+        <div class='rot'></div>
+        <div class='content'> 
+            <p>Loading </p>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Demo</title>
+    <style type="text/css" >
+        div{
+            border: 2px solid blue;
+            height  : 50px;
+            width : 150px;
+            padding : 10px;
+            align-items: center;
+        }
+
+        div:last-of-type{
+            border: 2px solid red;
+      }
+
+      p{
+          border-width:0;
+      }
+    </style>
+</head>
+<body>
+    <h3> Drag and Drop Demo</h3>
+    <div 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        ondragenter='drag_enter(event)'
+        ondragleave='drag_leave(event)'
+        ondragend="drag_end(event)">     
+    
+    </div> 
+    <br>
+    <div 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        ondragenter='drag_enter(event)'
+        ondragleave='drag_leave(event)'
+        >    
+
+    </div>
+    </br>
+    <p 
+        id='p1'
+        draggable="true" 
+        ondrag="drag1()"
+        ondragstart="drag(event)"
+        ondragend="drag_end(event)">  Drag data
+    </p>
+
+    <script type="text/javascript">
+        /*
+        The DragEvent Object 
+            :- Events that occurs when elements are dragged and/or dropped, belongs to the DragEvent Object
+
+        DragEvent properties and Methods
+        Properties
+            dataTransfer : Returns the data that is dragged/ dropped
+        
+        The DragEvent inherits all the properties and methods froms 
+            The MouseEvent, and Event Object. 
+        
+        Methods
+            Event Types 
+            ondrag : The event occurs when an element is being dragged
+            ondragend : The event occurs when the user has finished dragging an element
+            ondragenter : The event occurs when the dragged element enters the drop target
+            ondragleave : The event occurs when the dragged element leaves the drop target 
+            ondragover : The event occurs when the dragged element is over the drop target
+            ondragstart : The event occurs when the user starts to drag an element 
+            ondrop : The event occurs when the dragged element is dropped on the drop target.  While draging an element, the ondrag event fires every 350 milliseconds 
+
+
+        */
+
+        // allow item is dropped in div
+        function allowDrop(event) {
+           event.preventDefault();
+        }
+
+        //
+        function drop(event) {
+            var data = event.dataTransfer.getData("Text");
+            event.target.appendChild(document.getElementById(data));
+            console.log("Drop Event")
+        }
+
+        // 
+        function drag(event) {
+            event.dataTransfer.setData("Text", event.target.id);
+            console.log(event.target.id)
+        }
+
+        function drag_enter(event) {
+            event.target.style.border = "2px solid blue";
+            console.log("Drag enter event");
+        }
+        function drag_leave(event) {
+            console.log("Drog leave event");
+            event.target.style.border = "";
+        }
+
+        function drag_end(event) {
+            with(console){
+                log("Drag end event ");
+                log(event.target);
+            }
+        }
+
+       
+        // Links and images are draggable, by default.
+        function drag1(){
+            console.log("ondrag event ")
+        }
+    </script>
+</body>
+</html>

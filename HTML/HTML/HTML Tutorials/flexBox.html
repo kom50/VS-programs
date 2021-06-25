@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        .flex-container {
+            height: 200px;
+            background-color: gray;
+            overflow: auto;
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            /* justify-content: space-around; */
+            /* if the flex-direction is in reverse order
+             then we want to set justify-content is flex-end then flex container items will not show at ead of container  */
+
+            /* justify-content : space-around; */
+            /* align-items: center ; */
+
+            /* align-content: center; */
+            align-items : center;
+        }
+
+        .flex-container div {
+            height: 50px;
+            width : 50px;
+            padding: 15px;
+            margin: 5px;
+            background-color: blue;
+            color: white;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+
+        #div1 {
+            margin-top : 10px;
+            height: 200px;
+            width: 200px;
+            padding : 10px;
+            border: 1px solid blue;
+        }
+
+        #div2 {
+            margin-top : 10px;
+            height: 200px;
+            width: 200px;
+            border: 1px solid blue;
+            padding : 20px;
+            margin : auto;
+            /* In border-box 
+                width = width - (left padding + right padding + left border width + right border width)
+                height = height - (top padding + bottom padding + top border height + bottom border height)
+             */
+
+            box-sizing : border-box;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Flex Box Demo </h4>
+
+    <div class='flex-container'>
+        <div style=' order:5; flex-grow: 1;  '>1</div>
+        <div style=' order:3;'>2</div>
+        <div style=' order:1; flex-shrink: 0;'>3</div>
+        <div style=' order:2; align-self : space-around ;flex-basis: 150px;'>4</div>
+        <div style=' order:4;'>5</div>
+        <!-- <div>6</div>
+        <div>7</div>
+        <div>8</div> -->
+
+    </div>
+
+    <div id='div1'>
+
+    </div>
+    <div id='div2'></div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video tutorial</title>
+</head>
+<body>
+    <audio controls autoplay    >
+        <source src="audio/_Neha_Kakkar,_Sunny_Kaushal__Jubin_Nautiyal,Jaani__Bhushan_Kumar__Arvindr_K(256k).mp3" >
+    </audio>
+
+    <audio controls autoplay>
+        <source src="audio/_Neha_Kakkar,_Sunny_Kaushal__Jubin_Nautiyal,Jaani__Bhushan_Kumar__Arvindr_K(256k).mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio>
+
+      <video  id='vid' width="320" height="240" controls autoplay >
+        <source src="video/mov_bbb.mp4" type="video/mp4">
+        <!-- <source src="video/movie.ogg" type="video/ogg"> -->
+        Your browser does not support the video tag.
+      </video>
+
+    <!-- <video controls autoplay="true">
+        <source src="video/record_000001.asf">
+    </video> -->
+    <br>
+    <br>
+    <button >Play</button>
+    <button >Pause</button>
+
+    <script type="text/javascript">
+        let video = document.getElementById('vid');
+        console.log(video)
+        document.querySelector('body button:nth-of-type(1)').addEventListener('click', function(){
+            console.log('play clicked');
+            video.play();
+        });
+
+        document.querySelector('body button:nth-of-type(2)').addEventListener('click', function(){
+            console.log('pause clicked');
+            video.pause();
+        });
+        
+    </script>
+    </body>
+</html>

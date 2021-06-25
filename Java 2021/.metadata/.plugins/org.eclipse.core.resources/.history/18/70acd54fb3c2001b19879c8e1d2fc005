@@ -1,0 +1,11 @@
+package graphics;
+
+import javax.swing.JFrame;
+
+public class TestAnimation {
+    public static void main(String[] args) {
+		
+    	JFrame frame = new JFrame("Animation ");
+    	frame.setVisible(true);
+	}
+}

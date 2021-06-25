@@ -1,0 +1,19 @@
+package puzzle;
+
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
+
+public class Puzzzle1 extends JPanel {
+	public Puzzzle1() {
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(new Color(0, 0, 0, 0));
+		add(panel);
+		
+	
+      
+	}
+
+}

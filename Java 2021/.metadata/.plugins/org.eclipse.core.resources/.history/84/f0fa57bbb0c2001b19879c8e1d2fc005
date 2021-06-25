@@ -1,0 +1,12 @@
+package graphics;
+
+public class MainClass extends JFrame {
+
+	public static void main(String[] args) {
+		Animation1 animation = new Animation1();
+		
+		
+
+	}
+
+}

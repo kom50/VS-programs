@@ -1,0 +1,90 @@
+package animation;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+
+public class TestAnimation extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TestAnimation frame = new TestAnimation();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TestAnimation() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 546, 451);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(44, 43, 440, 155);
+		contentPane.add(panel);
+		
+		Animation animation = new Animation(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblHelloAnimation = new JLabel("Hello Animation");
+		lblHelloAnimation.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHelloAnimation.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		lblHelloAnimation.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		lblHelloAnimation.setHorizontalTextPosition(SwingConstants.CENTER);
+		panel.add(lblHelloAnimation, BorderLayout.CENTER);
+		
+		JButton btnAnimation = new JButton("hide");
+		btnAnimation.setFocusCycleRoot(true);
+		btnAnimation.setFocusTraversalPolicyProvider(true);
+		btnAnimation.setFont(new Font("Consolas", Font.BOLD, 18));
+		btnAnimation.setForeground(Color.MAGENTA);
+		btnAnimation.addActionListener(new ActionListener() {
+			boolean flag;
+			public void actionPerformed(ActionEvent e) {
+				animation.slideToggle(10);
+				if(!flag) {
+					btnAnimation.setText("Show");
+					flag = false;
+				}else
+					btnAnimation.setText("Hide");
+					flag = true;
+			}
+		});
+		btnAnimation.setBackground(Color.BLUE);
+		btnAnimation.setBounds(189, 327, 145, 47);
+		contentPane.add(btnAnimation);
+		
+	}
+}

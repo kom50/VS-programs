@@ -1,0 +1,162 @@
+package puzzle;
+
+import java.awt.EventQueue;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import graphics.OnDrag;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.GridLayout;
+
+public class PuzzleGame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PuzzleGame frame = new PuzzleGame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PuzzleGame() {
+		setUndecorated(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 590, 548);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		setLocationByPlatform(false);
+		
+		// set Drag event
+		new OnDrag(contentPane, PuzzleGame.this);
+		
+		contentPane.setLayout(null);
+		
+		JLabel lblX = new JLabel("X");
+		lblX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PuzzleGame.this.dispose();
+			}
+		});
+		lblX.setFont(new Font("Consolas", Font.BOLD, 22));
+		lblX.setBounds(562, 11, 16, 22);
+		contentPane.add(lblX);
+		
+		JLabel box[] = new JLabel[9];
+		ImageIcon icon[] = new ImageIcon[9];
+		int locX[] = {0, 100, 200, 0, 100, 200, 0, 100, 200  },
+			locY[] = {0, 0, 0, 100, 100, 100, 200, 200, 200  };
+		
+		for(int i = 0; i < icon.length; i++) {
+			icon[i] = new ImageIcon("src/puzzle/Photo/" + (1 + i) + ".jpg");
+            box[i] = new JLabel(icon[i]);
+            // add label name for ActionButton class
+            box[i].setName("b" + i);
+            box[i].setLocation(locX[i], locY[i]);
+            box[i].setSize(100, 100);
+            box[i].setBorder(new MatteBorder(1, 1, 1, 1, Color.blue));
+            
+		}
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 112, 570, 402);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JPanel board = new JPanel();
+		board.setBounds(133, 43, 301, 301);
+		panel.add(board);
+		board.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.BLUE));
+		board.setLayout(null);
+		
+		for(int i = 0; i < box.length - 1; i++)
+		  board.add(box[i]);
+		
+		// ADD ACTION ON buttons
+		ActionButton actionButton = new ActionButton();
+		actionButton.addButton(box);
+		
+		/*
+		 * JLabel label = new JLabel(""); label.setBounds(0, 0, 100, 100);
+		 * panel.add(label);
+		 * 
+		 * JLabel label_1 = new JLabel(""); label_1.setBounds(100, 0, 100, 100);
+		 * panel.add(label_1);
+		 * 
+		 * JLabel label_2 = new JLabel(""); label_2.setBounds(200, 0, 100, 100);
+		 * panel.add(label_2);
+		 * 
+		 * JLabel label_3 = new JLabel(""); label_3.setBounds(0, 100, 100, 100);
+		 * panel.add(label_3);
+		 * 
+		 * JLabel label_4 = new JLabel(""); label_4.setBounds(100, 100, 100, 100);
+		 * panel.add(label_4);
+		 * 
+		 * JLabel label_5 = new JLabel(""); label_5.setBounds(200, 100, 100, 100);
+		 * panel.add(label_5);
+		 * 
+		 * JLabel label_6 = new JLabel(""); label_6.setBounds(0, 200, 100, 100);
+		 * panel.add(label_6);
+		 * 
+		 * JLabel label_7 = new JLabel(""); label_7.setBounds(100, 200, 100, 100);
+		 * panel.add(label_7);
+		 * 
+		 * JLabel label_8 = new JLabel(""); label_8.setBounds(200, 200, 100, 100);
+		 * panel.add(label_8);
+		 */
+		
+		JLabel lblPhotoPuzzleGame = new JLabel("Photo Puzzle Game");
+		lblPhotoPuzzleGame.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLUE));
+		lblPhotoPuzzleGame.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblPhotoPuzzleGame.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPhotoPuzzleGame.setForeground(Color.BLUE);
+		lblPhotoPuzzleGame.setFont(new Font("Consolas", Font.BOLD, 32));
+		lblPhotoPuzzleGame.setBounds(80, 11, 440, 62);
+		contentPane.add(lblPhotoPuzzleGame);
+				
+		
+		JLabel lblDevelopedBy = new JLabel("Developed By : Om prakash");
+		lblDevelopedBy.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblDevelopedBy.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDevelopedBy.setForeground(Color.BLUE);
+		lblDevelopedBy.setFont(new Font("Consolas", Font.BOLD, 18));
+		lblDevelopedBy.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLUE));
+		lblDevelopedBy.setBounds(91, 505, 440, 62);
+		contentPane.add(lblDevelopedBy);
+		
+		this.validate();
+	}
+	
+}

@@ -1,0 +1,31 @@
+package animation;
+
+import java.awt.Component;
+
+public class Animation {
+     public Animation() {
+    	 
+     }
+     
+     public static void slide(Component com, String direction, long speed) {
+    	 
+     }
+     public static void slideUp(Component com, long speed) {
+    	 
+     }
+     public static void slideDown(Component com, long speed) {
+    	 
+     }
+     public static void slideLeft(Component com,  long speed) {
+    	 
+     }
+     public static void slideRight(Component com,  long speed) {
+    	 
+     }
+     
+     public static void slideToggle(Component com, long ) {
+    	 
+     }
+     
+     
+}

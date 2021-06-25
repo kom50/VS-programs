@@ -1,0 +1,8 @@
+import javax.swing.JFrame;
+
+public class TestDemo {
+  public static void main(String arsg[]) {
+	  JFrame frame = new JFrame();
+	  frame.setVisible(true);
+  }
+}

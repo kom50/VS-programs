@@ -1,0 +1,23 @@
+package graphics;
+
+import java.awt.Canvas;
+import java.awt.Graphics;
+
+public class Animation3 extends Canvas {
+    int width;
+    int height;
+    
+    
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		
+		repaint();
+	}
+	
+	public Animation3(int x, int h) {
+		width = w;
+		height = h;
+	}
+}

@@ -1,0 +1,11 @@
+package animation;
+
+public class Animation {
+     public Animation() {
+    	 
+     }
+     
+     public static void slide(Componenet com, String direction, long speed) {
+    	 
+     }
+}

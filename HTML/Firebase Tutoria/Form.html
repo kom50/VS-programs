@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- <form action="post"> -->
+        <h2>User database firebase</h2>
+       Name <input type="text" name='name' id='na' required> <br> <br>
+       Email <input type="text" name='age' id='ag' required><br><br>  
+        <!-- <input onclick="writeData()" type="button" value="submit"><br> -->
+        <button onclick="writeData()" >Submit</button>
+        <!-- </form> -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyB1lSNSBc7hLTfUuvYO41JEGgUeVPawmmo",
+    authDomain: "c-language-4aded.firebaseapp.com",
+    databaseURL: "https://c-language-4aded.firebaseio.com",
+    projectId: "c-language-4aded",
+    storageBucket: "c-language-4aded.appspot.com",
+    messagingSenderId: "677634869181",
+    appId: "1:677634869181:web:28ffe6240cd1053e1ef4d4",
+    measurementId: "G-93VWR0XSFR"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  
+    function writeData(){
+
+     console.log('data stored')
+     firebase.database().ref("User").set({
+         name: document.getElementById('na').value, 
+         age: document.getElementById('ag').value
+     });
+     alert("data is stored");
+ }
+</script>
+
+</body>
+</html>

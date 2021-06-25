@@ -1,0 +1,48 @@
+import javax.swing.JPanel;
+
+import code.PButton;
+
+import java.awt.Color;
+import javax.swing.JLabel;
+
+public class Semester1Panel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	public Semester1Panel() {
+		System.out.println("Semester 1 PAge");
+		setBackground(Color.GREEN);
+		this.setBounds(10, 82, 980, 542);
+		this.setBackground(new Color(0, 0, 0, 0));
+		setLayout(null);
+		
+		PButton button = new PButton("Add Book Details");
+		button.setBounds(35, 112, 197, 39);
+		add(button);
+		
+		PButton button_1 = new PButton();
+		button_1.setBounds(35, 177, 197, 39);
+		add(button_1);
+		
+		PButton button_2 = new PButton();
+		button_2.setBounds(35, 240, 197, 39);
+		add(button_2);
+		
+		PButton button_3 = new PButton();
+		button_3.setBounds(35, 302, 197, 39);
+		add(button_3);
+		
+		PButton button_4 = new PButton();
+		button_4.setBounds(35, 352, 197, 39);
+		add(button_4);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(10, 11, 267, 520);
+		add(label);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0, 0));
+		panel.setBounds(287, 11, 683, 520);
+		add(panel);
+	}
+}

@@ -1,0 +1,12 @@
+package hibernateMaven;
+
+import org.hibernate.id.Configurable;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        Configurable con;
+    }
+}

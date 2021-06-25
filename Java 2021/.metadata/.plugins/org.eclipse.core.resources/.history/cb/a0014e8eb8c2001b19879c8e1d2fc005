@@ -1,0 +1,29 @@
+package graphics;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Animation3 extends Canvas {
+    
+	private static final long serialVersionUID = 1L;
+	int width;
+    int height;
+    
+    int x, y;
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		g.setColor(Color.white);
+		g.fillArc(300, 300, 10, 100, startAngle, arcAngle);
+		repaint();
+	}
+	
+	public Animation3(int w, int h) {
+		width = w;
+		height = h;
+		
+		this.setBackground(Color.black);
+	}
+}

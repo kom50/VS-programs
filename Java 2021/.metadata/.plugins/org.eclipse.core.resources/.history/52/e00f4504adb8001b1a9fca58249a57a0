@@ -1,0 +1,14 @@
+import javax.swing.JPanel;
+import java.awt.Color;
+
+public class Semester1Panel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	public Semester1Panel() {
+		System.out.println("Semester 1 PAge");
+		setBackground(Color.GREEN);
+		this.setBounds(10, 82, 980, 542);
+	}
+
+}

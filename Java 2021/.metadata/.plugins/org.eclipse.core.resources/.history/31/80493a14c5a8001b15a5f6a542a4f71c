@@ -1,0 +1,21 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#label  
+{  
+    -fx-background-color:blue;   
+    -fx-text-fill:white;   
+    -fx-font-size:16;  
+    -fx-border-color: black;  
+	-fx-border-radius: 5;
+	-fx-height : 1;
+}  
+
+.button  
+{  
+    -fx-background-color: red;   
+    -fx-font-family:courier_new;   
+    -fx-text-fill:White;  
+    -fx-border-color: Wheat;  
+	-fx-border-radius: 15;  
+    -fx-font-size:16;  
+}

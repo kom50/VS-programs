@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button >OK</button>
+    <script>
+        function pow(n){
+            return n*n;
+        }
+        var p = n=> n*n;
+        console.log(p(4));
+
+         document.querySelector('button').onclick = function(){
+             console.log(this.textContent);
+         }
+         //Return inner function 
+         function ok(){
+            k = function(){
+                 console.log("Hello return inner function. ");
+             }
+             return k;
+         }
+        
+         var b = ok();
+         b();
+
+
+       //Passing function as an arguments
+       function fun(add, a, b){
+           return add(a, b);
+       }
+       function add1(a, b){
+           return a + b;
+       }
+
+       console.log("Anwser : "+fun(add1, 120, 10));
+       
+       //arrow function
+       var sum = (a, b) => {
+           return a+b;
+       }
+       console.log(sum(34, 34));
+        function ag(a,b1 ,b2, b, c){
+            a = 10
+        }
+        console.log(ag.length)
+       //function constructor
+       var fun2 = new Function("a", "return a * a");
+       console.log(fun2(9));
+    </script>
+</body>
+</html>

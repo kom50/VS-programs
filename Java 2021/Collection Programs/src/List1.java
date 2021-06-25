@@ -9,6 +9,7 @@ public class List1 {
 	   l1.add("C++");
 	   l1.add("Data Structure");
 	   l1.add("Java");
+	   l1.add("java Script");
 	   //Print ArrayList elements
 	   //1. way
 	   l1.forEach(e -> out.printf("%s  ", e));

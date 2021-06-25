@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        #main , #main1{
+            height: 5vw;
+            width : 5vw;
+            position: relative;
+            top : 5vw;
+            left : 10vw;
+            background-color :rgb(255, 11, 194);
+            margin : 1vw;
+
+            border-radius:  5vw;
+
+            animation: animate 1s ease-in infinite alternate-reverse forwards;
+        }
+
+        #main1{
+            left : 50vw;
+            top : 10vw;
+            /* animation: animate1 1s ease-in infinite alternate-reverse backwards; */
+        }
+
+        @keyframes animate{
+            to{
+                top : 42vw;
+            }
+            from{
+
+            }
+        }
+        @keyframes animate1{
+            to{
+                left : 0vw;
+            }
+            from{
+
+            }
+        }
+        
+        #main:hover{
+                background-color : red;
+            }
+    </style>
+</head>
+<body>
+    
+    <div id='main'></div>
+    <div id='main1'></div>
+</body>
+</html>

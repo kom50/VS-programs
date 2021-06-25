@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <style>
+        body{
+            background-color : #7052f8;
+            color : white;
+        }
+        #form{
+            box-shadow:  1px 1px 10px gray;
+            padding: 10px;
+            margin : 1px;
+            background-color: 7052f8;
+            position: absolute;
+            top : 20%;
+            left : 6%;
+            border-radius : 10px;
+
+        }
+
+        button[type="submit"]{
+            background-color:  blue;
+            color : white;
+            width: 80px;
+            height : 35px;
+            outline :none;
+            text-align: center;
+            border-radius : 10px;
+            margin-left: 30%;
+            border : 1px solid blue;
+            box-shadow: 0  1px 5px black;
+            text-transform: uppercase;
+            
+        }
+        button[type="submit"]:hover{
+            background-color:  rgb(29, 29, 235);
+            box-shadow: 0  0 0px black;
+        }
+
+        input{
+            background-color: #7052f8;
+            outline: none;
+            border : 0px;
+            border-bottom : 1px solid white; 
+            margin-left : 10px;
+        }
+        input ::placeholder{
+            color : red;
+            text-decoration-color: white;
+        }
+        textarea{
+            background-color: #7052f8;
+
+        }
+
+    </style>
+</head>
+<body>
+    <form name="submit-to-google-sheet" id='form'>
+        <!-- <fieldset> -->
+            <!-- <legend>Contact Form</legend> -->
+            Name : <input name="name" type="text" placeholder="name" required> <br>
+            Email : <input name="email" type="email" placeholder="Email" required> <br>
+            Address : <input name="address" type="text" placeholder="Address" required> <br>
+            <textarea name="message" type="text" placeholder="Type your Message Here." cols="30" rows="5" required ></textarea> <br>
+            <button type="submit" >Send</button><br>
+        <!-- </fieldset> -->
+      </form>
+      
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwHDIE8pqNu6ge5_oFqgITkuehxA8z4a_28RD7ifxdbluX2RPDOHhYzCSaUL-BfZZaBLg/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert('Data is inserted'))
+            .catch(error => alert('Error!', error.message))
+        })
+      </script>
+    
+</body>
+</html>

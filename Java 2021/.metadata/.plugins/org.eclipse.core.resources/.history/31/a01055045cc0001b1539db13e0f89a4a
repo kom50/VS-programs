@@ -1,0 +1,62 @@
+package animation;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
+public class Animation {
+	 // Variables 
+	 Timer timerl
+     public Animation() {
+    	 
+     }
+     
+     public static void slide(Component com, String direction, int speed) {
+    	 
+     }
+     public static void slideUp(Component com, int speed) {
+    	 
+     }
+     public static void slideDown(Component com, int speed) {
+    	 
+     }
+     public static void slideLeft(Component com,  int speed) {
+    	 
+     }
+     public static void slideRight(Component com,  int speed) {
+    	 
+     }
+     
+     public static void slideToggle(Component com, int speed ) {
+    	 ActionListener action = new ActionListener() {
+ 			boolean flag = true;
+ 			int initHeight =panel.getHeight();
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				System.out.println("Timer is running...");
+ 				if(flag) {
+ 					panel.setSize(panel.getWidth(), panel.getHeight() - 1);
+ 					if(panel.getHeight() == 0) {
+ 						flag = false;
+ 						btnHide.setText("Show");				
+ 					}
+ 				}else {
+ 					panel.setSize(panel.getWidth(), panel.getHeight() + 1);
+ 					if(panel.getHeight() == initHeight) {
+ 						flag = true;
+ 						btnHide.setText("Hide");						
+ 					}
+ 				}
+ 				if(panel.getHeight() == 0 || panel.getHeight() == initHeight) {
+ 					timer.stop();
+ 					System.out.println("Timer is stoped...");
+ 				}
+ 			}
+ 		};
+ 		timer = new Timer(30, action);
+     }
+     
+     
+}

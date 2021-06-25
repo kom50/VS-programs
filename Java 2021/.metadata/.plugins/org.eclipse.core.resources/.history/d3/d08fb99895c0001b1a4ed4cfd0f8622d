@@ -1,0 +1,73 @@
+package puzzle;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import graphics.OnDrag;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class PuzzleGame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PuzzleGame frame = new PuzzleGame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PuzzleGame() {
+		setUndecorated(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 588, 509);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		// set Drag evetn
+		
+		new OnDrag(contentPane, PuzzleGame.this);
+		
+		contentPane.setLayout(null);
+		
+		JLabel lblX = new JLabel("X");
+		lblX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PuzzleGame.this.dispose();
+			}
+		});
+		lblX.setFont(new Font("Consolas", Font.BOLD, 22));
+		lblX.setBounds(562, 11, 16, 22);
+		contentPane.add(lblX);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(147, 139, 299, 300);
+		contentPane.add(panel);
+	}
+}

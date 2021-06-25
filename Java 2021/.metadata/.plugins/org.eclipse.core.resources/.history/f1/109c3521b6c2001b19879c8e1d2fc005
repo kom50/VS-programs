@@ -1,0 +1,21 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class Animation2 extends JPanel{
+    
+	int width = 50, height = 50;
+	int stepSize = 10;
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		g.setColor(Color.white);
+		g.fillOval(0, 0, width, height);
+	}
+	
+	
+}

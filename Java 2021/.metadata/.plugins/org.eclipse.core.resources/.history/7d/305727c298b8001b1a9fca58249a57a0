@@ -1,0 +1,22 @@
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+public class TestDemo {
+  public static void main(String arsg[]) {
+	  JFrame frame = new JFrame();
+	  frame.setVisible(true);
+	  frame.setBounds(100, 100, 300, 400);
+	  frame.setLayout(null);
+	  
+	  Rect rect = new Rect();
+	  rect.setBounds(100, 50, 100, 45);
+	  
+	  rect.setText("Circle");
+	  
+	  rect.setStrokeWidth(2);
+	  rect.setStroke(Color.pink);
+	  rect.setRadius(1);
+	  frame.add(rect);
+  }
+}

@@ -1,0 +1,255 @@
+package puzzle;
+
+import java.awt.event.*;
+import java.util.Random;
+
+import javax.swing.*;
+
+class ActionButton extends MouseAdapter {
+
+	private JLabel[] box;
+	private int x, y, blankY = 200, blankX = 200;
+
+	private int locX[] = { 0, 100, 200, 0, 100, 200, 0, 100, 200 }, 
+		locY[] = { 0, 0, 0, 100, 100, 100, 200, 200, 200 };
+
+	private int move = 0;
+
+	public void addButton(JLabel[] box) {
+		this.box = new JLabel[box.length];
+		for (int i = 0; i < this.box.length; i++) {
+			this.box[i] = new JLabel();
+			this.box[i] = box[i];
+			this.box[i].addMouseListener(this);
+		}
+	}
+	
+	// refresh Button
+	JLabel refresh;
+	void addRefreshButton(JLabel btn) {
+		refresh = btn;
+		refresh.setName("Refresh");
+		refresh.addMouseListener(this);
+	}
+
+	public void mousePressed(MouseEvent e) {
+		Object obj = e.getSource();
+		JLabel b = (JLabel) obj;
+		int tempX = 0, tempY = 0;
+		int index = -1;
+
+		switch (b.getName()) {
+		case "b0":
+			index = 0;
+			break;
+		case "b1":
+			index = 1;
+			break;
+		case "b2":
+			index = 2;
+			break;
+		case "b3":
+			index = 3;
+			break;
+		case "b4":
+			index = 4;
+			break;
+		case "b5":
+			index = 5;
+			break;
+		case "b6":
+			index = 6;
+			break;
+		case "b7":
+			index = 7;
+			break;
+		// case "b8":
+		// index = 8;
+		// break;
+		}
+		System.out.println("Name :->  " + index);
+		if(index != -1) {
+			x = (int) box[index].getLocation().getX();
+			y = (int) box[index].getLocation().getY();
+		}
+		tempX = blankX - x;
+		tempY = blankY - y;
+		if (((tempX == -100 || tempX == 100) && tempY == 0) || ((tempY == -100 || tempY == 100) && tempX == 0 && index != -1)) {
+			box[index].setLocation(blankX, blankY);
+			blankX = x;
+			blankY = y;
+			// 
+			move++;
+		}
+		System.out.println("Move : "+move);
+		//
+		win();
+
+		//
+		if (b.getName().equals("Refresh")) {
+			
+			System.out.println("Refresh Button clicked");
+			refresh();
+		}  // restart end
+
+   }// mousePressed method end
+
+	private void refresh() {
+		int index;
+		move = 0;
+		// totalMoves.textContent = "Move : 0";
+		Random random = new Random();
+		
+		int blankIndex = random.nextInt(8);
+		System.out.println("Blank Index : "+blankIndex);
+		box[blankIndex].setLocation(200, 200);
+		index = 0;
+		for (int i = 0; i < locX.length; i++) {
+			if (index != blankIndex) {
+				box[index].setLocation(locX[i], locY[i]);
+				// console.log("locY[i][j] "+locX[i][j]+" locY[i][j] "+locY[i][j]);
+			} else {
+				blankX = locX[i];
+				blankY = locY[i];
+			}
+			index++;
+		}
+	}
+	private String textLabelOfField(int lx, int ly) {
+		String text = "";
+		for (int i = 0; i < 8; i++) {
+			x = box[i].getX();
+			y = box[i].getY();
+			if (lx == x && ly == y) {
+				text = box[i].getName();
+			}
+		}
+		return text;
+	}
+
+	private void win() {
+		int full = 0, k = 1;
+		String data = "";
+		for (int i = 0; i < locX.length; i++) {
+			data = textLabelOfField(locX[i], locY[i]);
+			if (data.equals("b" + (k - 1))) {
+				full += 1;
+				k++;
+			}
+		}
+		if (full == 8) {
+			System.out.println("Congratulations! You won.");
+			// flag = true;
+		}
+	}
+
+}
+//
+//	var blankX = 200, blankY = 200;
+//	var x = 0, y = 0;
+//var locX = [  // For x coordinate 
+//			    [0, 100, 200],
+//			    [0, 100, 200],
+//				[0, 100]
+// ];
+//var locY = [ // For y coordinate 
+//			   [0, 0, 0],
+//			   [100, 100, 100],
+//			   [200, 200]
+// ];
+//	var move = 0;
+//	var box1, box, totalMoves;
+//	var tempX = 0, tempY = 0;
+//	var a = true;
+//
+//function pos(clicked){
+//   box1 = document.getElementById('main');
+//   box = box1.getElementsByTagName('div');
+//   totalMoves = document.getElementById('moveLabel');
+//   var index = 0;
+//		if(clicked == 'd1') //block 1
+//			index = 0;
+// 		else if(clicked == 'd2')  //block 2
+//			index = 1;
+//		else if(clicked == 'd3') //block 3
+//     index = 2;
+//		else if(clicked == 'd4')  //block 4
+//		   index = 3;
+//		else if(clicked == 'd5')  //block 5 
+//     index = 4;
+//		else if(clicked == 'd6')  //block 6
+//			index = 5;
+//		else if(clicked == 'd7') //block 7
+//			index = 6;
+//	    else if(clicked == 'd8') //block 8
+//			index = 7;
+// x = box[index].offsetLeft;
+//		y = box[index].offsetTop;
+//	    tempX = blankX - x;
+//		tempY = blankY - y;
+//		if(((tempX == -100 || tempX == 100) && tempY == 0) || ((tempY == -100 || tempY == 100) && tempX ==0)){
+//     box[index].style.top = blankY+"px";   
+//     box[index].style.left = blankX+"px";
+//			blankX = x;
+//		    blankY = y;
+//     move++;
+//     totalMoves.textContent = "Moves : "+move;
+//      // console.log("move block blankX "+blankX+" blankY "+blankY);
+//		}   
+//    console.log("id = "+clicked+" image no "+box[index].firstElementChild.attributes[1].value+" alt : "+box[index].firstElementChild.attributes[0].value+" total moves "+totalMoves.textContent);
+//	win();
+//    if(clicked == 'restart'){
+// // document.getElementById('msg').textContent ="";
+// move = 0;
+//		totalMoves.textContent = "Move : 0";
+// let blankRan = Math.floor(Math.random() * 8);
+// // console.log("blankRan : "+blankRan);
+// box[blankRan].style.left = "200px";
+// box[blankRan].style.top =  "200px";
+// // console.log("id = "+clicked+" image no "+box[blankRan].firstElementChild.attributes[1].value+" alt : "+box[blankRan].firstElementChild.attributes[0].value);
+// // console.log("blankX "+blankX+" blankY "+blankY);
+// index = 0;
+//		for(let i = 0; i < locX.length; i++) {
+//				for(let j = 0; j <locX[i].length; j++) {
+//					{
+//					if(index != blankRan) {
+//						box[index].style.top = locY[i][j]+"px";   
+//   box[index].style.left = locX[i][j]+"px"; 
+//   //console.log("locY[i][j] "+locX[i][j]+" locY[i][j] "+locY[i][j]);
+//					}
+//					else {
+//						blankX = locX[i][j];
+//						blankY = locY[i][j];
+//					}
+//					index++;
+//				}
+//			 }
+//		}
+//   //  console.log("blankX "+blankX+" blankY "+blankY);
+//   }
+//}
+//
+//
+// var a;
+// var img; 
+// var pos1;
+//
+//	function clickButton(){
+//     a = document.getElementById('toggle');
+//	 var num = document.getElementsByClassName("number");
+//	 var b = a.firstElementChild;
+//	 pos1 = b.offsetLeft;
+//     console.log(pos1);
+//     if(pos1 ==   -2) {
+//		b.style.left = 12 +"px";
+//		a.style.backgroundColor = "blue";
+//		for(let i = 0; i < num.length; i++)
+//		    num[i].style.display = "block";
+//     }
+//     else{
+//		b.style.left = -2 +"px";
+//		a.style.backgroundColor = "gray";
+//		for(let i = 0; i < num.length; i++)
+//		    num[i].style.display = "none";
+//     }
+// }

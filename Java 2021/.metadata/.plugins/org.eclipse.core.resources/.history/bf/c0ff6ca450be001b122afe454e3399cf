@@ -1,0 +1,105 @@
+package animation;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class SlideDemo extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SlideDemo frame = new SlideDemo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	String direction;
+	public SlideDemo() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 619, 435);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLUE);
+		panel.setBounds(156, 88, 244, 204);
+		contentPane.add(panel);
+		
+		JButton btnLeft = new JButton("Left");
+		
+		ActionListener action = new ActionListener() {
+			int i = panel.getWidth();
+			public void actionPerformed(ActionEvent e) {
+				switch(direction) {
+					case "left" : 
+						panel.setSize(i, panel.getHeight());
+						i--;
+						break;
+					case "right":
+						panel.setSize(i, panel.getHeight());
+						i++;
+						break;
+				}
+			}
+		};
+		Timer timer = new Timer(10, action);
+		
+		btnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				direction = "left";
+				timer.stop();
+				timer.start();
+			}
+		});
+		
+		JButton btnRight = new JButton("Right");
+		btnRight.setBounds(425, 345, 89, 23);
+		contentPane.add(btnRight);
+		
+		btnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				direction = "right";
+				timer.stop();
+				timer.start();
+			}
+		});
+		
+		btnLeft.setBounds(66, 345, 89, 23);
+		contentPane.add(btnLeft);
+		
+		
+	}
+	
+	private static void delay(long d) {
+		for(int i = 0 ; i < d * 50000; i++);
+	}
+}

@@ -1,0 +1,13 @@
+package animation;
+
+import javax.swing.JPanel;
+
+public class RotateCom extends JPanel{
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,14 @@
+package puzzle;
+
+import javax.swing.JPanel;
+
+public class Puzzzle1 extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public Puzzzle1() {
+
+	}
+
+}

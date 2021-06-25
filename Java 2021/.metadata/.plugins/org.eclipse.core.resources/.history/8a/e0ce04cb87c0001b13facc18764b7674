@@ -1,0 +1,77 @@
+package animation;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
+public class Animation {
+	// Variables
+	private Timer timer;
+	private Component com;
+
+	
+
+	private int initHeight, initWidth;
+	private boolean flag;
+
+	public Animation(Component com) {
+		this.com = com;
+		initHeight = com.getHeight();
+		flag = true;
+	}
+	public Component getCom() {	  return com;	}
+	public void setCom(Component com) {	  this.com = com;  	}
+
+	public static void slide(Component com, String direction, int speed) {
+
+	}
+
+	public static void slideUp(Component com, int speed) {
+
+	}
+
+	public static void slideDown(Component com, int speed) {
+
+	}
+
+	public static void slideLeft(Component com, int speed) {
+
+	}
+
+	public static void slideRight(Component com, int speed) {
+
+	}
+
+	public void slideToggle(int speed) {
+		ActionListener action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Timer is running... " + initHeight + "  " + flag + " " + com.getHeight());
+				if (flag) {
+					com.setSize(com.getWidth(), com.getHeight() - 1);
+					if (com.getHeight() == 0) {
+						flag = false;
+// 						btnHide.setText("Show");				
+					}
+				} else {
+					com.setSize(com.getWidth(), com.getHeight() + 1);
+					if (com.getHeight() == initHeight) {
+						flag = true;
+						System.out.println("Hello ");
+// 						btnHide.setText("Hide");						
+					}
+				}
+				if (com.getHeight() == 0 || com.getHeight() == initHeight) {
+					timer.stop();
+					System.out.println("Timer is stoped... " + initHeight + "  " + flag + " " + com.getHeight());
+				}
+			}
+		};
+
+		timer = new Timer(speed, action);
+		timer.start();
+	}
+
+}

@@ -1,0 +1,249 @@
+package puzzle;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.MatteBorder;
+
+import graphics.OnDrag;
+import graphics.PButton;
+
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Frame;
+
+public class PuzzleGame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PuzzleGame frame = new PuzzleGame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	
+	//
+	JPanel boardPanel = null;
+	private Random random = new Random();
+	
+	public PuzzleGame() {
+		setUndecorated(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 580);
+		contentPane = new JPanel();
+		contentPane.setInheritsPopupMenu(true);
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		setContentPane(contentPane);
+		setLocationByPlatform(false);
+		
+		// set Drag event
+		new OnDrag(contentPane, PuzzleGame.this);
+		
+		contentPane.setLayout(null);
+		
+		//variables
+		
+		
+		
+		
+		JLabel exitOp = new JLabel("X");
+		exitOp.setForeground(Color.WHITE);
+		exitOp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PuzzleGame.this.dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				exitOp.setForeground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent event) {
+				exitOp.setForeground(Color.white);
+			}
+		});
+		exitOp.setFont(new Font("Consolas", Font.BOLD, 22));
+		exitOp.setBounds(574, 11, 16, 22);
+		contentPane.add(exitOp);
+		
+		JLabel box[] = new JLabel[9];
+		ImageIcon icon[] = new ImageIcon[9];
+		
+		int locX[] = {0, 100, 200, 0, 100, 200, 0, 100, 200  },
+			locY[] = {0, 0, 0, 100, 100, 100, 200, 200, 200  };
+		
+		int []randomIndex = new int[8];
+		int index = 0;
+		boolean flag ;
+		while(true) {
+			int data = random.nextInt(9) + 1;	
+			if(index == 0)
+				randomIndex[index++] = data;
+			else {
+				flag = false;
+				for(int j = 0; j <= index; j++) {
+					if(randomIndex[j] == data) {
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					randomIndex[index++] = data;
+			}
+			if(index == 8)
+				break;
+		}
+		
+		System.out.println("Random indexes : "+Arrays.toString(randomIndex));
+		
+		for(int i = 0; i < icon.length; i++) {
+			icon[i] = new ImageIcon("src/puzzle/Photo/" + (1 + i) + ".jpg");
+            box[i] = new JLabel(icon[i]);
+            // add label name for ActionButton class
+            box[i].setName("b" + i);
+            box[i].setSize(100, 100);
+            box[i].setBorder(new MatteBorder(1, 1, 1, 1, Color.blue));
+            box[i].setLocation(locX[randomIndex[i]], locY[randomIndex[i]]);
+		}
+		
+		
+		JPanel puzzle = new JPanel();
+		puzzle.setBounds(68, 111, 428, 402);
+		puzzle.setBackground(new Color(0, 0, 0, 0) );
+		puzzle.setLayout(null);
+		
+		PButton puzzle1 = new PButton("Puzzle 1");
+		
+		puzzle1.setBounds(137, 44, 200, 42);
+		puzzle1.setStartColor(Color.magenta);
+		puzzle1.setEndColor(Color.blue);
+		puzzle.add(puzzle1);
+		
+		PButton puzzle2 = new PButton("Puzzle 2");
+		puzzle2.setBounds(137, 97, 200, 42);
+		puzzle2.setStartColor(Color.magenta);
+		puzzle2.setEndColor(Color.blue);
+		puzzle.add(puzzle2);
+		
+    	PButton puzzle3 = new PButton("Puzzle 3");
+    	puzzle3.setBounds(137, 155, 200, 42);
+    	puzzle3.setStartColor(Color.magenta);
+		puzzle3.setEndColor(Color.blue);
+		puzzle.add(puzzle3);
+    	
+    	PButton puzzle4 = new PButton("Puzzle 4");
+    	puzzle4.setBounds(137, 211, 200, 42);
+    	puzzle4.setStartColor(Color.magenta);
+		puzzle4.setEndColor(Color.blue);
+		puzzle.add(puzzle4);
+
+		
+		PButton puzzle5 = new PButton("Puzzle 5");
+		puzzle5.setBounds(137, 264, 200, 42);
+		puzzle5.setStartColor(Color.magenta);
+		puzzle5.setEndColor(Color.blue);
+		puzzle.add(puzzle5);
+		
+		PButton puzzle6 = new PButton("Puzzle 6");
+		puzzle6.setBounds(137, 321, 200, 42);
+		puzzle6.setStartColor(Color.magenta);
+		puzzle6.setEndColor(Color.blue);
+		puzzle.add(puzzle6);
+    	
+		
+		contentPane.add(puzzle);
+		// Board
+		boardPanel = new JPanel();
+		boardPanel.setVisible(false);
+		boardPanel.setAutoscrolls(true);
+		boardPanel.setLayout(null);
+		boardPanel.setBackground(new Color(230, 120, 0, 0));
+		boardPanel.setBounds(10, 112, 570, 402);
+		contentPane.add(boardPanel);
+		boardPanel.validate();
+		
+		
+		JPanel board = new JPanel();
+		board.setBounds(133, 43, 301, 301);
+		boardPanel.add(board);
+		board.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.BLUE));
+		board.setLayout(null);
+		
+		for(int i = 0; i < box.length - 1; i++)
+		  board.add(box[i]);
+		
+		// ADD ACTION ON buttons
+		ActionButton actionButton = new ActionButton();
+		actionButton.addButton(box);
+		
+		
+		//
+			
+		JLabel lblPhotoPuzzleGame = new JLabel("Photo Puzzle Game");
+		lblPhotoPuzzleGame.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLUE));
+		lblPhotoPuzzleGame.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblPhotoPuzzleGame.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPhotoPuzzleGame.setForeground(Color.BLUE);
+		lblPhotoPuzzleGame.setFont(new Font("Consolas", Font.BOLD, 32));
+		lblPhotoPuzzleGame.setBounds(25, 11, 495, 62);
+		contentPane.add(lblPhotoPuzzleGame);
+				
+		
+		JLabel lblDevelopedBy = new JLabel("Developed By : Om prakash kumar");
+		lblDevelopedBy.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblDevelopedBy.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDevelopedBy.setForeground(Color.BLUE);
+		lblDevelopedBy.setFont(new Font("Consolas", Font.BOLD, 18));
+		lblDevelopedBy.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLUE));
+		lblDevelopedBy.setBounds(68, 533, 467, 62);
+		contentPane.add(lblDevelopedBy);
+		
+		JLabel backgroundImg = new JLabel("");
+		backgroundImg.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		backgroundImg.setIcon(new ImageIcon("C:\\Users\\Omkarthik\\Pictures\\puzzle1.jpg"));
+		backgroundImg.setBounds(0, 0, 600, 580);
+		contentPane.add(backgroundImg);
+		
+		
+		puzzle1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				puzzle.setVisible(false);
+				boardPanel.setVisible(true);
+			}
+		});
+		
+		contentPane.validate();
+		this.validate();
+	}
+}

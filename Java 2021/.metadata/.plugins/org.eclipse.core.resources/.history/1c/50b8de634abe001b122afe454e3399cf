@@ -1,0 +1,22 @@
+package animation;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+public class RotateCom extends JPanel{
+	private static final long serialVersionUID = 1L;	
+	public static void main(String[] args) {
+		new RotateCom();
+	}
+
+	@Override
+	protected void printComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.printComponent(g);
+		
+		Graphics2D g2d = (Graphics2D) g.create();
+		
+	}
+}

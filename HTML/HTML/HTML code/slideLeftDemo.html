@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 300px;
+            width: 300px;
+            border :1px solid blue;
+            position: relative;
+            
+        }   
+        .overlay{
+            position: absolute;
+         /*   height:0px;
+            width: 300px;
+            /* top: 0;   */   /* down slide  */
+            bottom : 0;       /* up slide  /*
+*/
+            height: 100%;
+            width: 0;
+            right : 0;
+            
+            overflow: hidden;
+            background-color : rgb(64, 121, 245);
+            transition:  1s ease-in;
+        }
+        .container:hover .overlay{
+            width: 100%;
+        }
+
+        .overlay div{
+            text-transform: uppercase;
+            color : rgb(255, 255, 255);
+            font-size : 40px;
+            font-weight : bold;
+            position : absolute;
+            overflow: hidden;
+            top : 50%;
+            left : 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <img src="./image/ful.jpg">
+        <div class='overlay'>
+            <div> prakash </div>
+        </div>
+    </div>
+</body>
+
+</html>

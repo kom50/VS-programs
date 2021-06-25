@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Slide box demo</title>
+
+    <style>
+
+        #main{
+            /* margin: 0.1%; */
+            box-sizing:content-box;
+            /* box-shadow: 0px 2px 4px gray; */
+            padding: 1%;
+            /* width: 100; */
+            /* height : 560px; */
+            overflow:visible;
+        }
+
+        body{
+            background-color: aliceblue;
+            
+        }
+        .page{
+            margin : 1%;
+            width : 98%;
+            height : 100%;
+        }
+        #main  div:nth-child(2){
+            display : none;
+        }
+
+        #main  div:nth-child(3){
+            display : none;
+        }
+
+        button{
+            margin-left: 10%;
+            padding: 10px;
+            width: 80px;
+            position: relative;
+            margin-top: 2%;
+            background-color: blueviolet;
+            color: white;
+            outline: none;
+            border-radius: 30px;
+            border: 0px solid white;
+            box-sizing:content-box ;
+        }
+        button:active{
+            box-shadow: 1px 1px 5px blue;
+            background-color: rgb(171, 100, 236);
+
+        }
+
+        .box{
+            background-color: white;
+
+            box-shadow: 1px 3px 11px rgb(236, 229, 229);
+            padding: 5%;;
+            width: 90%;
+            margin: 0;
+            position : relative;
+            margin-top: 20px;
+        }
+       .box:hover{
+           left : -2%;
+            box-shadow: 1px 3px 5px rgb(241, 205, 205);
+            width: 94%;
+            border-radius: 1%;
+       }
+       pre{
+           padding: 1px;;
+       }
+       p{
+           text-indent: 20px;
+           font-size: 17px;
+           /* font-family: se; */
+       }
+       p::first-letter{
+           font-size: 30px;;
+       }
+    </style>
+
+</head>
+<body>
+    
+    <div id="main">
+        <div class="page" id="div1">
+            <h2>Java language</h2>
+            <p class="box">
+                Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language.
+                Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the father of Java. Before Java, its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed the Oak name to Java.
+            </p>
+            <pre class="box">
+class Simple{  
+    public static void main(String args[]){  
+        System.out.println("Hello Java");  
+    }  
+}  
+            </pre>
+            <blockquote class="box">
+                Hello friends, My name is om prakash karthik, and i am a computer scrience student. I am graduated in computer scrience.<br>
+                <cite style="position : relative; left: 50%" > <b>Om prakash karthik </b></cite>
+            </blockquote>
+        </div>
+        <div class="page" id="div2">
+            <h2>C++ language</h2>
+            <p class="box">
+                C++ is a general purpose, case-sensitive, free-form programming language that supports object-oriented, procedural and generic programming.
+                C++ is a middle-level language, as it encapsulates both high and low level language features.
+                C++ programming language was developed in 1980 by Bjarne Stroustrup at bell laboratories of AT&T (American Telephone & Telegraph), located in U.S.A.
+                Bjarne Stroustrup is known as the founder of C++ language.
+            </p>
+            <pre class="box">
+#include <iostream>  
+using namespace std;  
+int main() {  
+    cout << "Hello C++ Programming";  
+    return 0;  
+}  
+            </pre>
+            <blockquote class="box">
+                Hello friends, My name is om prakash karthik, and i am a computer scrience student. I am graduated in computer scrience.<br>
+                <cite style="position : relative; left: 50%" > <b>Om prakash karthik </b></cite>
+            </blockquote>   
+        </div>
+        <div class="page" id="div3">
+            <h2>Python language</h2>
+            <p class="box">
+                Python is a general purpose, dynamic, high-level, and interpreted programming language. It supports Object Oriented programming approach to develop applications. It is simple and easy to learn and provides lots of high-level data structures.
+
+                Python is easy to learn yet powerful and versatile scripting language, which makes it attractive for Application Development.
+                
+                Python's syntax and dynamic typing with its interpreted nature make it an ideal language for scripting and rapid application development.
+                
+                Python supports multiple programming pattern, including object-oriented, imperative, and functional or procedural programming styles.
+            </p>
+            <pre class="box">print("Hello World")  </pre>
+            <blockquote class="box">
+                Hello friends, My name is om prakash karthik, and i am a computer scrience student. I am graduated in computer scrience.<br>
+                <cite style="position : relative; left: 50%" > <b>Om prakash karthik </b></cite>
+            </blockquote>
+        </div>
+        <button id='left' onclick='slide(this.id)'> left</button>
+        <button id='right' onclick='slide(this.id)'> right</button>
+    </div>
+
+    <script type="text/javascript">
+         var main = document.getElementById('main');
+         var pages = main.getElementsByClassName('page');
+         console.log(pages);
+         var curIndex = 0, preIndex = -1;
+
+         function slide(btn) {
+             switch(btn){
+                case 'left':
+                        preIndex = curIndex;
+                        if(curIndex == 0){
+                            curIndex = 2;
+                        }else{
+                            curIndex -= 1;
+                        }
+                        console.log("Left button clicked");  
+                    break;
+                case 'right':
+                        preIndex = curIndex;
+                        if(curIndex == 2){
+                            curIndex = 0;
+                        }else{
+                            curIndex += 1;
+                        }
+                        console.log("Right button clicked");  
+                    break;
+                }
+                pages[preIndex].style.display = 'none';
+                pages[curIndex].style.display = 'block';
+         }
+
+    </script>
+</body>
+</html>

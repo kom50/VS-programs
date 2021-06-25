@@ -1,0 +1,43 @@
+import java.awt.Component;
+import java.awt.Point;
+
+public class Tranform {
+    private int x, y;
+    private Component component;
+    public Tranform() {
+    	
+    }
+    public Tranform(Component component) {
+    	this.component = component;
+    }
+    public void setComponent(Component com) {
+    	component = com;
+    }
+    public void traslate(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    	//Logic 
+    	Point point = component.getLocation();
+        int calX = x + (int) point.getX();
+        int calY = y + (int) point.getY();
+        component.setLocation(calX, calY);
+        
+    }
+    public void traslateX(int x) {
+    	this.x = x;
+    }
+    public void traslateY(int y) {
+    	this.y = y;
+    }
+    public void skew(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    }
+    public void skewX(int x) {
+    	this.x = x;
+    }
+    public void skewY(int y) {
+    	this.y = y;
+    }
+     
+}

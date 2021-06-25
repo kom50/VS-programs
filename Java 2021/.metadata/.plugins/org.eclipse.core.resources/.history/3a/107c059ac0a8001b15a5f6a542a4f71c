@@ -1,0 +1,29 @@
+package application1;
+
+// import com.sun.glass.events.MouseEvent;
+// import com.sun.scenario.effect.impl.state.HVSeparableKernel;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+public class Main extends Application{
+	@Override
+	public void start(Stage primaryStage) {
+		// StackPane root = new StackPane();
+		
+		GridPane root = new GridPane();
+		Button btn1 = new Button("Hello");
+		root.getChildren().add(btn1);
+		Scene scene = new Scene(root, 600, 400);
+		primaryStage.setTitle("First JavaFX Application");
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		btn1.setId("ok");
+	}
+	public static void main(String []args){
+		launch(args);
+	}
+}

@@ -1,0 +1,19 @@
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class onDrag {
+	BackgroundImage.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			int count = e.getClickCount();
+			if(count == 2)
+				Form1.this.dispose();
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			x = e.getX();
+			y = e.getY();
+		}
+		
+	});
+}

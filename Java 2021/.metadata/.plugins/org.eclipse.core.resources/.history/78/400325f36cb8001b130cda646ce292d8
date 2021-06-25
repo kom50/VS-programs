@@ -1,0 +1,27 @@
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+
+import javax.swing.JPanel;
+
+public class GradientPanel extends JPanel {
+	
+	private static final long serialVersionUID = 1L;
+
+	/* Create the panel.	 */
+	public GradientPanel() {
+		
+	}
+	
+	@Override
+	public void paintComponent(Graphics graphics) {
+		Graphics2D graphics2D = (Graphics2D) graphics;
+		Paint paint = new GradientPaint(0, 0, Color.black, this.getWidth(), this.getHeight(), Color.red);
+		graphics2D.setPaint(paint);
+		graphics2D.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		super.paintComponent(graphics2D);
+	}
+}

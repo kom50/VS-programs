@@ -1,0 +1,10 @@
+import com.sun.speech.freetts.Voice;
+
+public class TextToSpeech {
+
+	public static void main(String[] args) {
+		Voice voice;
+
+	}
+
+}

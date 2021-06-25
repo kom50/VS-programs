@@ -1,0 +1,15 @@
+package graphics;
+
+import javax.swing.JFrame;
+
+public class MainClass extends JFrame {
+	public MainClass() {
+		
+	}
+
+	public static void main(String[] args) {
+		Animation1 animation = new Animation1();
+		
+	}
+
+}

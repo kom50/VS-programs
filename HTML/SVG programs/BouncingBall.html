@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Animation</title>
+</head>
+
+<body>
+    <h3>Bouncing Ball Animation</h3>
+    <svg width='500' height='400' style="border:1px solid red;">
+        <circle id='cir' cx='20' cy='20' r='20' style="stroke: none; fill:blue">
+        </circle>
+    </svg>
+    <br>
+    <button onclick='startAnimation()'>Start Animation</button>
+    <button onclick='stopAnimation()'>Stop Animation</button>
+
+    <script>
+        var timerFunction = null;
+        function startAnimation() {
+            if (timerFunction == null) {
+                timerFunction = setInterval(animate, 15);
+            }
+        }
+        function stopAnimation() {
+            if (timerFunction != null) {
+                clearInterval(timerFunction);
+                timerFunction = null;
+            }
+        }
+        var stepSizeX = 5, stepSizeY = 5;
+        var xx = 0, yy = 0;
+        var circle = document.getElementById('cir');
+        function animate() {
+
+            
+
+            if (xx + 20 > 500 || xx < 0)
+                stepSizeX = -stepSizeX;
+
+            if (yy + 20 > 400 || yy < 0)
+                stepSizeY = -stepSizeY;
+                
+            circle.setAttribute('cx', xx);
+            circle.setAttribute('cy', yy);
+
+            xx += stepSizeX;
+            yy += stepSizeY;
+        }
+    </script>
+</body>
+
+</html>

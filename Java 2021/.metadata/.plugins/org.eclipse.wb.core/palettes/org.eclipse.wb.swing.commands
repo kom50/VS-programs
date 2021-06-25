@@ -4,4 +4,45 @@
 		id="org.eclipse.wb.swing.BoxLayout javax.swing.Box createVerticalBox()"
 		category="org.eclipse.wb.swing.layouts"
 		nextEntry="org.eclipse.wb.swing.layouts javax.swing.SpringLayout"/>
+	<moveEntry
+		id="org.eclipse.wb.swing.layouts javax.swing.BoxLayout"
+		category="org.eclipse.wb.swing.layouts"
+		nextEntry="org.eclipse.wb.swing.BoxLayout javax.swing.Box createVerticalBox()"/>
+	<addCategory
+		id="custom_1620703715144"
+		name="GradientButton"
+		description="Using this class we create a gradient button"
+		visible="true"
+		open="true"
+		nextCategory="org.eclipse.wb.swing.system"/>
+	<addComponent
+		id="PButton_1620705597432"
+		name="PButton"
+		description="Custom component: PButton"
+		visible="true"
+		class="PButton"
+		category="custom_1620703715144"/>
+	<addComponent
+		id="PButton_1620707012263"
+		name="PButton"
+		description="Custom component: PButton"
+		visible="true"
+		class="PButton"
+		category="custom_1620703715144"/>
+	<addComponent
+		id="HintTextField_1621267577307"
+		name="HintTextField"
+		description="Custom component: HintTextField"
+		visible="true"
+		class="HintTextField"
+		category="custom_1620703715144"/>
+	<addComponent
+		id="HintTextField_1621267915912"
+		name="HintTextField"
+		description="Custom component: HintTextField"
+		visible="true"
+		class="HintTextField"
+		category="custom_1620703715144"/>
+	<removeEntry
+		id="HintTextField_1621267915912"/>
 </commands>

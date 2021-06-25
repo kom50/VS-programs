@@ -22,7 +22,6 @@ public class Main extends Application {
 			btn1.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					// TODO Auto-generated method stub
 					System.out.println("hello world");
 				}
 			});
@@ -34,11 +33,11 @@ public class Main extends Application {
 			Scene scene = new Scene(root, 600, 400);
 			primaryStage.setTitle("First JavaFX Application");
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			btn1.setId("ok");
+			// btn1.setId("ok");
 
 			btn1.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent me) {
-
+					System.out.println("hello world");
 				}
 			});
 			primaryStage.setScene(scene);

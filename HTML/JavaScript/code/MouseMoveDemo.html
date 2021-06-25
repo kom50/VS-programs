@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+
+    <style type="text/css">
+        canvas{
+            border : 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>Draw data</h3>
+    <canvas id='pad' width='400' height='300'>
+    </canvas>
+    <br>
+    <input type="color" >
+
+    <script>
+        let canvas = document.getElementById('pad');
+        let context = canvas.getContext('2d');
+        console.log(canvas);
+        let pen_down = false;
+        let color;
+        $('#pad').mousemove(function(event){
+            let x = event.pageX - canvas.offsetLeft;
+            let y = event.pageY - canvas.offsetTop;
+            if(pen_down)
+                context.lineTo(x, y);
+            else
+                context.moveTo(x, y);
+            
+            context.strokeStyle = color;
+            context.stroke();
+        });
+        $('#pad').mouseup(function(){
+            pen_down = false;
+        });
+        $('#pad').mousedown(function(){
+            pen_down = true;
+        });
+
+        $('input[type="color"').change(function(){
+            color = this.value;
+        })
+
+    </script>
+</body>
+</html>

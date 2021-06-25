@@ -1,0 +1,13 @@
+import javax.swing.JFrame;
+
+public class TestDemo {
+  public static void main(String arsg[]) {
+	  JFrame frame = new JFrame();
+	  frame.setVisible(true);
+	  frame.setBounds(100, 100, 300, 400);
+	  
+	  Rect rect = new Rect();
+	  
+	  frame.add(rect);
+  }
+}

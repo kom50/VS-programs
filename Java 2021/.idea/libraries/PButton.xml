@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PButton">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PButton.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,16 @@
+
+public class Tranform {
+    private int x, y;
+    
+    public void traslate(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    }
+    public void traslateX(int x) {
+    	this.x = x;
+    }
+    public void traslateY(int y) {
+    	this.y = y;
+    }
+     
+}

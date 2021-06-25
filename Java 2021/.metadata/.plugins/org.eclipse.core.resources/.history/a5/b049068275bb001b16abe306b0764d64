@@ -1,0 +1,16 @@
+package hibernateMaven;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App {
+    public static void main( String[] args ) throws Exception {
+        System.out.println( "Hello World!" );
+        Configuration cfg = new Configuration();
+        cfg.configure(/HibernateMavenProject/src/main/java/hibernateMaven/hibenate.cfg.xml);
+        SessionFactory factory = (SessionFactory) cfg.buildSessionFactory();
+        
+        
+    }
+}

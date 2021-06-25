@@ -1,0 +1,14 @@
+INDEX VERSION 1.131+G:\VS programs\runtime-New_configuration\.metadata\.plugins\org.eclipse.jdt.core
+2043929198.index
+304597572.index
+1375006630.index
+468916598.index
+2328269416.index
+3957093596.index
+782913521.index
+603248393.index
+210524568.index
+2506192191.index
+3698212347.index
+526361463.index
+450982933.index

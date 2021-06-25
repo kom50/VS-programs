@@ -1,0 +1,33 @@
+import java.awt.Component;
+
+public class Tranform {
+    private int x, y;
+    private Component component;
+    public void setComponent(Component com) {
+    	component = com;
+			}
+    public Tranform(Component component) {
+    	this.component = component;
+    }
+    public void traslate(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    }
+    public void traslateX(int x) {
+    	this.x = x;
+    }
+    public void traslateY(int y) {
+    	this.y = y;
+    }
+    public void skew(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    }
+    public void skewX(int x) {
+    	this.x = x;
+    }
+    public void skewY(int y) {
+    	this.y = y;
+    }
+     
+}

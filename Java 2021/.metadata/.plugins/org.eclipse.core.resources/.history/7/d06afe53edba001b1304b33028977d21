@@ -1,0 +1,31 @@
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+
+public class TestDemo {
+  public static void main(String arsg[]) {
+	  JFrame frame = new JFrame();
+	  frame.setVisible(true);
+	  frame.setBounds(100, 100, 600, 500);
+	  frame.setLayout(null);
+	  
+	  Rect rect = new Rect();
+	  rect.setBounds(100, 50, 200, 200);
+	  
+	  rect.setText("Circle");
+	  
+	  rect.setStrokeWidth(16);
+	  rect.setStroke(Color.pink);
+	  rect.setRadius(150);
+	  frame.add(rect);
+	  
+	  rect.setFont(new Font("Arial", Font.BOLD, 25));
+	  rect.setForeground(new Color(255, 230, 130));
+	  
+	  Tranform tranform = new Tranform(rect);
+//	  tranform.traslate(100, 100);
+//	  tranform.skew(100, 50);
+	  
+  }
+}

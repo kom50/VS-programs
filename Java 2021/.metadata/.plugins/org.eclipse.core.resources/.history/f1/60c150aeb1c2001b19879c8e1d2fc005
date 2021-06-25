@@ -1,0 +1,22 @@
+package graphics;
+
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class Animation1 extends JPanel{
+	
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		g.setColor(Color.white);
+		
+	}
+
+	Animation1(){
+		
+	}
+	
+	
+}

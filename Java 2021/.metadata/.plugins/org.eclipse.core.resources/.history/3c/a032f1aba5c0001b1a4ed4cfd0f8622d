@@ -1,0 +1,24 @@
+package puzzle;
+
+import javax.swing.JPanel;
+import java.awt.Color;
+
+public class Puzzzle1 extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Puzzzle1() {
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(new Color(0, 0, 0, 0));
+		panel.setBounds(10, 112, 570, 402);
+		add(panel);
+		
+	    
+      
+	}
+
+}

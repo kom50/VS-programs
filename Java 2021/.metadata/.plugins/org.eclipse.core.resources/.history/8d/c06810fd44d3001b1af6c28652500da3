@@ -1,0 +1,82 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+
+public class Test1 extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Test1 frame = new Test1();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Test1() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 486, 343);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		textField = new JTextField();
+		textField.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				System.out.println(e.getDot());
+				System.out.println(textField.getCaret().getMark());
+			}
+		});
+		textField.setBounds(190, 11, 115, 29);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(58, 74, 230, 133);
+		contentPane.add(scrollPane);
+		
+		JTextArea textArea = new JTextArea();
+		/*
+		 * textArea.addInputMethodListener(new InputMethodListener() { public void
+		 * caretPositionChanged(InputMethodEvent event) {
+		 * System.out.println(event.getCommittedCharacterCount());
+		 * System.out.println(textArea.getCaret().getMark()); } public void
+		 * inputMethodTextChanged(InputMethodEvent event) {
+		 * System.out.println(event.getWhen());
+		 * System.out.println(textArea.getCaret().getMark()); } });
+		 */
+		textArea.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				System.out.println(e.getDot());
+				System.out.println(textArea.getCaret().getMark());
+			}
+		});
+		scrollPane.setViewportView(textArea);
+	}
+}

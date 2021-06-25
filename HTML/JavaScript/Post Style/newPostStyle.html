@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new Post Style</title>
+
+    <style>
+        #post_menu ul{
+            list-style: none;
+            position: absolute;
+            top : -14px;
+            left : -38px;
+        }
+         #post_menu ul li{
+            display: inline-block;
+            border : 1px solid blue;
+            padding : 5px;
+            width : 50px;
+            text-align : center;
+            border-radius : 7px;
+            font-weight: bold;
+            color : white;
+            background-color :blue;
+            border-bottom: 0px solid white;
+        }
+        #post_menu ul li:first-child{
+            color : blue;
+            background-color: white;
+        }
+        #post_menu ul li:hover{
+            cursor: pointer;
+        }
+
+        #postMainBox{
+            /* border : 1px solid blue; */
+            width : 90%;
+            height : 450px;
+            margin : 5%;
+        }
+
+        #post_menu{
+            position: relative;
+            top : 0px;
+            /* border:  1px solid blue; */
+            height : 35px;
+            left : 0px;
+        }
+        .post_box{
+            display: none;
+            overflow : auto;
+            border:  1px solid  blue;
+            height : 420px;
+            margin-top: -5px;
+            /* border-top  : 0px solid white; */
+        }
+        #post_html{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Blogger Post Style</h3>
+    <div id='postMainBox'> 
+        <div id='post_menu'>
+            <ul>
+                <li id='htmlBtn' onclick="clickfun(this)" >HTML</li>
+                <li id='cssBtn' onclick="clickfun(this)" >CSS</li>
+                <li id='jsBtn' onclick="clickfun(this)" >JS</li>
+                <li id='resultBtn' onclick="clickfun(this)" >Result</li>
+            </ul>
+        </div>
+
+        <div id='post_html' class='post_box'>
+            <h2> HTML </h2>
+
+        </div>
+        <div id='post_css' class='post_box'>
+            <h2> CSS</h2>
+
+        </div>
+        <div id='post_js'class='post_box' >
+            <h2> JavaScript</h2>
+
+        </div>
+        <div id='post_result' class='post_box'>
+            <h2> Result</h2>
+            
+        </div>
+    </div>
+
+
+    <script>
+        let buttons = document.querySelectorAll('#post_menu ul li');
+        let box = document.querySelectorAll('.post_box');
+
+        let styles = {
+                    'backgroundColor' : 'white',
+                    'color' : 'blue'
+                   
+        };
+        let simpleStyles = {
+                    'backgroundColor' : 'blue',
+                    'color' : 'white'
+        };
+        function clickfun(btn){
+            for (let i = 0; i < 4; i++){
+                box[i].style.display = 'none';
+                Object.assign(buttons[i].style, simpleStyles);
+            }
+            switch (btn.id){
+                case 'htmlBtn':
+                    box[0].style.display = 'block';
+                    break;
+                case 'cssBtn':
+                    box[1].style.display = 'block';
+                    break;
+                case 'jsBtn':
+                    box[2].style.display = 'block';
+                    break;
+                case 'resultBtn':
+                    box[3].style.display = 'block';
+                    break;
+            }
+            Object.assign(btn.style, styles);
+        }
+
+    </script>
+</body>
+</html>

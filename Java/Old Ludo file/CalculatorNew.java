@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
 
 public class CalculatorNew extends JFrame implements ActionListener {
     JButton jb[];
@@ -52,6 +54,7 @@ public class CalculatorNew extends JFrame implements ActionListener {
         gbc.gridwidth = 4;
         add(text, gbc);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        validate();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -153,7 +156,7 @@ public class CalculatorNew extends JFrame implements ActionListener {
              */
         }
         if (obj == jb[15]) {
-            boolean f = false;
+            // boolean f = false;
             s = text.getText();
             if (!s.isEmpty() && s.charAt(0) != '-') {
                 if (isDigit(s.charAt(s.length() - 1))) {
@@ -298,23 +301,23 @@ public class CalculatorNew extends JFrame implements ActionListener {
     String operation(char op, String lSideop, String rSideop) {
         float result = 0;
         switch (op) {
-        case '/':
-            result = Float.parseFloat(lSideop) / Float.parseFloat(rSideop);
-            break;
-        case '*':
-            result = Float.parseFloat(lSideop) * Float.parseFloat(rSideop);
-            break;
-        case '%':
-            result = Float.parseFloat(lSideop) % Float.parseFloat(rSideop);
-            break;
-        case '+':
-            result = Float.parseFloat(lSideop) + Float.parseFloat(rSideop);
-            break;
-        case '-':
-            float b = Float.parseFloat(rSideop);
-            float a = Float.parseFloat(lSideop);
-            result = a - b;
-            break;
+            case '/':
+                result = Float.parseFloat(lSideop) / Float.parseFloat(rSideop);
+                break;
+            case '*':
+                result = Float.parseFloat(lSideop) * Float.parseFloat(rSideop);
+                break;
+            case '%':
+                result = Float.parseFloat(lSideop) % Float.parseFloat(rSideop);
+                break;
+            case '+':
+                result = Float.parseFloat(lSideop) + Float.parseFloat(rSideop);
+                break;
+            case '-':
+                float b = Float.parseFloat(rSideop);
+                float a = Float.parseFloat(lSideop);
+                result = a - b;
+                break;
         }
         String d = String.valueOf(result);
         int a = d.indexOf(".");

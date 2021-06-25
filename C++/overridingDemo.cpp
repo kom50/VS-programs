@@ -3,7 +3,7 @@
  class A {
      public:
         void sayHello(){
-            cout<<endl<<"Parent class (:";
+            cout<<endl<<"Parent class ( :";
         }
  };
 

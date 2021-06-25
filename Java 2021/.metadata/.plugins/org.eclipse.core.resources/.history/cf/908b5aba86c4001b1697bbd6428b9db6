@@ -1,0 +1,64 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import code.GradientPanel;
+import code.PButton;
+
+public class ToggleButton extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ToggleButton frame = new ToggleButton();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ToggleButton() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 511, 363);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		GradientPanel box = new GradientPanel();
+		box.setBounds(222, 81, 60, 30);
+		box.setRadius(30);
+		box.setEndColor(Color.black);
+		
+		contentPane.add(box);
+		box.setRadius(30);
+		box.setEndColor(Color.blue);
+		box.setLayout(null);
+		
+		PButton btn = new PButton();
+		btn.setBounds(0, 0, 30, 30);
+		btn.setBorderRadius(30);
+		box.add(btn);
+		
+	}
+}

@@ -1,0 +1,14 @@
+import javax.swing.JPanel;
+
+public class Semester1Panel extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Semester1Panel() {
+		this.setBounds(10, 82, 980, 542);
+	}
+
+}

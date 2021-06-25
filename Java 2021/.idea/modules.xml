@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Collection Programs/Collection Programs.iml" filepath="$PROJECT_DIR$/Collection Programs/Collection Programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Core java/Core java.iml" filepath="$PROJECT_DIR$/Core java/Core java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exception Programs/Exception Programs.iml" filepath="$PROJECT_DIR$/Exception Programs/Exception Programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/File Handling/File Handling.iml" filepath="$PROJECT_DIR$/File Handling/File Handling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HibernateMavenProject/src/HibernateMavenProject.iml" filepath="$PROJECT_DIR$/HibernateMavenProject/src/HibernateMavenProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaFXNew/JavaFXNew.iml" filepath="$PROJECT_DIR$/JavaFXNew/JavaFXNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaFXP/JavaFXP.iml" filepath="$PROJECT_DIR$/JavaFXP/JavaFXP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaTextSpeech/JavaTextSpeech.iml" filepath="$PROJECT_DIR$/JavaTextSpeech/JavaTextSpeech.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibraryManagement/LibraryManagement.iml" filepath="$PROJECT_DIR$/LibraryManagement/LibraryManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Swing Programs/Swing Programs.iml" filepath="$PROJECT_DIR$/Swing Programs/Swing Programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaFXProjects/javaFXProjects.iml" filepath="$PROJECT_DIR$/javaFXProjects/javaFXProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HibernateMavenProject/target/target.iml" filepath="$PROJECT_DIR$/HibernateMavenProject/target/target.iml" />
+    </modules>
+  </component>
+</project>

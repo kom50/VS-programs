@@ -1,0 +1,116 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import code.GradientPanel;
+import code.PButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public abstract class ToggleButton extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ToggleButton frame = new ToggleButton() {
+						@Override
+						public void onFunction() {
+							super.onFunction();
+							System.out.println("Hello on");
+						}
+
+						@Override
+						public void offFunction() {
+							super.offFunction();
+							System.out.println("Hello off");
+							
+						}
+						
+					};
+					frame.setSize(100);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	
+	int size = 80;
+//	public int getSize() {
+//		return size;
+//	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public ToggleButton() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 511, 363);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		GradientPanel box = new GradientPanel();
+		box.setBounds(222, 81, size , size / 2);
+		box.setStartColor(Color.gray);
+		box.setEndColor(Color.gray);
+		box.setRadius(size / 2);
+		box.setLayout(null);
+
+		contentPane.add(box);
+
+		PButton btn = new PButton();
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (btn.getX() == 1) {
+					btn.setLocation(size / 2, 1);
+					box.setStartColor(Color.blue);
+					box.setEndColor(Color.blue);
+					onFunction();
+				}
+				else {
+					btn.setLocation(1,  1);
+					box.setStartColor(Color.gray);
+					box.setEndColor(Color.gray);
+					offFunction();
+				}
+			}
+		});
+		btn.setBounds(1, 1, size / 2  - 2, size / 2 -2);
+		btn.setBorderRadius(size / 2);
+		btn.setStartColor(Color.white);
+		box.add(btn);
+
+	}
+	
+	public void onFunction() {
+		
+	}
+	
+	public void offFunction() {
+		
+	}
+}

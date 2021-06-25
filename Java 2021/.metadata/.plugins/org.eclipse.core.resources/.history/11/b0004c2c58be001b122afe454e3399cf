@@ -1,0 +1,83 @@
+package animation;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+
+public class HideShow extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+//	private final Action action = new SwingAction();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					HideShow frame = new HideShow();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	Timer timer;
+	public HideShow() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 657, 460);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
+		panel.setBounds(130, 53, 353, 181);
+		contentPane.add(panel);
+		
+		ActionListener action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		};
+		timer = new Timer(10, action);
+		JButton btnHide = new JButton("Hide");
+		btnHide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				btnHide.setBorder(new MatteBorder(0, 0, 0, 1, Color.white));
+			}
+		});
+		
+		
+		btnHide.setFocusable(false);
+		btnHide.setBorder(null);
+		btnHide.setBackground(Color.BLUE);
+		btnHide.setBounds(254, 309, 114, 40);
+		contentPane.add(btnHide);
+	}
+
+}

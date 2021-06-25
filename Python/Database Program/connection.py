@@ -24,4 +24,3 @@ except Exception as e:
 
 # finally:
 # conn.close()
-    

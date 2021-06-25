@@ -1,0 +1,104 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JWindow;
+
+import code.GradientPanel;
+import code.PButton;
+
+public abstract class ToggleButton{
+
+GradientPanel box;
+
+public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+
+					ToggleButton frame = new ToggleButton() {
+						@Override
+						public void onFunction() {
+							super.onFunction();
+							System.out.println("Hello on");
+						}
+
+						@Override
+						public void offFunction() {
+							super.offFunction();
+							System.out.println("Hello off");
+
+						}
+
+					};
+
+					JFrame frame1 = new JFrame();
+					frame1.setVisible(true);
+					frame1.setBounds(100, 100, 300, 300);
+					frame1.setLayout(null);
+
+					frame1.setLocation(100, 100);
+
+					frame.setOn(frame1);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+    public void setlocation(int x, int y) {
+    	box.setLocation(x,  y);
+    }
+	public ToggleButton() {
+
+		box = new GradientPanel();
+		box.setBounds(222, 81, 60, 30);
+		box.setRadius(30);
+		box.setStartColor(Color.gray);
+		box.setEndColor(Color.gray);
+		box.setRadius(30);
+		box.setLayout(null);
+
+		PButton btn = new PButton();
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (btn.getX() == 1) {
+					btn.setLocation(30, 1);
+					box.setStartColor(Color.blue);
+					box.setEndColor(Color.blue);
+					onFunction();
+				} else {
+					btn.setLocation(1, 1);
+					box.setStartColor(Color.gray);
+					box.setEndColor(Color.gray);
+					offFunction();
+				}
+			}
+		});
+		btn.setBounds(1, 1, 28, 28);
+		btn.setBorderRadius(30);
+		btn.setStartColor(Color.white);
+		box.add(btn);
+
+	}
+
+	public void onFunction() {
+
+	}
+
+	public void offFunction() {
+
+	}
+
+	public void setOn(JFrame frame1) {
+		frame1.add(box);
+	}
+}

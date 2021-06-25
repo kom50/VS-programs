@@ -1,0 +1,60 @@
+package libraryproject;
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import code.PButton;
+
+public class Semester1Panel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	public Semester1Panel() {
+		System.out.println("Semester 1 PAge");
+		this.setBounds(10, 82, 980, 542);
+		this.setBackground(new Color(0, 0, 0, 0));
+		setLayout(null);
+		
+		PButton button = new PButton("Add Book Details");
+		button.setBounds(43, 112, 212, 48);
+		button.setStartColor(Color.green);
+		add(button);
+		
+		PButton button_1 = new PButton("Show All Book Details");
+		button_1.setBackground(Color.green);
+		button_1.setBounds(43, 171, 212, 54);
+		add(button_1);
+		
+		PButton button_2 = new PButton();
+		button_2.setBounds(43, 236, 212, 52);
+		add(button_2);
+		
+		PButton button_3 = new PButton();
+		button_3.setBounds(43, 299, 212, 51);
+		add(button_3);
+		
+		PButton button_4 = new PButton();
+		button_4.setBounds(43, 361, 212, 48);
+		add(button_4);
+		
+		button.setStartColor(Color.green);
+		button_1.setStartColor(Color.green);
+		button_2.setStartColor(Color.green);
+		button_3.setStartColor(Color.green);
+		button_4.setStartColor(Color.green);
+		
+		button.setEndColor(Color.MAGENTA);
+		button_1.setEndColor(Color.MAGENTA);
+		button_2.setEndColor(Color.MAGENTA);
+		button_3.setEndColor(Color.MAGENTA);
+		button_4.setEndColor(Color.MAGENTA);
+		
+		button.setFillButton(true);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0, 0));
+		panel.setBounds(301, 11, 669, 520);
+		add(panel);
+	}
+}

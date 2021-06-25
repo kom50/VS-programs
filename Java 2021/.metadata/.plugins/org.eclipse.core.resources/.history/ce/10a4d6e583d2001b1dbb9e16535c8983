@@ -1,0 +1,100 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import javax.swing.JToggleButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+
+public class ComponentDemo extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ComponentDemo frame = new ComponentDemo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ComponentDemo() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 736, 502);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Java", "JavaFX", "JavaScript", "HTML", "CSS", "jQuery"}));
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setBounds(168, 65, 168, 30);
+		contentPane.add(comboBox);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(tglbtnNewToggleButton.getText());
+				if(tglbtnNewToggleButton.isSelected()) {
+					System.out.println("Off");
+					tglbtnNewToggleButton.setText("Off");
+					
+				}
+				else {
+					System.out.println("On");
+					tglbtnNewToggleButton.setText("ON");
+					
+				}
+			}
+		});
+		tglbtnNewToggleButton.setBounds(173, 117, 121, 23);
+		contentPane.add(tglbtnNewToggleButton);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(411, 22, 276, 186);
+		contentPane.add(textPane);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(30, 187, 177, 146);
+		contentPane.add(editorPane);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setEnabled(false);
+		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
+		spinner.setBounds(405, 282, 160, 30);
+		contentPane.add(spinner);
+	}
+}

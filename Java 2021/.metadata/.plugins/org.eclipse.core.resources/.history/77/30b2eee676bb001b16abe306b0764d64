@@ -1,0 +1,21 @@
+package hibernateMaven;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App {
+    public static void main( String[] args ) throws Exception {
+        System.out.println( "Hello World!" );
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        
+    }
+}

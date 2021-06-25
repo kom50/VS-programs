@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 300px;
+            width: 300px;
+            border :1px solid blue;
+            position: absolute;
+            
+        }   
+        .slide{
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            top: 0;
+            opacity: 0;
+            background-color : rgb(64, 121, 245);
+            transition : opacity 1s
+        }
+        .container:hover .slide{
+            width: 100%;
+            opacity: 1;
+        }
+
+        .slide p{
+            color : rgb(5, 5, 5);
+            font-size : 40px;
+            font-weight : bold;
+            text-align: center;
+            line-height: 220px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <img src="./image/ful.jpg">
+        <div class='slide'>
+            <p> prakash </p>
+        </div>
+    </div>
+</body>
+
+</html>

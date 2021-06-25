@@ -1,0 +1,10 @@
+2021-05-31 23:49:35,954 [Worker-16: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: 1:1:0.0.1-SNAPSHOT @ G:\VS programs\Java 2021\HibernateMavenProject\pom.xml.
+2021-05-31 23:49:38,616 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-05-31 23:49:38,616 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\VS programs\Java 2021\HibernateMavenProject\src\main\resources
+2021-05-31 23:49:39,193 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-05-31 23:49:39,194 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\VS programs\Java 2021\HibernateMavenProject\src\test\resources
+2021-05-31 23:49:39,223 [Worker-22: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: 1:1:0.0.1-SNAPSHOT @ G:\VS programs\Java 2021\HibernateMavenProject\pom.xml.
+2021-05-31 23:49:40,528 [Worker-19: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-05-31 23:49:40,528 [Worker-19: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\VS programs\Java 2021\HibernateMavenProject\src\main\resources
+2021-05-31 23:49:40,531 [Worker-19: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-05-31 23:49:40,531 [Worker-19: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\VS programs\Java 2021\HibernateMavenProject\src\test\resources

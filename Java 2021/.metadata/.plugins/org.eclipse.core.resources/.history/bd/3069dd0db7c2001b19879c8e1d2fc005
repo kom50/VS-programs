@@ -1,0 +1,48 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class Animation2 extends JPanel{
+    
+	int width = 50, height = 50;
+	int stepSize = 10;
+	
+	int x = 0, y = 0;
+	int stepX = 10, stepY = 10;
+	
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		g.setColor(Color.white);
+		g.fillOval(x, y, 50, 50);
+		
+		if(x + 50 > width || x < 0)
+			stepX = -stepX;
+		
+		if(y + 50 > height)
+			stepY = -stepY;
+		
+		x = x + stepX;
+	    y = y + stepY;	
+	    
+		try {
+			Thread.sleep(70);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		repaint();
+		System.out.println("Paint ");
+	}
+	
+	public Animation2(int width, int height) {
+		this.width  = width;
+		this.height = height;
+		
+		this.setBackground(Color.black);
+	}
+}

@@ -1,0 +1,21 @@
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JLabel;
+
+public class Semester1Panel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	public Semester1Panel() {
+		System.out.println("Semester 1 PAge");
+		setBackground(Color.GREEN);
+		this.setBounds(10, 82, 980, 542);
+		this.setBackground(new Color(0, 0, 0, 0));
+		setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setVisible(false);
+		label.setBounds(10, 11, 960, 520);
+		add(label);
+	}
+}

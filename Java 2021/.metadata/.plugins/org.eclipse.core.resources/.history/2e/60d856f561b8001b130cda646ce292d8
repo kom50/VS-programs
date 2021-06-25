@@ -1,0 +1,31 @@
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
+
+public class onDrag extends MouseAdapter implements MouseMotionListener{
+	JFrame component;
+	int count;
+	int x, y;
+	public onDrag(Component component){
+		this.component = this.component;
+	}
+	public void mouseClicked(MouseEvent e) {
+		int count = e.getClickCount();
+		if(count == 2) {
+			component.dispose();
+	    }
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		x = e.getX();
+		y = e.getY();
+	}
+		
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		component.setLocation(e.getXOnScreen() - x, e.getYOnScreen() - y);
+	}
+}

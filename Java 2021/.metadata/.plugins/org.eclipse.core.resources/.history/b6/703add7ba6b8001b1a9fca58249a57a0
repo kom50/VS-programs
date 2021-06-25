@@ -1,0 +1,9 @@
+import javax.swing.JPanel;
+
+public class Semester1Panel extends JPanel {
+
+	public Semester1Panel() {
+		semesterPanel.setBounds(10, 82, 980, 542);
+	}
+
+}

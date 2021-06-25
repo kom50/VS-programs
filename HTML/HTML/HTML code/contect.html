@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: pink
+        }
+
+        header div {
+            /* border : 1px solid blue; */
+            /* height: 10vh; */
+            display: inline-block;
+            margin: .6vw;
+            margin-left: 1.5vw;
+            position: relative;
+
+        }
+
+        header #left {
+            /* width :vw; */
+            position: relative;
+            top: 10px;
+        }
+
+        #left img {
+            width: 6vw;
+            background-image: url(Untitled-1.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        header #mid {
+            top : -15px;
+            width: 55vw;
+        }
+
+        header #mid ul {
+            list-style-type: none;
+            margin-left: -3vw;
+        }
+
+        #mid ul li {
+            display: inline;
+        }
+
+        ul li a {
+            text-decoration: none;
+            padding: 15px;
+            border: 1px solid blue;
+            margin: 3px;
+            font-weight: bold;
+
+        }
+
+        ul li a:hover {
+            position: relative;
+            top: -5px;
+            color: white;
+            background-color: rgb(55, 0, 255);
+        }
+
+        header #right {
+            top : -35px;
+            right : -150px;
+            width: 18vw;
+        }
+
+        #right input[type="text"] {
+            position: relative;
+            top: 15px;
+            background-image: url(search.png);
+            background-repeat: no-repeat;
+            padding: 10px;
+            background-position: 10px 8px;
+            padding-left: 40px;
+        }
+
+        footer {
+
+            width: 100%;
+            position: relative;
+            left: 1.2vw;
+        }
+
+        footer div {
+            height: 10vh;
+            width: 98%;
+            background-color: rgb(74, 9, 179);
+        }
+
+        #content {
+
+            height: 100vw;
+            width: 100%;
+        }
+
+        #form1 {
+            color: white;
+            width: 15vw;
+            height: 15vw;
+            border: 1px solid blue;
+            padding: 4vw;
+            position: relative;
+            transform: translate(40vw, 50%);
+            background-color: rgb(56, 21, 255);
+            border-radius: 10px;
+            box-shadow: 0px 7px 10px 5px gray, 0px 7px 5px gray;
+        }
+
+        input {
+            margin: 3% 3% 0 0;
+            width: 15vw;
+            outline-style: none;
+            padding: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id='left'>
+            <img src="icons8_sigma_32px_1.png" alt="" srcset="">
+        </div>
+        <div id='mid'>
+            <ul>
+                <li><a href='home.html'>Home</a></li>
+                <li><a href='program.html'>Program </a></li>
+                <li><a href='#'>Language</a></li>
+                <li><a href='#'>Contect us</a></li>
+            </ul>
+
+        </div>
+        <div id='right'>
+            <input type='text' placeholder='search..'>
+        </div>
+    </header>
+    <div id='content'>
+        <div id='form1'>
+            Form
+            <form>
+                <input type="text" name="" id="" placeholder="Enter your name">
+                <input type="email" name="" id="" placeholder="Enter your email">
+                <input type="number" name="" id="" placeholder="Enter your age"> <br>
+                <button> Submit </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            footer
+        </div>
+    </footer>
+</body>
+
+</html>

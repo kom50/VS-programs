@@ -1,0 +1,10 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class Animation1 extends JPanel{
+	
+	Animation1(){
+		
+	}
+}

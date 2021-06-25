@@ -10,7 +10,17 @@
 
 
     <script>
+        var obj = {
+            name : 'ram',
+            age : 20
+        };
+
+        obj.vill = 'Ayodhya';
         
+        with(console){
+            log(obj);
+            log(obj.name);
+        }
     </script>
 </body>
 </html>

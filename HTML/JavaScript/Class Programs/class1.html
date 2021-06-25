@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script >
+        // ECMA Script 5/ 6 
+        class Person{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+            show(){
+                console.log("Name : ",this.name, ", age : ", this.age);
+            }           
+           static sayHello(){
+                console.log("Hello Mer. "+this.name);
+            }
+        };
+
+        //  object
+        let person = new Person("Vikash coode", 21);
+        Person.sayHello();
+        person.show();
+        with(console){
+            log(person)
+            log(typeof person, typeof person.name, typeof person.age, typeof person.show)
+        }
+
+        // inheritence 
+        class Student extends Person {
+            constructor(){
+                super("Ram", 34);
+                super.name = "Rama  ";
+            }
+        }
+
+
+        let student = new Student();
+        student.show();
+        with(console){
+            log(typeof student);
+            log(typeof student.show)
+        }
+    </script>
+</body>
+</html>
