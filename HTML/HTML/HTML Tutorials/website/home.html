@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width= device-width, initial-scale=1">
+    <title> Responsive web page</title>
+    <script src="javaScript Code/menuicon.js"></script>
+    <style>
+        /* importing css file */
+        @import "CSS code/animatemenu.css";
+        @import "css code/logo.css";
+
+
+        body {
+            padding: 5px;
+            /* margin : 0; */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #header {
+            min-height: 100px;
+            /* background-color: #666699; */
+            background-image: linear-gradient(45deg, #d503ff, #666699);
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+        }
+
+
+
+        #title {
+            margin-left: 10px;
+            color: white;
+            font-size: xx-large;
+            margin: auto;
+        }
+
+        #title h4 {
+            font-variant: small-caps;
+        }
+
+        #menu {
+            min-height: 50px;
+            background-color: #999999;
+            position: relative;
+            position: sticky;
+            z-index: 1;
+            margin-top: -17px;
+            background-image: linear-gradient(#d503ff, rgb(48, 25, 92));
+        }
+        
+
+        .container {
+            height: auto;
+            width: auto;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-left: -40px;
+        }
+
+        .container [class*="container"] {
+            border-right: 1px solid rgb(160, 117, 230);
+            padding: 10px;
+            margin-left: 4px;
+            margin-top: 2px;
+        }
+
+        /* 
+        .container [class*="container"]:hover {
+            opacity: .5;
+        } */
+
+        a:hover {
+            color: rgb(9, 255, 0);
+
+        }
+
+        li {
+            list-style-type: none;
+            border-radius: 0 0 30px 0;
+
+        }
+
+        a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            user-select: none;
+
+        }
+
+
+        .search-box {
+            height: inherit;
+            position: absolute;
+            display: inline-block;
+            right: 3%;
+            top: 20%;
+        }
+
+        .search-box input[type='text'] {
+            height: 30px;
+            background-color: rgb(235, 230, 230);
+            padding: 5%;
+            border: 0px solid red;
+            outline-width: 0;
+            border-radius: 1px;
+            color: black;
+            font-size: 16px;
+
+            padding-left: 30px;
+            background-image: url(image/search.png);
+            background-repeat: no-repeat;
+            background-position: 10px 10px;
+        }
+
+        .search-box input[type='text']:focus {
+            background-color: rgb(184, 145, 241);
+        }
+
+        #dropBtn {
+            display: none;
+            margin-top: 2%;
+        }
+
+        #dropBtn #icon {
+            margin: auto;
+            position: relative;
+            top: 14px;
+            left: -44%;
+        }
+
+        /* .dropdown:hover .dropdown-content{
+            display : flex;
+        } */
+
+        #body {
+            min-height: 200vh;
+            position: relative;
+            /* margin-top: 1%; */
+            background-color: #efefef;
+            box-sizing: border-box;
+            /* overflow: auto; */
+        }
+
+        #footer {
+            min-height: 100px;
+            /* background-color: #666699; */
+            background-image: linear-gradient(#d503ff, #666699);
+            color: white;
+            line-height: 100px;
+            font-variant: small-caps;
+            font-size: 20px;
+        }
+
+
+        #header,
+        #menu,
+        #footer {
+            /* margin : auto 3px 3% 3px; */
+            box-shadow: 0px 0px 2px #524d4d;
+            border: 1 px solid black;
+        }
+
+        #logo img {
+            animation: round 10s infinite linear;
+            /* width : 10px; */
+        }
+
+        #body, #footer{
+            margin-top : 15px;
+        }
+
+        @keyframes round {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                flex-direction: column;
+            }
+
+            #dropBtn {
+                display: block;
+            }
+
+            .dropdown-content {
+                display: none;
+            }
+
+            .container [class*="container"] {
+                border-width: 0;
+                border-bottom: 1px solid rgb(160, 117, 230);
+            }
+
+            #header {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 18px;
+            }
+
+            #title {
+                margin-bottom: 10px;
+            }
+
+            /* Search box  */
+            .search-box {
+                right: 6%;
+                top: 10px;
+            }
+
+        }
+    </style>
+</head>
+
+<body onload="animatedMenu()">
+    <div id="header">
+        <div id="logo">
+            <!-- <img src="https://lh3.googleusercontent.com/proxy/jdvf94zYEYZj2UEsxybkY1svsIoSEysT_v-7tvJl0iu_FkahT_drENhmGdEpA0_AOukw9qneRUcOPxs-WcEuPEo-G24XNSw" width='200' height='150'> -->
+            <!-- <img src="image/logo2.png" width='150' height='150'> -->
+            <div class='logo'>
+                <div class='round'>
+                    <div class='eclipse-1'></div>
+                    <div class='eclipse-2'></div>
+                </div>
+                <div class='text'>OM</div>
+            </div>
+        </div>
+        <div id="title">
+            <h4>Programming World</h4>
+            <!-- <p>This is my programming website </p> -->
+        </div>
+    </div>
+    <div id="menu">
+        <!-- <center>MENU</center> -->
+        <div class='dropdown'>
+            <div id="dropBtn">
+                <!-- <img src="https://1.bp.blogspot.com/-RaeM_IusXPU/YNhWo84EW6I/AAAAAAAAKCY/g7MR_RW1OA4MiA7Nj0pNcfw6ABE-nb9BQCLcBGAsYHQ/s0/menuwhite.png" width='24' height='24' alt="X" /> -->
+                <!-- <img src="image/menuwhite.png" width='24' height='24' alt="X" /> -->
+                <div id='icon'>
+                    <div class='line-l1'></div>
+                    <div class='line-l2'></div>
+                    <div class='line-l3'></div>
+                </div>
+            </div>
+            <ul class="container dropdown-content">
+                <li class="container-item1"><a href="home.html">Home</a></li>
+                <li class="container-item2"><a href="#">Language</a></li>
+                <li class="container-item3"><a href="#">Service</a></li>
+                <li class="container-item4"><a href="#">Contact us</a></li>
+                <li class="container-item5"><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+        <div class='search-box'><input type="text" placeholder="Search..."></div>
+    </div>
+    <div id="body">
+        <div class="main-body">
+
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+    <div id="footer">
+        <center>Designed By Om prakash kumar</center>
+    </div>
+
+
+    <script>
+        let btn = document.querySelector('#dropBtn #icon');
+        let con = document.querySelector('.container');
+        let stylesheet = getComputedStyle(con);
+        console.log(btn);
+        btn.addEventListener('click', function () {
+            console.log("btn clicked ", typeof stylesheet.getPropertyValue('display'));
+            if (stylesheet.getPropertyValue('display') == 'none') {
+                con.style.display = 'flex'
+            } else
+                con.style.display = 'none'
+        });
+
+        window.addEventListener('resize', event => {
+            // console.log("window resize - > window.innerWidth ", window.innerWidth," window.outerWidth "+window.outerWidth)
+            console.log("flex")
+            if (window.innerWidth >= 400)
+                con.style.display = 'flex';
+
+        });
+
+        document.querySelector('input[type="text"').addEventListener('keyup', event => {
+            console.log();
+            let data = (event.target.value).trim().toLowerCase();
+            console.log(event.keyCode, data);
+
+            var list = ["Snake Game in C", "Snake Game in C++", "Snake Game in Java",
+                "Snake Game in JavaScript", "Snake Game in Python"
+            ];
+            if(event.keyCode == 13) {   
+                let flag = false;
+                for (let i = 0; i < list.length; i++) {
+                    if ((list[i].toLowerCase()).indexOf(data) != -1){
+                        console.log("Data is found. ", list[i]);
+                        flag = true;
+                    }
+                }
+                if(!flag)
+                console.log("Data is not found.")
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -9,6 +9,38 @@
 </head>
 <body>
     <h3> jQuery </h3>
-    
+    <h2> Tutorial</h2>
+    <button > click me</button>
+    <button > click me</button>
+    <a href="google.com" >google</a>
+    <div style="background-color: yellow;">
+        <p >Click the button to change the background color of this div</p>
+        <button > click me</button>
+    </div>
+    <script >
+
+        $(document).ready(function(){  // $(function(){
+            console.log('hell0') 
+            $('h2').css('color', 'red');
+            $('button').click( function(event){
+                jQuery('div').hide(451000);
+                $(event.target).css({
+                    color : 'red',
+                    fontSize : '22px',
+                    backgroundColor : 'red'
+                });
+            });
+
+
+            //
+            $('a').click(function(event){
+                event.preventDefault(); 
+                console.log(event.isDefaultPrevented())
+
+            })
+
+        });
+
+    </script>
 </body>
 </html>

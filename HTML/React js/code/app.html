@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="package/react.production.min.js"></script>
+  <script src="package/react-dom.production.min.js"></script>
+  <script src="package/babel.min.js"></script>
+  <style>
+      .ok {
+        /* background-color: red; */
+        color: red; 
+      }
+  </style>
+</head>
+<body>
+  <div id="root"> </div>
+  <script type="text/babel">
+    //
+    class Hello extends React.Component {
+        render() {
+          return <h1 class='ok'>Hello World! { 3 + 3+ 34 + 4}. </h1>
+        }
+      }
+
+      //Render
+      ReactDOM.render(<Hello />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>

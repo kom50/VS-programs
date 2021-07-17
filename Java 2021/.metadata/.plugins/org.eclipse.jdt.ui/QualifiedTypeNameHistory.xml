@@ -5,6 +5,17 @@
     <fullyQualifiedTypeName name="java.awt.RenderingHints"/>
     <fullyQualifiedTypeName name="graphics.ToggleButton"/>
     <fullyQualifiedTypeName name="java.awt.Container"/>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="javax.swing.filechooser.FileNameExtensionFilter"/>
+    <fullyQualifiedTypeName name="graphics.Placeholder"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="java.awt.event.FocusListener"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="java.awt.Font"/>
+    <fullyQualifiedTypeName name="javafx.scene.input.MouseEvent"/>
+    <fullyQualifiedTypeName name="javafx.event.Event"/>
+    <fullyQualifiedTypeName name="javafx.event.EventTarget"/>
+    <fullyQualifiedTypeName name="javafx.event.EventType"/>
 </qualifiedTypeNameHistroy>

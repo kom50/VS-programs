@@ -1,0 +1,38 @@
+#icon{
+    height: 30px;
+    width: 30px;
+    /* border : 1px solid black; */
+    margin: auto;
+}
+div[class*='line']{
+    border: 2px solid white;
+    background-color: white;
+    margin-top: 5px;
+    transition-timing-function: ease-in-out;
+    position: relative;
+    transition:all 0.5s linear;
+    -webkit-transition:all 0.5s lin;
+    -moz-transition:all 0.5s lin;
+    -ms-transition:all 0.5s lin;
+    -o-transition:all 0.5s lin;
+}
+/* 
+#icon:hover .line-l2{
+    visibility : hidden;
+}
+#icon:hover .line-l3{
+    transform: rotate(45deg);
+    bottom: 8px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+#icon:hover .line-l1{
+    top: 10px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+} */

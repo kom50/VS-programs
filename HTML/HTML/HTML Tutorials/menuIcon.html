@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #icon {
+            height: 30px;
+            width: 30px;
+            /* border : 1px solid black; */
+            margin: auto;
+        }
+
+        div[class*='line'] {
+            border: 1px solid white;
+            background-color: white;
+            margin-top: 5px;
+            transition-timing-function: ease-in-out;
+
+            position: relative;
+
+            transition : all .5s linear;
+
+        }
+
+        /* #icon:hover .line-l2{
+            visibility : hidden;
+        }
+        #icon:hover .line-l3{
+            transform : rotate(45deg);
+            bottom : 8px;
+        }
+        #icon.line-l1{
+            top : 10px;
+            transform : rotate(-45deg);
+        }
+        */
+    </style>
+</head>
+
+<body>
+    <div id='icon'>
+        <div style=' border: 1px solid red;' class='line-l1'></div>
+        <div class='line-l2'></div>
+        <div style=' border: 1px solid blue;' class='line-l3'></div>
+    </div>
+
+    <script type='text/javascript'>
+        let lines = document.querySelectorAll("#icon div[class*='line']");
+        let flag = true;
+        document.querySelector('#icon').addEventListener('click', event => {
+            if(flag){
+                flag = false;
+                lines[1].style.display = 'none';
+                Object.assign(lines[0].style, {
+                     'top' : '12px',
+                     'transform' : 'rotate(45deg)'
+                });
+                Object.assign(lines[2].style, {
+                     'top' : '5px',
+                     'transform' : 'rotate(-45deg)'
+                });
+            }else{
+                flag = true;
+                lines[1].style.display = 'block';
+                Object.assign(lines[0].style, {
+                     'top' : '0px',
+                     'transform' : 'rotate(0deg)'
+                });
+                Object.assign(lines[2].style, {
+                     'top' : '0px',
+                     'transform' : 'rotate(0deg)'
+                });
+
+            }
+        });
+    </script>
+</body>
+
+</html>

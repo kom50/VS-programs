@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img{
+            border : 1px solid blue;
+        }
+        canvas{
+            border : 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+        <input id='input' type="file" accept="image/png">
+    <p>Image to use:</p>
+    <img id="scream" width="220" height="277" src="full.jpg" alt="The Scream">
+
+    <p>Canvas:</p>
+    <canvas id="myCanvas" width="301" height="301" >
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <script>
+        let posX  = [0, 101, 202];
+        let posY  = [0, 101, 202];
+
+        window.onload = function () {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            var img = document.getElementById("scream");
+            // ctx.drawImage(img, 100, 0, 100, 100, 101, 0, 100, 100);
+            // ctx.drawImage(img, 200, 0, 100, 100, 202, 0, 100, 100);
+            for(let i = 0; i < posX.length; i++){
+                for(let j = 0; j < posX.length; j++){
+
+                    ctx.drawImage(img, posX[j], posY[i], 100, 100, posX[j], posY[i], 100, 100);
+
+                }
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

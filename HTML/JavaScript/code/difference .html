@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        div{
+            height : 200px;
+            width : 200px;
+            border : 2px solid blue;
+            /* padding : 20px; */
+             margin-left : 20px;
+            margin-top:  20px;
+        }
+
+        div div{
+            height : 150px;
+            width : 150px;
+            margin: 0   ;
+        }
+    </style>
+</head>
+<body>
+    <div  id="main">
+    </div>
+
+    <script>
+        document.body.clientLeft = '20px';
+        document.querySelector('#main').onclick = function(event){
+            console.log('Screen X : ', event.screenX,', PageX : ',event.pageX, ', ClientX : ', event.clientX, ', offsetX : ', event.offsetX)
+            console.log('Screen Y: ', event.screenY,', PageY : ',event.pageY, ', ClientY : ', event.clientY, ', offsetY : ', event.offsetY)
+        }
+    </script>
+</body>
+</html>

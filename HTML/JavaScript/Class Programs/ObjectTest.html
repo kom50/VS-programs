@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // Factory function
+    let obj = function () {
+        return {
+            name: 'Ram',
+            age: 23,
+            show : function(){
+                // string template
+                console.log(`Name : ${this.name}, age ${this.age}`);
+            }
+        }
+    }
+    let o =  obj();
+    o.name = "Shyam";
+    o.show();
+    with(console) {
+        log(o)
+        log(typeof o, typeof o.name, typeof o.age)
+        log(o.name, o.age)
+    }
+
+    //Object 
+    let obj1 = {
+        name : 'Ram',
+        age : 25
+    };
+
+
+    console.log(obj1['name'], obj1['age']);
+    console.log(obj1);
+    console.log(obj1.name, obj1.age);
+    console.log(obj1.hasOwnProperty('name'));
+
+    //  Object.isPrototypeOf()
+	//  console.log(Object.getPrototypeOf(Object.prototype));
+	 console.log(Object.getPrototypeOf(obj1));
+
+    </script>
+</body>
+
+</html>

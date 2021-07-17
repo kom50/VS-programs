@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+    <style>
+        body{
+            background-color: rgb(212, 209, 209);
+        }
+        .circular{
+            width: 200px;
+            height: 50px;
+            /* border-radius: 50%; */
+            /* border : 2px solid red; */
+            margin : auto;
+            position : relative;
+
+            
+        }
+        div[class*='line']{
+            border : 2px solid gray;
+            background-color : gray;
+            position : absolute;
+            transition : all 1s linear;
+        }
+        .btn{
+            box-shadow : 0 0 10px rgb(75, 243, 83);
+            height : calc(100% - 3.5px);
+            width : calc(100% - 3.5px);
+
+            text-align : center;
+            line-height : 50px;
+            background-color : rgb(204, 0, 255);
+            user-select: none;
+            color : white;
+            border : 2px solid rgb(200, 60, 235);
+            position : absolute;
+            /* padding : 1px; */
+            margin-left : 2px;
+            margin-top : 2px;
+
+            font-variant: small-caps;
+            font-size : 30px;
+
+        }
+
+        .btn:hover {
+            background-color: rgba(200, 60, 235, .8);
+            color : rgb(204, 0, 255);
+        }
+        .line1{
+            width :0;
+            left : 0;
+        }
+        .line2{
+            height :0;
+            left : 100%;
+        }
+        .line3{
+            width :0;
+            left : 100%;
+            top : 100%;
+        }
+        .line4{
+            height :0%;
+            left : 0%;
+            top: 100%;
+        }
+        .circular:hover div[class*='line']{
+            border-width:  2px;
+        }
+        .circular:hover .line1{
+            width :100%;
+            left : 0;
+        }
+        .circular:hover .line2{
+            height :100%;
+            left : 100%;
+        }
+        .circular:hover .line3{
+            width :100%;
+            left : 0%;
+        }
+        .circular:hover .line4{
+            height :100%;
+            top : 0%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Neon button </h1>
+    
+    <div class='circular'>
+       <div class="line1"></div>
+       <div class="line2"></div>
+       <div class="line3"></div>
+       <div class="line4"></div>
+       <div class="btn">Button</div>
+
+    </div>
+    
+</body>
+</html>

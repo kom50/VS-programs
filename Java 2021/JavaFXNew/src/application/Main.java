@@ -2,7 +2,10 @@ package application;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+//import javafx.event.Event;
 import javafx.event.EventHandler;
+//import javafx.event.EventTarget;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +26,7 @@ public class Main extends Application {
 			Button btn = new Button("Click Me?");
 			btn.setId("btn");
 			btn.setStyle(
-					"-fx-text-color : blue; -fs-padding: 40px; -fx-border : 20;  -fx-margin-left : 40; -fx-padding : 15 15 11 15; -fx-font-weight : bold;  -fx-border-radius : 20;");
+					"-fx-text-color : blue; -fx-padding: 60px; -fx-border : 30;  -fx-margin-left : 40; -fx-padding : 15 15 11 15; -fx-font-weight : bold;  -fx-background-radius : 20;");
 
 			btn.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -42,7 +45,17 @@ public class Main extends Application {
 					l1.setText("Mouse enter on button.");
 				}
 			});
-			root.getChildren().addAll(l1, btn);
+			btn.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent mEvent) {
+					System.out.println("Mouse Exit on button");
+					l1.setText("Mouse Exit on button.");
+				}
+			});
+			
+			root.add(btn, 1, 1);
+			root.add(l1, 3, 1);
+//			root.getChildren().addAll(l1, btn);
 
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outputImage {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="photo.png">
+    <img id='outputImage' src="">
+    <div></div>
+    <script>
+        window.onload = function () {
+            let img = new Image();
+            img.onload = function () {
+
+            };
+
+            let img1 = document.querySelector('img');
+
+            let img2 = document.querySelector('#outputImage');
+            
+            let canvas = document.createElement("canvas");
+            Object.assign(canvas.style, {
+                'border': '1px solid red',
+                'width': '300px',
+                'height': '300px',
+                'opacity': '1'
+            })
+            let ctx = canvas.getContext("2d");
+
+            document.querySelector('div').appendChild(canvas);
+
+            ctx.drawImage(img1, 0, 0, 300, 150)
+
+            img2.setAttribute('src', canvas.toDataURL("image/jpeg"));
+        }
+    </script>
+
+</body>
+
+</html>

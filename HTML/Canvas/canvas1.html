@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #canvasContainer {
+            border: 11px solid white;
+            border-radius: 3%;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            box-shadow: 0 0 2px gray;
+            background-color: rgb(174, 84, 216);
+            background-image: linear-gradient(-45deg, rgb(255, 0, 221), rgb(6, 235, 252));
+            margin: auto;
+        }
+
+        #canvasContainer:hover {
+            box-shadow: 0 0 5px gray;
+
+        }
+
+        canvas {
+            border: .1px solid rgba(126, 124, 124, 0.63);
+            box-sizing: border-box;
+            position: absolute;
+            transition: all 0.2s linear;
+        }
+
+        canvas:active {
+            opacity: 0.8;
+        }
+
+        img {
+            position: absolute;
+            border: .1px solid rgba(126, 124, 124, 0.63);
+            display: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <input type='file' accept='image/jpg'>
+    <div id='canvasContainer'>
+        <!-- Main image  -->
+        <img width='300' height='300' src='full2.jpg'>
+        <canvas class='box-1' width='100' height='100'></canvas>
+        <canvas class='box-2' width='100' height='100'></canvas>
+        <canvas class='box-3' width='100' height='100'></canvas>
+        <canvas class='box-4' width='100' height='100'></canvas>
+        <canvas class='box-5' width='100' height='100'></canvas>
+        <canvas class='box-6' width='100' height='100'></canvas>
+        <canvas class='box-7' width='100' height='100'></canvas>
+        <canvas class='box-8' width='100' height='100'></canvas>
+        <canvas class='box-9' width='100' height='100'></canvas>
+    </div>
+
+    <button>show</button>
+    <button>show number</button>
+
+    <script type='text/javascript'>
+        let container = document.getElementById('canvasContainer');
+        let canvas = document.querySelectorAll('canvas');
+        let locX = [0, 100, 200],
+            locY = [0, 100, 200];
+        let blankX = 200,
+            blankY = 200;
+
+        let styles = {
+            position: 'absolute',
+            left: '0',
+            top: '0px',
+        };
+
+        let img = document.querySelector('img');
+        img.onload = function () {
+            blankX = blankY = 200;
+            let k = 0;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    styles['left'] = locX[j] + 'px';
+                    styles['top'] = locY[i] + 'px';
+                    Object.assign(canvas[k].style, styles);
+
+
+
+                    let context = canvas[k].getContext('2d');
+                    // draw image on each canvas
+                    context.drawImage(img, locX[j], locY[i], 100, 100, 0, 0, 100, 100);
+
+                    context.fillStyle = 'white';
+                    context.font = '22px sans-serif';
+                    context.fillText(' ' + (k + 1), 35, 55, );
+
+                    k++;
+                }
+            }
+        }
+
+        canvas[8].style.display = 'none';
+
+        for (let can of Array.from(canvas)) {
+            can.addEventListener('click', (event) => {
+                let left = event.target.offsetLeft;
+                let top = event.target.offsetTop;
+
+                let tempX = blankX - left;
+                let tempY = blankY - top;
+
+                if (((tempX == -100 || tempX == 100) && tempY == 0) || ((tempY == -100 || tempY == 100) &&
+                        tempX == 0)) {
+                    can.style.left = blankX + 'px';
+                    can.style.top = blankY + 'px';
+
+                    blankX = left;
+                    blankY = top;
+                }
+            });
+        }
+
+        document.querySelector('input').addEventListener('input', function (event) {
+            let src = URL.createObjectURL(event.target.files[0])
+            img.setAttribute('src', src);
+          
+            img.onload();
+            window.onload();
+        });
+
+        let canvas1 = document.createElement("canvas");
+        document.documentElement.appendChild(canvas1);
+        let ctx = canvas1.getContext("2d");
+        Object.assign(canvas1.style, {
+            'border': '1px solid red',
+            'width': '300px',
+            'height': '300px',
+            'opacity': '1'
+        })
+
+        window.onload = function() {
+            console.log('load function ')
+
+            ctx.drawImage(img, 0, 0, 300, 300)
+            img.setAttribute('src', canvas1.toDataURL("image/jpeg"));
+        }
+
+        document.querySelector('button').onclick = function (event) {
+            let i = 1;
+            let timer = setInterval(function () {
+                img.style.display = ' inline'
+                if (i == 5) {
+                    img.style.display = ' none'
+                    clearInterval(timer);
+                }
+                i++;
+            }, 400);
+        };
+
+        document.querySelector('button:nth-of-type(2)').onclick = function (event) {
+            console.log("hello");
+            let k = 0;
+            for (let can of canvas) {
+                let context = can.getContext('2d');
+                context.fillStyle = 'rgba(100, 234, 43, 0)';
+                context.fillText(' ' + (k++ + 1), 35, 55, );
+            }
+        }
+    </script>
+</body>
+
+</html>

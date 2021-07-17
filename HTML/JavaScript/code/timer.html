@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1 id='text'></h1>
+    <script>
+        function timer(targetDay, selector) {
+            // let targetDay = new Date(2021, 6, 15, 21, 0, 0, 0);
+            let text = document.querySelector(selector);
+            let timer = setInterval(function () {
+                let today = new Date();
+
+                let targetHours = targetDay.getHours();
+                let targetMinutes = targetDay.getMinutes();
+                let targetSeconds = targetDay.getSeconds();
+                let targetDate = targetDay.getDate();
+
+                let todayHours = today.getHours();
+                let todayMinutes = today.getMinutes();
+                let todaySeconds = today.getSeconds();
+                let todayDate = today.getDate();
+
+                let hours, minutes, seconds, date;
+                if (targetSeconds < todaySeconds) {
+                    targetMinutes--;
+                    targetSeconds += 60;
+                    // seconds = targetSeconds - todaySeconds;
+                }
+                if (targetMinutes < todayMinutes) {
+                    targetHours--;
+                    targetMinutes += 60;
+                    // minutes = targetMinutes - todayMinutes;
+                }
+                if (targetHours < todayHours) {
+                    targetDate--;
+                    targetHours += 24;
+                    // hours = targetHours - todayHours;
+                }
+                seconds = targetSeconds - todaySeconds;
+                minutes = targetMinutes - todayMinutes;
+                hours = targetHours - todayHours;
+                date = targetDate - todayDate;
+
+                // seconds = check(targetSeconds, targetMinutes, todaySeconds, false);
+                // minutes = check(targetMinutes, targetHours, todayMinutes, false);
+                // hours = check(targetHours, targetDate, todayHours, true);
+                // date = targetDate - todayDate;
+
+                if (date == -1 || hours == -1 || minutes == -1 || seconds == -1) {
+                    text.textContent = 'Expired date';
+                    clearInterval(timer);
+                } else
+                    text.textContent =
+                    ` ${date} : ${checkTime(hours)} : ${checkTime(minutes)} : ${checkTime(seconds)}`;
+                if (date == 0 && hours == 0 && minutes == 0 && seconds == 0) {
+                    clearInterval(timer);
+                }
+            }, 1000)
+
+            function checkTime(n) {
+                if (n < 10)
+                    n = '0' + n;
+                return n;
+            }
+
+            // function check(target, target1,  now,  isHours){
+            //     if(target < now){
+            //         target += isHours ? 24 : 60;
+            //         target1--;
+            //     }
+            //     return target - now;
+            // }
+        }
+
+        timer(new Date(2021, 6, 16, 16, 0, 0, 0), '#text');
+    </script>
+</body>
+
+</html>

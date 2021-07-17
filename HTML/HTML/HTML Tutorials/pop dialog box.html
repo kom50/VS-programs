@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main {
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            background-color: gray;
+            align-items: center;
+        }
+
+        .dialog {
+            height: 200px;
+            width: 400px;
+            border: 1px solid blue;
+            box-shadow: 0 0 50px gray;
+            background-color: antiquewhite;
+            position: relative;
+            margin-top: -65%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1%;
+
+            transition: all .4s linear;
+        }
+
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 1px;
+        }
+        .close a {
+            text-decoration: none;
+            font-size: 25px;
+            color: blue;
+            font-weight: bolder;
+        }
+
+        .close a:hover {
+            color: red;
+        }
+
+        .content {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+        }
+
+        h3 {
+            text-align: center;
+            background-color: red;
+            color: white;
+            font-variant: small-caps;
+            line-height: 40px;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dialog box</h2>
+    <button> show </button>
+
+    <!-- <div class="main"> -->
+    <div class='dialog'>
+        <div class='close'> <a href='#'> &times; </a> </div>
+        <div class='content'>
+            <h3>Dialog box</h3>
+            <p>Hello dialog</p>
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <script type='text/javascript'>
+        let btn = document.querySelector('button');
+        let dialog = document.querySelector('.dialog');
+
+        dialog.children[0].addEventListener('click', (event) => {
+            Object.assign(dialog.style, {
+                'margin-top': '-65%',
+            });
+        });
+        //  dialog box show dialog box when we set top position is 0px.
+        btn.addEventListener('click', event => {
+            Object.assign(dialog.style, {
+                'margin-top': '40%',
+            });
+        });
+    </script>
+</body>
+
+</html>

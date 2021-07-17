@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid black;
+            /* padding: 30px; */
+            /* box-sizing : border-box; */
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <button style="color : red; font-weight : bold; "> click </button>
+    <div>
+        <button class="last"> click </button>
+    </div>
+    <p id='para'> Paragraph</p>
+    <br />
+    <input type="text">
+    <button id="btn"> Hide </button>
+    <button id="btn1"> Show </button>
+
+    <script type="text/javascript">
+        let keyEvent = {
+            //key event function
+            keydown(func) {
+                element.onkeydown = func;
+            },
+            keypress(func) {
+                element.onkeypress = func;
+            },
+            keyup(func) {
+                element.onkeyup = func;
+            },
+        }
+
+        let mouseEvent = {
+            mousedown(func) {
+                element.onmousedown = func;
+            },
+            mouseup(func) {
+                element.onmouseup = func;
+            },
+            mouseenter(func) {
+                element.onmouseenter = func;
+            },
+            mouseout(func) {
+                element.onmouseout = func;
+            },
+            mouseover(func) {
+                element.onmouseover = func;
+            },
+            mouseleave(func) {
+                element.onmouseleave = func;
+            },
+            mousemove(func) {
+                element.onmousemove = func;
+            },
+            hover: function (func, func1) {
+                this.mouseenter(func);
+                this.mouseleave(func1);
+            },
+            click: (func) => {
+                element.onclick = func;
+            },
+            dblclick(func) {
+                element.ondblclick = func;
+            },
+        }
+
+
+        let dimension = {
+            initHight: 0,
+            initWidth: 0,
+            setInitSize: function (width, height) {
+                this.initWidth = width;
+                this.initHeight = height;
+                console.log("Set initSize :", this.initWidth, this.initHeight);
+            },
+            getInitSize: function () {
+                return [this.initWidth, this.initHeight];
+            }
+        }
+
+        let initialProperties = {
+
+        };
+        let oQuery = function (selector) {
+            selector = selector;
+            element = null;
+            // dimension
+            if (selector instanceof Object) {
+                // console.log('Selector value :-- > ', selector.nodeName)
+                // if (selector.nodeName === '#document')
+                //     element = selector;
+                // else
+                element = selector; //document.querySelector(selector.nodeName);
+            } else {
+                element = document.querySelector(selector);
+            }
+
+            // console.log('element :-> ', element);
+
+            return {
+                // keyEvent 
+                ...keyEvent,
+                // Mouse Event function
+                ...mouseEvent,
+
+                // Event Methods
+                ready(func) {
+                    element.onload = func();
+                },
+                // input event
+                focus(func) {
+                    element.onfocus = func;
+                },
+                blur(func) {
+                    element.onblur = func;
+                },
+                change(func) {
+                    element.onchange = func;
+                },
+                input(func) {
+                    element.oninput = func;
+                },
+
+
+                //  hide and show
+
+                hide: function (speed = 10, callback) {
+                    // element.style.display = 'none';
+                    height = element.offsetHeight;
+                    width = element.offsetWidth;
+                    // Store initial width and height
+                    dimension.setInitSize(width, height);
+
+                    opacity = 1;
+                    Object.assign(element.style, {
+                            'overflow': 'hidden',
+                            'transition': 'all 1s linear',
+                    })
+                    let timer = setInterval(function () {
+                        Object.assign(element.style, {
+                            'height': (height -= 1) + 'px',
+                            'width': (width -= 1) + 'px',
+                            'opacity': opacity -= 0.003,
+                        })
+                        if (height == 0 && width == 0) {
+                            clearInterval(timer);
+                            element.style.display = 'none'
+                            if (arguments.length == 2)
+                                callback();
+                        }
+                    }, speed);
+                },
+                show: function (speed = 10, callback) {
+                    // element.style.display = 'block';
+                    height = 0;
+                    width = 0;
+                    let initWidth, initHeight;
+                    [initWidth, initHeight] = dimension.getInitSize();
+
+                    console.log("Initial dimension : ", initWidth, initHeight);
+
+                    if (element.offsetHeight == 0 && element.offsetHeight == 0) {
+                        element.style.display = 'block'
+                        console.log(height, width);
+                        let timer = setInterval(function () {
+                            console.log('timer')
+                            Object.assign(element.style, {
+                                'height': ++height + 'px',
+                                'width': ++width + 'px',
+                                'opacity': opacity += 0.1,
+                                'transition': 'all 1s linear',
+
+                            })
+                            if (initHeight == height && initWidth == width) {
+                                clearInterval(timer);
+                                console.log('timer stop')
+                                if (arguments.length == 2)
+                                    callback();
+                            }
+                        }, speed);
+                    }
+                },
+
+                slideUp: function (speed = 10, callback) {
+                    // element.style.display = 'none';
+                    height = element.offsetHeight - element.getAttribute('border');
+                    width = element.offsetWidth;
+                    // Store initial width and height
+                    dimension.setInitSize(width, height);
+
+                    opacity = 1;
+                    Object.assign(element.style, {
+                        'overflow': 'hidden',
+                        'transition': 'all 1s linear',
+                    })
+                    let timer = setInterval(function () {
+                        Object.assign(element.style, {
+                            'height': (height -= 1) + 'px',
+                            'opacity': opacity -= 0.003,
+                        })
+                        if (height == 0) {
+                            clearInterval(timer);
+                            element.style.display = 'none'
+                            if (arguments.length == 2)
+                                callback();
+                        }
+                    }, speed);
+                },
+
+                slideDown: function (speed = 10, callback) {
+                    // element.style.display = 'none';
+                    height = element.offsetHeight;
+                    width = element.offsetWidth;
+                    // Store initial width and height
+                    let initHeight;
+                    [initWidth, initHeight] = dimension.getInitSize();
+
+                    if (height == 0) {
+                        Object.assign(element.style, {
+                            'overflow': 'hidden',
+                            'transition': 'all 1s linear',
+                        })
+                        let timer = setInterval(function () {
+                            Object.assign(element.style, {
+                                'height': (height += 1) + 'px',
+                                'opacity': opacity += 0.03,
+                            })
+                            if (height == initHeight) {
+                                clearInterval(timer);
+                                element.style.display = 'block'
+                                if (arguments.length == 2)
+                                    callback();
+                            }
+                        }, speed);
+                    }
+                },
+                //css Styling methods
+                css: function (prop, value) {
+                    // console.log(typeof arguments[0], typeof prop, value)
+                    if (arguments.length == 1 && typeof arguments[0] !== 'object') {
+                        return element.style[arguments[0]];
+                    } else {
+                        if (typeof arguments[0] === 'object' && typeof arguments[1] === 'string')
+                            throw new Error('Invalid argument');
+                        // multiple style
+                        if (arguments.length == 1 && typeof arguments[0] === 'object') {
+                            Object.assign(element.style, arguments[0]);
+                        } else {
+                            // console.log('inline style  ', element)
+                            element.style[prop] = value;
+                        }
+                    }
+                }
+
+            }; // return statement
+        }
+
+        // main contents
+        // console.log('oQuery : ', oQuery)
+        oQuery(document).ready(function () {
+            console.log('ready function');
+
+            oQuery('button').click(function () {
+                console.log('button Clicked');
+                console.log('color value : ', oQuery(this).css('color'));
+
+            });
+            oQuery('button:last-child').click(function (event) {
+                console.log('button Clicked ');
+                oQuery(event.target.parentElement).css({
+                    color: 'red',
+                    'backgroundColor': 'yellow',
+                    fontSize: '30px',
+                    outlineStyle: 'none',
+                    padding: '5%',
+                    // borderRadius : '60% 20% 60% 20%',
+                    boxShadow: '0 0 10px gray'
+                });
+
+
+            });
+
+            oQuery('input').keypress(function (event) {
+                console.log(event.key)
+            })
+
+            oQuery('div').hover(function (event) {
+                    oQuery('div').css({
+                        'background-color': 'red',
+                        'box-shadow': '0 0 20px gray'
+                    });
+                    console.log('mouse enter')
+                },
+                function (event) {
+                    oQuery('div').css({
+                        'background-color': 'white',
+                        'box-shadow': '0 0 2px gray'
+                    });
+                    console.log('mouse leave')
+            });
+
+
+
+            oQuery('#btn').click(function (event) {
+                oQuery('div').slideUp(11);
+                console.log(event.result);
+            })
+            oQuery('#btn1').click(function (event) {
+                oQuery('div').slideDown();
+                console.log(event.result);
+            })
+
+        });
+
+        // oQuery('button').click(function (event) {
+        //     oQuery(this).css('color', 'yellow');
+        //     console.log('hello oQuery ', event.target.nodeName)
+
+        // });
+
+        // oQuery('button.last').click(function (event) {
+        //     oQuery('button.last').css({
+        //         'color': 'red',
+        //         'font-size': '20px',
+        //         'padding' : '4%',
+        //     });
+
+
+        //     console.log('hello oQuery ', )
+
+        // });
+
+        // oQuery('input').focus(function(event){
+        //     console.log('focus event ')
+        // });
+        // oQuery('input').keydown(function(event){
+        //     console.log('input event ', event.type,event.keyCode)
+        // });
+        // oQuery('input').blur(function(){
+        //     console.log('blur event')
+        // });
+
+        // oQuery('#para').click( function(){
+        //     console.log(this)
+        // })
+    </script>
+
+</body>
+
+</html>

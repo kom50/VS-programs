@@ -13,14 +13,17 @@
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item key="RunnableJar.export.ipwarning" value="true"/>
+		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
 	</section>
 	<section name="FatJarPackageWizard">
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="G:\VS programs\Java 2021"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
-		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="TextEditor (1) - Swing Programs"/>
-		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="G:\TextEditor.jar"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="PuzzleGame - Swing Programs"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="G:\Photo Puzzle.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="G:\Photo Puzzle.jar"/>
+			<item value="G:\Puzzle photo.jar"/>
 			<item value="G:\TextEditor.jar"/>
 			<item value="C:\Users\Omkarthik\Desktop\Photo puzzle.jar"/>
 			<item value="Swing Programs/src/puzzle/Photo/Photo puzzle.jar"/>
@@ -53,5 +56,14 @@
 		<item key="DIALOG_WIDTH" value="523"/>
 		<item key="DIALOG_HEIGHT" value="509"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="NewClassWizardPage">
+		<item key="create_constructor" value="false"/>
+		<item key="create_unimplemented" value="true"/>
+	</section>
+	<section name="JavaSearchPage">
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="INCLUDE_MASK" value="11"/>
+		<item key="HISTORY_SIZE" value="0"/>
 	</section>
 </section>

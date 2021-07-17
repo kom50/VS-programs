@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            color : red;
+            font-size : 23px;
+        }
+    </style>
+</head>
+<body>
+    <h3 style='font-weight: bold;'> CSSStyleDeclaration object</h3>
+    <script type="text/javascript">
+       
+       window.addEventListener('resize', event=>{
+            var d = document.styleSheets[0].cssRules[0].style;
+            console.log(d.getPropertyValue('fontSize'));
+        });
+
+        // cssText is used to return inline style of HTML elements
+        let h = document.querySelector('h3');
+        console.log(h.style.cssText)
+
+
+    </script>
+</body>
+</html>

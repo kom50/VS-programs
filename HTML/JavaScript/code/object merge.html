@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+       
+       let obj = {
+             name : 'om',
+             age : 23
+       }
+       let obj1 = {
+           class : 'BCA',
+           session : '2017-2021'
+       }
+ 
+       console.log(obj, obj1)
+    //    Object merge using spread operator
+       let obj2 = {
+           ...obj,
+           ...obj1
+       }
+
+       console.log(obj2)
+       console.log(obj.name === obj2.name)
+
+    //    Object merge using Object.assign()
+       let obj3 = Object.assign(obj, obj1)
+       console.log(obj3)
+       console.log(obj.name === obj3.name)
+
+    </script>
+</body>
+
+</html>

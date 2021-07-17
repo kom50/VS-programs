@@ -1,4 +1,7 @@
 {
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "C:\\Python\\python.exe"
+    "python.pythonPath": "C:\\Python\\python.exe",
+    "cSpell.words": [
+        "Shyam"
+    ]
 }

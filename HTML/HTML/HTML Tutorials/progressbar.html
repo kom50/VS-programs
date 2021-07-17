@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border : 1px solid blue;
+            height : 30px;
+            width : 300px;
+            margin : auto;
+        }
+
+        .bar{
+            height : 30px;
+            width : 0;
+            background-color: rgb(216, 78, 235);
+            position : relative;
+            top : -50.2px;
+            z-index: -1;
+            animation : animate 15.5s 1 linear;
+
+        }
+        .text {
+            display : flex;
+            justify-content : center;
+            align-items: center;
+            position: relative;
+            top : -10px;
+            color : rgb(0, 204, 255);
+        }
+
+        @keyframes animate {
+            to{
+                width : 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1> Progressbar HTML CSS</h1>
+    <div class='box'>
+        <div class='text'>
+            <p> 0%</p>
+        </div>
+        <div class='bar'></div>
+    </div>
+
+    
+    </div>
+    <script type='text/javascript'>
+        let progressbarValue = document.querySelector('.text p');
+        let bar = progressbarValue.parentElement.nextElementSibling;
+        console.log(progressbarValue, bar);
+        let value = 0;
+        let timer = setInterval(() =>{
+            value += 1;
+            progressbarValue.textContent = value+'%';
+            if(value == 100){
+                window.clearInterval(timer);
+                bar.style.width = 100+"%";
+            }
+        }, 150)
+    </script>
+</body>
+</html>

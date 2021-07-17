@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .alert-box {
+            width: 400px;
+            height: 80px;
+            margin: auto;
+            position: relative;
+        }
+
+        .close {
+            height: inherit;
+            width: inherit;
+            position: absolute;
+            /* border: 1px solid black; */
+        }
+
+        .close a {
+            text-decoration: none;
+            position: absolute;
+            right: 10px;
+            font-size: 25px;
+
+        }
+
+        .content {
+            height: calc(100% - 20px);
+            width: calc(100% - 20px);
+            position: absolute;
+            border: 1px solid red;
+            background-color: rgb(253, 224, 126);
+            z-index: -1;
+            font-size: 15px;
+            color: rgb(255, 0, 0);
+            padding : 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Alert box demo</h2>
+
+    <div class='alert-box'>
+        <div class='close'> <a href='#'> &times; </a> </div>
+        <div class='content'>
+            <strong>Alert </strong>
+            <p> This is alert box content</p>
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        let alert_box = document.querySelector('.alert-box');
+        let closeBtn = alert_box.children[0].children[0];
+        console.log(closeBtn, alert_box)
+        closeBtn.addEventListener('click', (event) => {
+            console.log("close button clicked");
+            alert_box.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
